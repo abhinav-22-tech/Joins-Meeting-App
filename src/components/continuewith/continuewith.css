@@ -1,0 +1,35 @@
+.continueWith {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.continueWith__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #dadce0;
+  border-radius: 7px;
+  padding: 30px;
+  height: 320px;
+  width: 330px;
+  position: absolute;
+}
+
+.continueWith__logo {
+  width: 100px;
+}
+
+.continueWith__title {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.continueWith__subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 7px;
+}

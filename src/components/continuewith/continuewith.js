@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import { StyledFirebaseAuth } from "react-firebaseui";
+import "./Continuewith.css";
+import logo from "../../images/X-oo.svg";
 
-class continuewith extends Component {
+class Continuewith extends Component {
   state = { isSignedIn: false };
   uiConfig = {
     signInFlow: "popup",
@@ -26,24 +28,29 @@ class continuewith extends Component {
 
   render() {
     return (
-      <div>
+      <div className="continueWith">
         {this.state.isSignedIn ? (
-          <span>
-            <div>Signed In!</div>
-            <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            {/* <img alt="profile picture"
-              src={firebase.auth().currentUser.photoURL}/> */}
-          </span>
+          <span></span>
         ) : (
-          <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
+          <div className="continueWith__content">
+            <img
+              src={logo}
+              alt="X-oo"
+              className="continueWith__logo"
+            />
+
+            <p className="continueWith__title">Sign in</p>
+            <p className="continueWith__subtitle">Continue to X-meet</p>
+
+            <StyledFirebaseAuth
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          </div>
         )}
       </div>
     );
   }
 }
 
-export default continuewith;
+export default Continuewith;
