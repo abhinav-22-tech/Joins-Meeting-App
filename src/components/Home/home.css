@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px 20px;
 }
 
 .header__logoContainer {
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.header__logoContainer p{
+.header__logoContainer p {
   font-size: 22px;
   color: #5f6368;
   margin-left: 5px;
@@ -40,6 +40,7 @@
   line-height: 1.5rem;
   color: #5f6368;
   margin-right: 12px;
+  display: flex;
 }
 
 .MuiPopover-paper {
@@ -175,3 +176,98 @@
 .home__popover__footer span {
   margin: 10px;
 }
+
+@media (max-width: 850px) {
+  .header__TimeDate {
+    display: none;
+  }
+
+  .header__logoContainer p {
+    font-size: 20px;
+  }
+}
+
+.home {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 40vw;
+}
+
+.home__right {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.home__image {
+  width: inherit;
+}
+
+.home__title {
+  font-size: 2.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 3.25rem;
+  max-width: 500px;
+}
+
+.home__subtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+  color: #5f6368;
+  max-width: 30em;
+  padding: 20px 0;
+}
+
+.home__buttons {
+  margin: 30px 0;
+}
+
+.home__createBTN {
+  padding: 10px 15px !important;
+}
+
+.home__createBTN p {
+  margin-left: 5px !important;
+  font-weight: 500 !important;
+  text-transform: capitalize;
+}
+
+.icon {
+  color: #5f6368;
+}
+
+.home__input .MuiInputBase-root {
+  height: 45px !important;
+  margin-left: 20px;
+}
+
+.home__joinBTN {
+  text-transform: capitalize !important;
+  margin-left: 15px !important;
+  font-size: 1em !important;
+  color: #3f51b5 !important;
+}
+
+.home__learn {
+  letter-spacing: 0.00625em;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  padding-top: 1.5em;
+  color: #5f6368;
+}
+
+.home__learnMore {
+  margin-top: 30px;
+  color: #2962ff;
+  text-decoration: none;
+}
+
