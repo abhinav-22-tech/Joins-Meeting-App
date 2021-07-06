@@ -2,12 +2,13 @@ import firebase from "firebase";
 import "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCEMyPci8807PI3Pvj1J-Ijwsv0lRHrFoc",
-  authDomain: "x-login-50d0b.firebaseapp.com",
-  projectId: "x-login-50d0b",
-  storageBucket: "x-login-50d0b.appspot.com",
-  messagingSenderId: "289315013382",
-  appId: "1:289315013382:web:82ca68c17e90035b84d487",
+  apiKey: "AIzaSyAswSs5I_Ow2zqhEKy1cfpZTLS8sy7PYsA",
+  authDomain: "meeting-3ecfa.firebaseapp.com",
+  projectId: "meeting-3ecfa",
+  storageBucket: "meeting-3ecfa.appspot.com",
+  messagingSenderId: "940410080677",
+  appId: "1:940410080677:web:dad8c866e2b666c92c6c4c",
+  measurementId: "G-7QHJGCKWLK"
 };
 
 firebase.initializeApp(firebaseConfig);
