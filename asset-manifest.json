@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/meeting-webapp/static/css/main.b5583a87.chunk.css",
+    "main.js": "/meeting-webapp/static/js/main.ca6452c3.chunk.js",
+    "main.js.map": "/meeting-webapp/static/js/main.ca6452c3.chunk.js.map",
+    "runtime-main.js": "/meeting-webapp/static/js/runtime-main.717bdc42.js",
+    "runtime-main.js.map": "/meeting-webapp/static/js/runtime-main.717bdc42.js.map",
+    "static/css/2.dfd2d5fd.chunk.css": "/meeting-webapp/static/css/2.dfd2d5fd.chunk.css",
+    "static/js/2.d1b6398e.chunk.js": "/meeting-webapp/static/js/2.d1b6398e.chunk.js",
+    "static/js/2.d1b6398e.chunk.js.map": "/meeting-webapp/static/js/2.d1b6398e.chunk.js.map",
+    "index.html": "/meeting-webapp/index.html",
+    "static/css/2.dfd2d5fd.chunk.css.map": "/meeting-webapp/static/css/2.dfd2d5fd.chunk.css.map",
+    "static/css/main.b5583a87.chunk.css.map": "/meeting-webapp/static/css/main.b5583a87.chunk.css.map",
+    "static/js/2.d1b6398e.chunk.js.LICENSE.txt": "/meeting-webapp/static/js/2.d1b6398e.chunk.js.LICENSE.txt",
+    "static/media/X-oo.90f7da0a.svg": "/meeting-webapp/static/media/X-oo.90f7da0a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.717bdc42.js",
+    "static/css/2.dfd2d5fd.chunk.css",
+    "static/js/2.d1b6398e.chunk.js",
+    "static/css/main.b5583a87.chunk.css",
+    "static/js/main.ca6452c3.chunk.js"
+  ]
+}
