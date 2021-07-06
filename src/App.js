@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Signin from "./components/Signin/Signin";
-import Continuewith  from "./components/continuewith/Continuewith";
+import Continuewith from "./components/Continuewith/Continuewith";
 import Home from "./components/Home/home";
 import { auth } from "./lib/firebase";
 
@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       {appState === "empty" && <p>Loading....</p>}
-      {appState === "home" && <Home/>}
+      {appState === "home" && <Home />}
       {appState === "login" && <Continuewith />}
       {/* {appState === "login" && <Signin/>} */}
     </div>
