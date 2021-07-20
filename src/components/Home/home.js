@@ -232,7 +232,9 @@ function Home() {
 
           <Divider />
           <div className="home__learn">
-            <a href="/" className="home__learnMore">Learn more</a>
+            <a href="/" className="home__learnMore">
+              Learn more
+            </a>
             <span> about Google Meet</span>
           </div>
         </div>
