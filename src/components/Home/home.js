@@ -34,7 +34,6 @@ function Home() {
   const [appState, setAppState] = useState("empty");
   const [anchorEl, setAnchorEl] = useState(null);
   const [date, setDate] = useState(new Date());
-  // console.log(date);
 
   const classes = useStyles();
 
@@ -48,12 +47,11 @@ function Home() {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-  // console.log(currentUser);
 
   const nameFirstChar =
     currentUser?.displayName !== null
       ? currentUser?.displayName.charAt(0).toUpperCase()
-      : "D";
+      : " ";
 
   function stringToColor() {
     var str = currentUser?.displayName + "";

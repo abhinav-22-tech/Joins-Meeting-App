@@ -1,21 +1,30 @@
 {
   "name": "x-meet",
   "version": "0.1.0",
-  "homepage": "https://abhinav-22-tech.github.io/meeting-webapp/",
+  "homepage": "https://abhinav-22-tech.github.io/Trishul-Meeting-App-/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "animate.css": "^4.1.1",
+    "body-parser": "^1.19.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "express": "^4.17.1",
+    "express-pino-logger": "^5.0.0",
     "firebase": "^8.6.7",
     "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-firebaseui": "^5.0.2",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "twilio": "^3.54.2",
+    "twilio-video": "^2.10.0",
+    "use-clipboard-copy": "^0.1.2",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -23,7 +32,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node-env-run server --exec nodemon | pino-colada",
+    "dev": "run-p server start"
   },
   "eslintConfig": {
     "extends": [
@@ -35,6 +46,7 @@
     "production": [
       ">0.2%",
       "not dead",
+      "not ie <= 11",
       "not op_mini all"
     ],
     "development": [
