@@ -33,9 +33,23 @@ function App() {
       {appState === "empty" && <p>Loading....</p>}
       {/* {appState === "home" && <Home />} */}
       {appState === "login" && <Continuewith />}
+      <header>
+        <h1>⚛️🔥💬</h1>
+        <SignOut />
+      </header>
       {appState === "home" && <ChatRoom />}
       {/* {appState === "login" && <Signin/>} */}
     </div>
+  );
+}
+
+function SignOut() {
+  return (
+    auth.currentUser && (
+      <button className="sign-out" onClick={() => auth.signOut()}>
+        Sign Out
+      </button>
+    )
   );
 }
 
