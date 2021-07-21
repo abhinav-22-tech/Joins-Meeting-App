@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 // import Signin from "./components/Signin/Signin";
 import Continuewith from "./components/Continuewith/Continuewith";
 import Home from "./components/Home/home";
-import Chat from "./components/Chat/Chat";
 import { auth } from "./lib/firebase";
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
       if (user) {
         setCurrentUser(user);
         setAppState("home");
-        if (true) setAppState("join");
       } else {
         setCurrentUser(null);
         setAppState("login");
@@ -26,7 +24,6 @@ function App() {
       {appState === "empty" && <p>Loading....</p>}
       {appState === "home" && <Home />}
       {appState === "login" && <Continuewith />}
-      {appState === "join" && <Chat />}
       {/* {appState === "login" && <Signin/>} */}
     </div>
   );
