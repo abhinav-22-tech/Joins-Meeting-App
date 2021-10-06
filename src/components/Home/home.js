@@ -20,6 +20,7 @@ import {
 } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import { auth } from "../../lib/firebase";
+import { Link } from "react-router-dom";
 import "./home.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -226,8 +227,9 @@ function Home() {
                 ),
               }}
             />
-
-            <Button className="home__joinBTN">Join</Button>
+            <Link to="/Trishul-Meeting-App-/ChatRoom">
+              <Button className="home__joinBTN">Join</Button>
+            </Link>
           </div>
 
           <Divider />
