@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Trishul-Meeting-App/static/css/main.4ef2dbba.chunk.css",
-    "main.js": "/Trishul-Meeting-App/static/js/main.8d27f2ec.chunk.js",
-    "main.js.map": "/Trishul-Meeting-App/static/js/main.8d27f2ec.chunk.js.map",
+    "main.js": "/Trishul-Meeting-App/static/js/main.1a07c629.chunk.js",
+    "main.js.map": "/Trishul-Meeting-App/static/js/main.1a07c629.chunk.js.map",
     "runtime-main.js": "/Trishul-Meeting-App/static/js/runtime-main.d1f900e3.js",
     "runtime-main.js.map": "/Trishul-Meeting-App/static/js/runtime-main.d1f900e3.js.map",
     "static/css/2.28499ece.chunk.css": "/Trishul-Meeting-App/static/css/2.28499ece.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.28499ece.chunk.css",
     "static/js/2.4445ed06.chunk.js",
     "static/css/main.4ef2dbba.chunk.css",
-    "static/js/main.8d27f2ec.chunk.js"
+    "static/js/main.1a07c629.chunk.js"
   ]
 }
