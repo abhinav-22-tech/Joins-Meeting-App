@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Trishul-Meeting-App-/static/css/main.0e2c8322.chunk.css",
-    "main.js": "/Trishul-Meeting-App-/static/js/main.0af63ddd.chunk.js",
-    "main.js.map": "/Trishul-Meeting-App-/static/js/main.0af63ddd.chunk.js.map",
-    "runtime-main.js": "/Trishul-Meeting-App-/static/js/runtime-main.1b5c7ec3.js",
-    "runtime-main.js.map": "/Trishul-Meeting-App-/static/js/runtime-main.1b5c7ec3.js.map",
-    "static/css/2.dfd2d5fd.chunk.css": "/Trishul-Meeting-App-/static/css/2.dfd2d5fd.chunk.css",
-    "static/js/2.90484555.chunk.js": "/Trishul-Meeting-App-/static/js/2.90484555.chunk.js",
-    "static/js/2.90484555.chunk.js.map": "/Trishul-Meeting-App-/static/js/2.90484555.chunk.js.map",
-    "index.html": "/Trishul-Meeting-App-/index.html",
-    "static/css/2.dfd2d5fd.chunk.css.map": "/Trishul-Meeting-App-/static/css/2.dfd2d5fd.chunk.css.map",
-    "static/css/main.0e2c8322.chunk.css.map": "/Trishul-Meeting-App-/static/css/main.0e2c8322.chunk.css.map",
-    "static/js/2.90484555.chunk.js.LICENSE.txt": "/Trishul-Meeting-App-/static/js/2.90484555.chunk.js.LICENSE.txt",
-    "static/media/X-oo.90f7da0a.svg": "/Trishul-Meeting-App-/static/media/X-oo.90f7da0a.svg"
+    "main.css": "/Trishul-Meeting-App/static/css/main.4ef2dbba.chunk.css",
+    "main.js": "/Trishul-Meeting-App/static/js/main.8d27f2ec.chunk.js",
+    "main.js.map": "/Trishul-Meeting-App/static/js/main.8d27f2ec.chunk.js.map",
+    "runtime-main.js": "/Trishul-Meeting-App/static/js/runtime-main.d1f900e3.js",
+    "runtime-main.js.map": "/Trishul-Meeting-App/static/js/runtime-main.d1f900e3.js.map",
+    "static/css/2.28499ece.chunk.css": "/Trishul-Meeting-App/static/css/2.28499ece.chunk.css",
+    "static/js/2.4445ed06.chunk.js": "/Trishul-Meeting-App/static/js/2.4445ed06.chunk.js",
+    "static/js/2.4445ed06.chunk.js.map": "/Trishul-Meeting-App/static/js/2.4445ed06.chunk.js.map",
+    "index.html": "/Trishul-Meeting-App/index.html",
+    "static/css/2.28499ece.chunk.css.map": "/Trishul-Meeting-App/static/css/2.28499ece.chunk.css.map",
+    "static/css/main.4ef2dbba.chunk.css.map": "/Trishul-Meeting-App/static/css/main.4ef2dbba.chunk.css.map",
+    "static/js/2.4445ed06.chunk.js.LICENSE.txt": "/Trishul-Meeting-App/static/js/2.4445ed06.chunk.js.LICENSE.txt",
+    "static/media/X-oo.90f7da0a.svg": "/Trishul-Meeting-App/static/media/X-oo.90f7da0a.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.1b5c7ec3.js",
-    "static/css/2.dfd2d5fd.chunk.css",
-    "static/js/2.90484555.chunk.js",
-    "static/css/main.0e2c8322.chunk.css",
-    "static/js/main.0af63ddd.chunk.js"
+    "static/js/runtime-main.d1f900e3.js",
+    "static/css/2.28499ece.chunk.css",
+    "static/js/2.4445ed06.chunk.js",
+    "static/css/main.4ef2dbba.chunk.css",
+    "static/js/main.8d27f2ec.chunk.js"
   ]
 }
