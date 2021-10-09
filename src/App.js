@@ -36,14 +36,14 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/Trishul-Meeting-App-" exact>
+          <Route path="/Trishul-Meeting-App" exact>
             <div>
               {appState === "empty" && <p>Loading....</p>}
               {appState === "home" && <Home />}
               {appState === "login" && <Continuewith />}
             </div>
           </Route>
-          <Route path="/Trishul-Meeting-App-/ChatRoom"><ChatRoom/></Route>
+          <Route path="/Trishul-Meeting-App/ChatRoom"><ChatRoom/></Route>
         </Switch>
       </Router>
 

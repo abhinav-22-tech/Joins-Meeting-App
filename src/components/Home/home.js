@@ -227,7 +227,7 @@ function Home() {
                 ),
               }}
             />
-            <Link to="/Trishul-Meeting-App-/ChatRoom">
+            <Link to="/Trishul-Meeting-App/ChatRoom">
               <Button className="home__joinBTN">Join</Button>
             </Link>
           </div>
