@@ -1,7 +1,7 @@
 {
   "name": "x-meet",
   "version": "0.1.0",
-  "homepage": "https://abhinav-22-tech.github.io/Trishul-Meeting-App-/",
+  "homepage": "https://abhinav-22-tech.github.io/Trishul-Meeting-App/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",

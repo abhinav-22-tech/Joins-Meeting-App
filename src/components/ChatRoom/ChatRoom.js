@@ -1,40 +1,59 @@
-import React, { useEffect, useRef, useState } from "react";
-import io from "socket.io-client";
+import React, { useRef, useState, useEffect } from "react";
 
-// const socket = io("https://simple-chats-server.herokuapp.com/");
+import useChat from "./useChatRoom";
+import "./ChatRoom.css";
 
-function ChatRoom() {
-  const [state, setState] = useState({ message: "" });
-  const [chat, setChat] = useState([]);
+const Room = () => {
+  const { messages, sendMessage } = useChat();
+  const [newMessage, setNewMessage] = useState("");
+  const messageRef = useRef();
 
-  const socketRef = useRef();
-
-  useEffect(() => {
-    socketRef.current = io.connect(
-      "https://simple-chats-server.herokuapp.com/"
-    );
-    socketRef.current.on("chat-message", ({ msg }) => {
-      setChat([...chat, { msg }]);
-    });
-    return () => socketRef.current.disconnect();
-  }, [chat]);
-
-  const onMessageSubmit = (e) => {
-    const { msg } = state;
-    socketRef.current.emit("chat-message", { msg });
-    e.preventDefault();
-    setState({ msg : ""});
+  const handleNewMessageChange = (event) => {
+    setNewMessage(event.target.value);
   };
+
+  const handleSendMessage = () => {
+    if (newMessage !== "") {
+      sendMessage(newMessage);
+      setNewMessage("");
+    }
+  };
+
+  const handleKeyUp = (event) => {
+    if (event.key === "Enter") {
+      if (newMessage !== "") {
+        sendMessage(newMessage);
+        setNewMessage("");
+      }
+    }
+  };
+
+  useEffect(() => messageRef.current.scrollIntoView({ behavior: "smooth" }));
 
   return (
     <div>
-      <div id="messages"></div>
-      <form id="form" onSubmit={onMessageSubmit}>
-        <input id="input" autocomplete="off" />
-        <button>Send</button>
-      </form>
+      <div>
+        <ol id="messages">
+          {messages.map((message, i) => (
+            <li key={i}>
+              <span>{message.body}</span>
+            </li>
+          ))}
+        </ol>
+        <div ref={messageRef}></div>
+      </div>
+      <div id="form">
+        <input
+          id="message"
+          placeholder="Enter message here"
+          value={newMessage}
+          onChange={handleNewMessageChange}
+          onKeyUp={handleKeyUp}
+        />
+        <button onClick={handleSendMessage}>Send</button>
+      </div>
     </div>
   );
-}
+};
 
-export default ChatRoom;
+export default Room;
