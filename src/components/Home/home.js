@@ -22,6 +22,7 @@ import React, { useEffect, useState } from "react";
 import { auth } from "../../lib/firebase";
 import { Link } from "react-router-dom";
 import "./home.css";
+import socketIOClient from "socket.io-client";
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -35,6 +36,7 @@ function Home() {
   const [appState, setAppState] = useState("empty");
   const [anchorEl, setAnchorEl] = useState(null);
   const [date, setDate] = useState(new Date());
+  const [codeValue, setCodeValue] = useState("");
 
   const classes = useStyles();
 
@@ -218,6 +220,8 @@ function Home() {
             <TextField
               className="home__input"
               variant="outlined"
+              value={codeValue}
+              onChange={(e) => setCodeValue(e.target.value)}
               placeholder="Enter a code or link"
               InputProps={{
                 startAdornment: (
