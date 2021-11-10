@@ -24,7 +24,7 @@
 }
 
 #form > button {
-  background: #333;
+  background: #01C8A9;
   border: none;
   padding: 0 1rem;
   margin: 0.25rem;
@@ -44,5 +44,5 @@
 }
 
 #messages > li:nth-child(odd) {
-  background: #efefef;
+  background: #01C8A9;
 }
