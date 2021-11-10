@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 
 import useChat from "./useChatRoom";
 import "./ChatRoom.css";
+import SendIcon from '@mui/icons-material/Send';
 
 const Room = (props) => {
   
@@ -52,7 +53,7 @@ const Room = (props) => {
           onChange={handleNewMessageChange}
           onKeyUp={handleKeyUp}
         />
-        <button onClick={handleSendMessage}>Send</button>
+        <button onClick={handleSendMessage}><SendIcon /></button>
       </div>
     </div>
   );
