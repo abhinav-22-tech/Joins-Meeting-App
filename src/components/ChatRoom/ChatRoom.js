@@ -4,9 +4,11 @@ import useChat from "./useChatRoom";
 import "./ChatRoom.css";
 import SendIcon from '@mui/icons-material/Send';
 
-const Room = () => {
-  const { messages, sendMessage } = useChat();
-  const [newMessage, setNewMessage] = useState("");
+const Room = (props) => {
+  
+  const { roomId } = props.match.params;
+  const { messages, sendMessage } = useChat(roomId);
+  const [newMessage, setNewMessage] = useState(""); 
   const messageRef = useRef();
 
   const handleNewMessageChange = (event) => {
@@ -22,10 +24,7 @@ const Room = () => {
 
   const handleKeyUp = (event) => {
     if (event.key === "Enter") {
-      if (newMessage !== "") {
-        sendMessage(newMessage);
-        setNewMessage("");
-      }
+      handleSendMessage();
     }
   };
 
@@ -36,7 +35,10 @@ const Room = () => {
       <div>
         <ol id="messages">
           {messages.map((message, i) => (
-            <li key={i}>
+            <li
+              key={i}
+              className={message.isOwner ? "my-message" : "received-message"}
+            >
               <span>{message.body}</span>
             </li>
           ))}

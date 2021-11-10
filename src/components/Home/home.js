@@ -36,7 +36,7 @@ function Home() {
   const [appState, setAppState] = useState("empty");
   const [anchorEl, setAnchorEl] = useState(null);
   const [date, setDate] = useState(new Date());
-  const [codeValue, setCodeValue] = useState("");
+  const [roomName, setRoomName] = useState("");
 
   const classes = useStyles();
 
@@ -220,8 +220,8 @@ function Home() {
             <TextField
               className="home__input"
               variant="outlined"
-              value={codeValue}
-              onChange={(e) => setCodeValue(e.target.value)}
+              value={roomName}
+              onChange={(e) => setRoomName(e.target.value)}
               placeholder="Enter a code or link"
               InputProps={{
                 startAdornment: (
@@ -231,7 +231,7 @@ function Home() {
                 ),
               }}
             />
-            <Link to="/Trishul-Meeting-App/ChatRoom">
+            <Link to={`/${roomName}`}>
               <Button className="home__joinBTN">Join</Button>
             </Link>
           </div>

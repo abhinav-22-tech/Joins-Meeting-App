@@ -3,13 +3,17 @@ import socketIOClient from "socket.io-client";
 
 const NEW_MESSAGE_EVENT = "new-message-event";
 const SOCKET_SERVER_URL = "https://trishul-meeting-server.herokuapp.com/";
+// const SOCKET_SERVER_URL = "localhost:3030";
 
-const useChatRoom = () => {
+const useChatRoom = (roomId) => {
   const [messages, setMessages] = useState([]);
   const socketRef = useRef();
 
   useEffect(() => {
-    socketRef.current = socketIOClient(SOCKET_SERVER_URL);
+    socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
+      query: { roomId },
+    });
+
     socketRef.current.on(NEW_MESSAGE_EVENT, (message) => {
       const incomingMessage = {
         ...message,
@@ -21,7 +25,7 @@ const useChatRoom = () => {
     return () => {
       socketRef.current.disconnect();
     };
-  }, []);
+  }, [roomId]);
 
   const sendMessage = (messageBody) => {
     socketRef.current.emit(NEW_MESSAGE_EVENT, {

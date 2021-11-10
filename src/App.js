@@ -43,7 +43,7 @@ function App() {
               {appState === "login" && <Continuewith />}
             </div>
           </Route>
-          <Route path="/Trishul-Meeting-App/ChatRoom"><ChatRoom/></Route>
+          <Route exact path="/:roomId" component={ChatRoom}></Route>
         </Switch>
       </Router>
 
