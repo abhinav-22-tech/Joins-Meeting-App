@@ -43,9 +43,6 @@
   padding: 0.5rem 1rem;
 }
 
-#messages > li:nth-child(odd) {
-  background: #efefef;
-}
 
 .my-message {
   background-color: rgb(0, 132, 255);
