@@ -1,5 +1,10 @@
+body{
+  background-color: #EDF0F5;
+  width: 400px;
+}
+
 #form {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.15);width: fit-content;
   padding: 0.25rem;
   position: fixed;
   bottom: 0;
@@ -24,7 +29,10 @@
 }
 
 #form > button {
-  background: #01C8A9;
+  background: #00A389;
+  /* transform: rotate(45deg); */
+  /* -ms-transform: rotate(-45deg); IE 9 */
+  /* transform: rotate(-45deg); */
   border: none;
   padding: 0 1rem;
   margin: 0.25rem;
@@ -44,12 +52,20 @@
 }
 
 .my-message {
-  background-color: rgb(0, 132, 255);
+  background-color: #D0D3E3;
   margin-left: 50%;
+  margin-top: 10px;
+  border-radius: 8px;
+  margin-right: 20px;
+  width: fit-content;
 }
 
 
 .received-message {
-  background-color: #3f4042;
+  background-color: #FFFFFF;
   margin-right: 50%;
+  margin-top: 10px;
+  border-radius: 8px;
+  margin-left: 20px;
+  /* width: fit-content; */
 }

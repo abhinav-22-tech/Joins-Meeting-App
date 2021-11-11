@@ -5,10 +5,10 @@ import "./ChatRoom.css";
 import SendIcon from '@mui/icons-material/Send';
 
 const Room = (props) => {
-  
+
   const { roomId } = props.match.params;
   const { messages, sendMessage } = useChat(roomId);
-  const [newMessage, setNewMessage] = useState(""); 
+  const [newMessage, setNewMessage] = useState("");
   const messageRef = useRef();
 
   const handleNewMessageChange = (event) => {
