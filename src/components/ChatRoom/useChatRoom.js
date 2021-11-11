@@ -27,11 +27,21 @@ const useChatRoom = (roomId) => {
     };
   }, [roomId]);
 
-  const sendMessage = (messageBody) => {
-    socketRef.current.emit(NEW_MESSAGE_EVENT, {
-      body: messageBody,
-      senderId: socketRef.current.id,
-    });
+  const sendMessage = (messageBody, file) => {
+    if (file) {
+      socketRef.current.emit(NEW_MESSAGE_EVENT, {
+        body: file,
+        type: "file",
+        mimeType: file.type,
+        fileName: file.name,
+        senderId: socketRef.current.id,
+      });
+    } else {
+      socketRef.current.emit(NEW_MESSAGE_EVENT, {
+        body: messageBody,
+        senderId: socketRef.current.id,
+      });
+    }
   };
 
   return { messages, sendMessage };
