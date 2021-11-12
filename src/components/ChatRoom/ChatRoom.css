@@ -4,7 +4,8 @@ body{
 }
 
 #form {
-  background: rgba(0, 0, 0, 0.15);width: fit-content;
+  background: none;
+  /* width: fit-content; */
   padding: 0.25rem;
   position: fixed;
   bottom: 0;
@@ -13,11 +14,13 @@ body{
   display: flex;
   height: 3rem;
   box-sizing: border-box;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   backdrop-filter: blur(10px);
 }
 
 #message {
   border: none;
+  font-size: 14px;
   padding: 0 1rem;
   flex-grow: 1;
   border-radius: 2rem;
@@ -34,11 +37,16 @@ body{
   /* -ms-transform: rotate(-45deg); IE 9 */
   /* transform: rotate(-45deg); */
   border: none;
+  cursor: pointer;
   padding: 0 1rem;
   margin: 0.25rem;
   border-radius: 3px;
   outline: none;
   color: #fff;
+}
+
+.image{
+  width: 200px;
 }
 
 #messages {
