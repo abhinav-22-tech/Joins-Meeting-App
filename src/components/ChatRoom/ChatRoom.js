@@ -3,7 +3,8 @@ import React, { useRef, useState, useEffect } from "react";
 import useChat from "./useChatRoom";
 import "./ChatRoom.css";
 import SendIcon from "@mui/icons-material/Send";
-import AttachFileIcon from '@mui/icons-material/AttachFile';
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import { Button } from "@mui/material";
 import Image from "./Image";
 
 const Room = (props) => {
@@ -69,8 +70,24 @@ const Room = (props) => {
         <div ref={messageRef}></div>
       </div>
       <div id="form">
-       <button onChange={selectFile} type="file"><AttachFileIcon /></button> 
-      {/* <input className="image" onChange={selectFile} type="file" /> */}
+        <input
+          accept="image/*"
+          onChange={selectFile}
+          style={{ display: "none" }}
+          id="raised-button-file"
+          multiple
+          type="file"
+        />
+        <label htmlFor="raised-button-file">
+          <Button
+            variant="raised"
+            style={{ backgroundColor: "green" }}
+            component="span"
+          >
+            <AttachFileIcon />
+          </Button>
+        </label>
+
         <input
           id="message"
           placeholder="Enter message here"
@@ -78,7 +95,7 @@ const Room = (props) => {
           onChange={handleNewMessageChange}
           onKeyUp={handleKeyUp}
         />
-        
+
         <button onClick={handleSendMessage}>
           <SendIcon />
         </button>
