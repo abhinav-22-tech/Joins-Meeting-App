@@ -1,6 +1,6 @@
 body{
   background-color: #EDF0F5;
-  width: 400px;
+  /* width: 400px; */
 }
 
 #form {
@@ -57,7 +57,7 @@ body{
   margin-top: 10px;
   border-radius: 8px;
   margin-right: 20px;
-  width: fit-content;
+  /* width: fit-content; */
 }
 
 
