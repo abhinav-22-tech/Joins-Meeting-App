@@ -40,14 +40,10 @@ body{
   color: #fff;
 }
 
-.attach:hover {
-  background-color: black;
-}
-
 #messages {
   list-style-type: none;
   margin: 0;
-  padding-bottom: 4rem;
+  padding-bottom: 10rem;
 }
 
 #messages > li {
