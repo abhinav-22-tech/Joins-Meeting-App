@@ -2,9 +2,11 @@ import React, { useRef, useState, useEffect } from "react";
 
 import useChat from "./useChatRoom";
 import "./ChatRoom.css";
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
+import { EmojiEmotionsSharp, PhotoCamera } from "@mui/icons-material";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
-import { Button } from "@mui/material";
+import { Button, IconButton, TextField } from "@mui/material";
+import InsertEmoticonSharpIcon from "@mui/icons-material/InsertEmoticonSharp";
 import Image from "./Image";
 
 const Room = (props) => {
@@ -79,22 +81,60 @@ const Room = (props) => {
           type="file"
         />
         <label htmlFor="raised-button-file">
-          <Button
+          {/* <Button
             variant="raised"
             style={{ backgroundColor: "green" }}
             component="span"
           >
             <AttachFileIcon />
-          </Button>
+          </Button> */}
+          <IconButton aria-label="upload picture" component="span">
+            <PhotoCamera />
+          </IconButton>
         </label>
+
         <input
+          accept="image/*"
+          onChange={selectFile}
+          style={{ display: "none" }}
+          id="raised-button-files"
+          multiple
+          type="file"
+        />
+
+        <label htmlFor="raised-button-files">
+          <IconButton aria-label="upload picture" component="span">
+            <AttachFileIcon />
+          </IconButton>
+        </label>
+
+        <label>
+          <IconButton aria-label="upload picture" component="span">
+            <InsertEmoticonSharpIcon />
+          </IconButton>
+        </label>
+
+        {/* <input
           id="message"
           placeholder="Enter message here"
           value={newMessage}
           onChange={handleNewMessageChange}
           onKeyUp={handleKeyUp}
+        /> */}
+
+        <TextField
+          id="message"
+          label="Enter message here"
+          variant="outlined"
+          value={newMessage}
+          onChange={handleNewMessageChange}
+          onKeyUp={handleKeyUp}
+          style={{width: "100%"}}
         />
-        <button onClick={handleSendMessage}><SendIcon /></button>
+
+        <button onClick={handleSendMessage}>
+          <SendIcon />
+        </button>
       </div>
     </div>
   );
