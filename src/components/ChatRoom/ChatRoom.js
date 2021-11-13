@@ -5,6 +5,8 @@ import "./ChatRoom.css";
 import SendIcon from "@mui/icons-material/Send";
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import Image from "./Image";
+import { Button } from "@mui/material";
+import { color } from "@mui/system";
 
 const Room = (props) => {
   const { roomId } = props.match.params;
@@ -69,8 +71,24 @@ const Room = (props) => {
         <div ref={messageRef}></div>
       </div>
       <div id="form">
-       <button onChange={selectFile} type="file"><AttachFileIcon /></button> 
-      {/* <input className="image" onChange={selectFile} type="file" /> */}
+      <input
+          accept="image/*"
+          onChange={selectFile}
+          style={{ display: "none" }}
+          id="raised-button-file"
+          multiple
+          type="file"
+        />
+        <label htmlFor="raised-button-file">
+          <Button
+            // style={{backgroundColor: "green"}}
+            className="attach"
+            variant="success"
+            component="span"
+          >
+            <AttachFileIcon />
+          </Button>
+        </label>
         <input
           id="message"
           placeholder="Enter message here"

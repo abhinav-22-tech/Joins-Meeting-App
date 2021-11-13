@@ -1,11 +1,9 @@
 body{
   background-color: #EDF0F5;
-  /* width: 400px; */
 }
 
 #form {
   background: none;
-  /* width: fit-content; */
   padding: 0.25rem;
   position: fixed;
   bottom: 0;
@@ -14,7 +12,7 @@ body{
   display: flex;
   height: 3rem;
   box-sizing: border-box;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 30%);
   backdrop-filter: blur(10px);
 }
 
@@ -33,9 +31,6 @@ body{
 
 #form > button {
   background: #00A389;
-  /* transform: rotate(45deg); */
-  /* -ms-transform: rotate(-45deg); IE 9 */
-  /* transform: rotate(-45deg); */
   border: none;
   cursor: pointer;
   padding: 0 1rem;
@@ -45,8 +40,8 @@ body{
   color: #fff;
 }
 
-.image{
-  width: 200px;
+.attach:hover {
+  background-color: black;
 }
 
 #messages {
@@ -61,11 +56,11 @@ body{
 
 .my-message {
   background-color: #D0D3E3;
-  margin-left: 50%;
+  margin-left: 70%;
   margin-top: 10px;
   border-radius: 8px;
   margin-right: 20px;
-  /* width: fit-content; */
+  width: fit-content;
 }
 
 
@@ -75,5 +70,5 @@ body{
   margin-top: 10px;
   border-radius: 8px;
   margin-left: 20px;
-  /* width: fit-content; */
+  width: fit-content;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import "./Image.css"
 
 function Image(props) {
   const [imageSrc, setImageSrc] = useState("");
@@ -13,6 +14,7 @@ function Image(props) {
 
   return (
     <img
+      className="image"
       style={{ width: 150, height: "auto" }}
       src={imageSrc}
       alt={props.fileName}
