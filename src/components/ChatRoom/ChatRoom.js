@@ -114,15 +114,15 @@ const Room = (props) => {
           </IconButton>
         </label>
 
-        {/* <input
+        <input
           id="message"
           placeholder="Enter message here"
           value={newMessage}
           onChange={handleNewMessageChange}
           onKeyUp={handleKeyUp}
-        /> */}
+        />
 
-        <TextField
+        {/* <TextField
           id="message"
           label="Enter message here"
           variant="outlined"
@@ -130,7 +130,7 @@ const Room = (props) => {
           onChange={handleNewMessageChange}
           onKeyUp={handleKeyUp}
           style={{width: "100%"}}
-        />
+        /> */}
 
         <button onClick={handleSendMessage}>
           <SendIcon />
