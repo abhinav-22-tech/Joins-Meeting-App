@@ -32,14 +32,10 @@ class Continuewith extends Component {
           <span></span>
         ) : (
           <div className="continueWith__content">
-            <img
-              src={logo}
-              alt="X-oo"
-              className="continueWith__logo"
-            />
+            
 
             <p className="continueWith__title">Sign in</p>
-            <p className="continueWith__subtitle">Continue to X-meet</p>
+            <p className="continueWith__subtitle">Continue to Joins</p>
 
             <StyledFirebaseAuth
               uiConfig={this.uiConfig}
