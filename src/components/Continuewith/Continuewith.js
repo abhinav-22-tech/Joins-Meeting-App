@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import { StyledFirebaseAuth } from "react-firebaseui";
 import "./Continuewith.css";
-import logo from "../../images/X-oo.svg";
+// import logo from "../../images/X-oo.svg";
 
 class Continuewith extends Component {
   state = { isSignedIn: false };
