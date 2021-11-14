@@ -1,5 +1,5 @@
-body{
-  background-color: #EDF0F5;
+body {
+  background-color: #edf0f5;
 }
 
 #form {
@@ -7,8 +7,6 @@ body{
   padding: 0.25rem;
   position: fixed;
   bottom: 10px;
-  /* left: 0; */
-  /* right: 0; */
   display: flex;
   height: 3rem;
   box-sizing: border-box;
@@ -30,7 +28,7 @@ body{
 }
 
 #form > button {
-  background: #00A389;
+  background: #00a389;
   border: none;
   cursor: pointer;
   padding: 0 1rem;
@@ -44,45 +42,45 @@ body{
   list-style-type: none;
   margin: 0;
   padding-bottom: 10rem;
+  width: 100%;
 }
 
-#messages > li {
-  padding: 0.5rem 1rem;
-}
 
-.msg{
+.msg {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 
 .my-message {
   display: flex;
   flex-direction: column;
-  background-color: #D0D3E3;
-  /* margin-left: 70%; */
-  /* margin-top: 10px; */
+  background-color: #d0d3e3;
   border-radius: 8px;
-  /* margin-right: 20px; */
-  /* width: fit-content; */
   align-items: flex-end;
+  padding: 0.5rem 1rem;
 }
 
 .received-message {
-  background-color: #FFFFFF;
-  /* margin-right: 50%; */
-  /* margin-top: 10px; */
+  background-color: #ffffff;
   border-radius: 8px;
-  /* margin-left: 20px; */
-  /* width: fit-content; */
+  padding: 0.5rem 1rem;
 }
 
-.chat-container{
+.msgBody{
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
-.hello{
+.hello {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }

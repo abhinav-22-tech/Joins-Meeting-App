@@ -57,12 +57,12 @@ const Room = ({ roomId }) => {
     }
 
     return (
-      <li
+      <div
         key={i}
         className={message.isOwner ? "my-message" : "received-message"}
       >
-        <span>{message.body}</span>
-      </li>
+        <div className="msgBody">{message.body}</div>
+      </div>
     );
   };
 
