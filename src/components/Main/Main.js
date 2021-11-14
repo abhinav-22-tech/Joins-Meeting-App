@@ -4,7 +4,6 @@ import MessageIcon from "@mui/icons-material/Message";
 import { IconButton } from "@mui/material";
 import ChatRoom from "../ChatRoom/ChatRoom";
 
-import logo from "../../images/X-oo.svg";
 
 function Main(props) {
   const [displayChat, setDisplayChat] = useState("notDisplayChat");
