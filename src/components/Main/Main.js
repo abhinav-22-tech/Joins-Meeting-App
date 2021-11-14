@@ -15,21 +15,20 @@ function Main(props) {
   };
 
   return (
-    <>
-      <div>
-        <img alt="hello" src={logo} />
-      </div>
-      <div className="msg_container">
-        <div className="messageIcon">
+    <div className="main">
+      <div className="messageIcon">
+        <div>
           <IconButton onClick={displayChatRoom} aria-label="" component="span">
             <MessageIcon />
           </IconButton>
         </div>
+      </div>
+      <div className="chatRoom">
         <div className={displayChat}>
           <ChatRoom roomId={props.match.params} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

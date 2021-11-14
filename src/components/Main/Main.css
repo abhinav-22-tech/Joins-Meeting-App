@@ -1,11 +1,15 @@
-/* body{
-    overflow-y: hidden;
-} */
+.main {
+  display: flex;
+  /* flex-direction: row; */
+  /* align-items: center; */
+}
 
 .messageIcon {
   display: flex;
-  /* flex-direction: column; */
-  justify-content: flex-end;
+  flex-direction: column;
+  flex-grow: 2;
+  width: 100%;
+  background-color: white;
   /* margin-top: 40%; */
   /* margin-right: 10%; */
   /* position: relative; */
@@ -14,8 +18,15 @@
 
 .displayChat {
   display: flex;
+  width: 100%;
 }
 
 .notDisplayChat {
   display: none;
+}
+
+.chatRoom {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
 }

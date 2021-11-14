@@ -90,7 +90,7 @@ body {
   flex-direction: column;
   background-color: white;
   width: fit-content;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 0.5rem 1rem;
   border-bottom-left-radius: 0px;
 }
@@ -101,7 +101,7 @@ body {
   width: 100%;
 }
 
-.hello {
+.chatRoomMain {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -139,4 +139,8 @@ body {
 
 .emoji-scroll-wrapper {
   background: none !important;
+}
+
+.camera{
+  display: flex;
 }

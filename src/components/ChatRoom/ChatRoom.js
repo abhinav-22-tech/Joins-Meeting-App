@@ -29,6 +29,7 @@ const Room = ({ roomId }) => {
       sendMessage(newMessage, file);
       setNewMessage("");
       setFile();
+      setDisplayEmoji("notDisplayEmoji");
     }
   };
 
@@ -82,7 +83,7 @@ const Room = ({ roomId }) => {
   useEffect(() => messageRef.current.scrollIntoView({ behavior: "smooth" }));
 
   return (
-    <div className="hello">
+    <div className="chatRoomMain">
       <div className="chat-container">
         <div className="msg">
           <ol id="messages">{messages.map(renderMessages)}</ol>
@@ -103,12 +104,12 @@ const Room = ({ roomId }) => {
               multiple
               type="file"
             />
-            <IconButton aria-label="upload picture" component="span">
+            <IconButton className="camera" aria-label="upload picture" component="span">
               <PhotoCamera />
             </IconButton>
           </label>
 
-          <label htmlFor="raised-button-file">
+          {/* <label htmlFor="raised-button-file">
             <input
               accept="image/*"
               onChange={selectFile}
@@ -120,7 +121,7 @@ const Room = ({ roomId }) => {
             <IconButton aria-label="upload picture" component="span">
               <AttachFileIcon />
             </IconButton>
-          </label>
+          </label> */}
 
           <label>
             <IconButton aria-label="emoji" component="span" onClick={disEmoji}>
