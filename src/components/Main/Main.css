@@ -1,0 +1,14 @@
+body{
+    overflow-y: hidden;
+}
+
+.message{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 40%;
+    margin-right: 10%;
+    /* position: relative; */
+    align-items:flex-end;
+    
+}
