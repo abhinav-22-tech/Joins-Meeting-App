@@ -4,6 +4,8 @@ import MessageIcon from "@mui/icons-material/Message";
 import { IconButton } from "@mui/material";
 import ChatRoom from "../ChatRoom/ChatRoom";
 
+import logo from "../../images/X-oo.svg";
+
 function Main(props) {
   const [displayChat, setDisplayChat] = useState("notDisplayChat");
 
@@ -13,16 +15,21 @@ function Main(props) {
   };
 
   return (
-    <div className="msg_container">
-      <div className="messageIcon">
-        <IconButton onClick={displayChatRoom} aria-label="" component="span">
-          <MessageIcon />
-        </IconButton>
+    <>
+      <div>
+        <img alt="hello" src={logo} />
       </div>
-      <div className={displayChat}>
-        <ChatRoom roomId={props.match.params} />
+      <div className="msg_container">
+        <div className="messageIcon">
+          <IconButton onClick={displayChatRoom} aria-label="" component="span">
+            <MessageIcon />
+          </IconButton>
+        </div>
+        <div className={displayChat}>
+          <ChatRoom roomId={props.match.params} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

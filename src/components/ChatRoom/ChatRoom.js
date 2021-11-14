@@ -8,14 +8,16 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { Button, IconButton, TextField } from "@mui/material";
 import InsertEmoticonSharpIcon from "@mui/icons-material/InsertEmoticonSharp";
 import Image from "./Image";
-import logo from "../../images/X-oo.svg";
+
+import Picker from "emoji-picker-react";
 
 const Room = ({ roomId }) => {
   // const { roomId } = props.match.params;
   const { messages, sendMessage } = useChat(roomId);
   const [newMessage, setNewMessage] = useState("");
   const [file, setFile] = useState();
-
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+  const [displayEmoji, setDisplayEmoji] = useState("notDisplayEmoji");
   const messageRef = useRef();
 
   const handleNewMessageChange = (event) => {
@@ -35,8 +37,6 @@ const Room = ({ roomId }) => {
       handleSendMessage();
     }
   };
-
-  useEffect(() => messageRef.current.scrollIntoView({ behavior: "smooth" }));
 
   const selectFile = (e) => {
     setNewMessage(e.target.files[0].name);
@@ -68,16 +68,29 @@ const Room = ({ roomId }) => {
     );
   };
 
+  const onEmojiClick = (event, emojiObject) => {
+    setNewMessage(newMessage + emojiObject.emoji);
+    setChosenEmoji(emojiObject);
+  };
+
+  const disEmoji = () => {
+    if (displayEmoji === "notDisplayEmoji") setDisplayEmoji("displayEmoji");
+    else if (displayEmoji === "displayEmoji")
+      setDisplayEmoji("notDisplayEmoji");
+  };
+
+  useEffect(() => messageRef.current.scrollIntoView({ behavior: "smooth" }));
+
   return (
     <div className="hello">
-      <div>
-        <img alt="hello" src={logo} />
-      </div>
-
       <div className="chat-container">
         <div className="msg">
           <ol id="messages">{messages.map(renderMessages)}</ol>
           <div ref={messageRef}></div>
+        </div>
+
+        <div className={displayEmoji}>
+          <Picker onEmojiClick={onEmojiClick} />
         </div>
 
         <div id="form" className="textField">
@@ -95,7 +108,7 @@ const Room = ({ roomId }) => {
             </IconButton>
           </label>
 
-          <label htmlFor="raised-button-files">
+          <label htmlFor="raised-button-file">
             <input
               accept="image/*"
               onChange={selectFile}
@@ -110,7 +123,7 @@ const Room = ({ roomId }) => {
           </label>
 
           <label>
-            <IconButton aria-label="upload picture" component="span">
+            <IconButton aria-label="emoji" component="span" onClick={disEmoji}>
               <InsertEmoticonSharpIcon />
             </IconButton>
           </label>

@@ -80,7 +80,7 @@ body {
   flex-direction: column;
   background-color: #d0d3e3;
   width: fit-content;
-  border-radius: 100px;
+  border-radius: 20px;
   padding: 0.5rem 1rem;
   border-bottom-right-radius: 0px;
 }
@@ -90,9 +90,9 @@ body {
   flex-direction: column;
   background-color: white;
   width: fit-content;
-  border-radius: 100px;
+  border-radius: 10px;
   padding: 0.5rem 1rem;
-  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 .chat-container {
@@ -105,4 +105,38 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+
+.displayEmoji {
+  display: flex;
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 4rem;
+  right: 8rem;
+  /* left: 10px; */
+  /* box-sizing: border-box; */
+  /* box-shadow: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 30%); */
+  /* backdrop-filter: blur(10px); */
+}
+
+.notDisplayEmoji {
+  display: none;
+}
+
+.emoji-picker-react {
+  background: none !important;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 30%) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.emoji-search {
+  background: none !important;
+}
+
+.emoji-group:before {
+  background-color: #edf0f5 !important;
+}
+
+.emoji-scroll-wrapper {
+  background: none !important;
 }
