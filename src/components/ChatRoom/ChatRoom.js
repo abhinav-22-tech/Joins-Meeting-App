@@ -8,9 +8,10 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { Button, IconButton, TextField } from "@mui/material";
 import InsertEmoticonSharpIcon from "@mui/icons-material/InsertEmoticonSharp";
 import Image from "./Image";
+import logo from "../../images/X-oo.svg";
 
-const Room = (props) => {
-  const { roomId } = props.match.params;
+const Room = ({ roomId }) => {
+  // const { roomId } = props.match.params;
   const { messages, sendMessage } = useChat(roomId);
   const [newMessage, setNewMessage] = useState("");
   const [file, setFile] = useState();
@@ -66,63 +67,61 @@ const Room = (props) => {
   };
 
   return (
-    <div>
+    <div className="hello">
       <div>
-        <ol id="messages">{messages.map(renderMessages)}</ol>
-        <div ref={messageRef}></div>
+        <img alt="hello" src={logo} />
       </div>
-      <div id="form">
-        <input
-          accept="image/*"
-          onChange={selectFile}
-          style={{ display: "none" }}
-          id="raised-button-file"
-          multiple
-          type="file"
-        />
-        <label htmlFor="raised-button-file">
-          {/* <Button
-            variant="raised"
-            style={{ backgroundColor: "green" }}
-            component="span"
-          >
-            <AttachFileIcon />
-          </Button> */}
-          <IconButton aria-label="upload picture" component="span">
-            <PhotoCamera />
-          </IconButton>
-        </label>
 
-        <input
-          accept="image/*"
-          onChange={selectFile}
-          style={{ display: "none" }}
-          id="raised-button-files"
-          multiple
-          type="file"
-        />
+      <div className="chat-container">
+        <div className="msg">
+          <ol id="messages">{messages.map(renderMessages)}</ol>
+          <div ref={messageRef}></div>
+        </div>
 
-        <label htmlFor="raised-button-files">
-          <IconButton aria-label="upload picture" component="span">
-            <AttachFileIcon />
-          </IconButton>
-        </label>
+        <div id="form">
+          <label htmlFor="raised-button-file">
+            <input
+              accept="image/*"
+              onChange={selectFile}
+              style={{ display: "none" }}
+              id="raised-button-file"
+              multiple
+              type="file"
+            />
+            <IconButton aria-label="upload picture" component="span">
+              <PhotoCamera />
+            </IconButton>
+          </label>
 
-        <label>
-          <IconButton aria-label="upload picture" component="span">
-            <InsertEmoticonSharpIcon />
-          </IconButton>
-        </label>
+          <label htmlFor="raised-button-files">
+            <input
+              accept="image/*"
+              onChange={selectFile}
+              style={{ display: "none" }}
+              id="raised-button-files"
+              multiple
+              type="file"
+            />
+            <IconButton aria-label="upload picture" component="span">
+              <AttachFileIcon />
+            </IconButton>
+          </label>
 
-        <input
-          id="message"
-          placeholder="Enter message here"
-          value={newMessage}
-          onChange={handleNewMessageChange}
-          onKeyUp={handleKeyUp}
-        />
+          <label>
+            <IconButton aria-label="upload picture" component="span">
+              <InsertEmoticonSharpIcon />
+            </IconButton>
+          </label>
 
-        {/* <TextField
+          <input
+            id="message"
+            placeholder="Enter message here"
+            value={newMessage}
+            onChange={handleNewMessageChange}
+            onKeyUp={handleKeyUp}
+          />
+
+          {/* <TextField
           id="message"
           label="Enter message here"
           variant="outlined"
@@ -132,9 +131,10 @@ const Room = (props) => {
           style={{width: "100%"}}
         /> */}
 
-        <button onClick={handleSendMessage}>
-          <SendIcon />
-        </button>
+          <button onClick={handleSendMessage}>
+            <SendIcon />
+          </button>
+        </div>
       </div>
     </div>
   );

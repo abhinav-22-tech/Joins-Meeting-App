@@ -6,9 +6,9 @@ body{
   background: none;
   padding: 0.25rem;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 10px;
+  /* left: 0; */
+  /* right: 0; */
   display: flex;
   height: 3rem;
   box-sizing: border-box;
@@ -50,21 +50,39 @@ body{
   padding: 0.5rem 1rem;
 }
 
-.my-message {
-  background-color: #D0D3E3;
-  margin-left: 70%;
-  margin-top: 10px;
-  border-radius: 8px;
-  margin-right: 20px;
-  width: fit-content;
+.msg{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+.my-message {
+  display: flex;
+  flex-direction: column;
+  background-color: #D0D3E3;
+  /* margin-left: 70%; */
+  /* margin-top: 10px; */
+  border-radius: 8px;
+  /* margin-right: 20px; */
+  /* width: fit-content; */
+  align-items: flex-end;
+}
 
 .received-message {
   background-color: #FFFFFF;
-  margin-right: 50%;
-  margin-top: 10px;
+  /* margin-right: 50%; */
+  /* margin-top: 10px; */
   border-radius: 8px;
-  margin-left: 20px;
-  width: fit-content;
+  /* margin-left: 20px; */
+  /* width: fit-content; */
+}
+
+.chat-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.hello{
+  display: flex;
+  flex-direction: row;
 }
