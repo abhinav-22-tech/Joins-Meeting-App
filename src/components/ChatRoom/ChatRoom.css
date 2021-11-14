@@ -7,11 +7,20 @@ body {
   padding: 0.25rem;
   position: fixed;
   bottom: 10px;
+  right: 10px;
+  /* left: 10px; */
   display: flex;
   height: 3rem;
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 30%);
   backdrop-filter: blur(10px);
+  /* width: 100%; */
+}
+
+.textField {
+  display: flex;
+  /* width: 100%; */
+  justify-content: flex-end;
 }
 
 #message {
@@ -38,14 +47,6 @@ body {
   color: #fff;
 }
 
-#messages {
-  list-style-type: none;
-  margin: 0;
-  padding-bottom: 10rem;
-  width: 100%;
-}
-
-
 .msg {
   display: flex;
   flex-direction: column;
@@ -53,24 +54,45 @@ body {
   width: 100%;
 }
 
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding-bottom: 10rem;
+  width: 100%;
+}
+
 .my-message {
+  margin: 10px;
+}
+
+.msg .my-message {
   display: flex;
   flex-direction: column;
-  background-color: #d0d3e3;
-  border-radius: 8px;
   align-items: flex-end;
-  padding: 0.5rem 1rem;
 }
 
 .received-message {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
+  margin: 10px;
 }
 
-.msgBody{
+.my-message .msgBody {
   display: flex;
   flex-direction: column;
+  background-color: #d0d3e3;
+  width: fit-content;
+  border-radius: 100px;
+  padding: 0.5rem 1rem;
+  border-bottom-right-radius: 0px;
+}
+
+.received-message .msgBody {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: fit-content;
+  border-radius: 100px;
+  padding: 0.5rem 1rem;
+  border-bottom-right-radius: 0px;
 }
 
 .chat-container {

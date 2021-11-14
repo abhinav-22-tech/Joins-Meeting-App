@@ -47,12 +47,14 @@ const Room = ({ roomId }) => {
     if (message.type === "file") {
       const blob = new Blob([message.body], { type: message.type });
       return (
-        <li
+        <div
           key={i}
           className={message.isOwner ? "my-message" : "received-message"}
         >
-          <Image fileName={message.fileName} blob={blob} />
-        </li>
+          <div className="msgBody">
+            <Image fileName={message.fileName} blob={blob} />
+          </div>
+        </div>
       );
     }
 
@@ -78,7 +80,7 @@ const Room = ({ roomId }) => {
           <div ref={messageRef}></div>
         </div>
 
-        <div id="form">
+        <div id="form" className="textField">
           <label htmlFor="raised-button-file">
             <input
               accept="image/*"

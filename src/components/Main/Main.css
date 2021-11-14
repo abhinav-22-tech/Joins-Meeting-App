@@ -2,7 +2,7 @@
     overflow-y: hidden;
 } */
 
-.message {
+.messageIcon {
   display: flex;
   /* flex-direction: column; */
   justify-content: flex-end;

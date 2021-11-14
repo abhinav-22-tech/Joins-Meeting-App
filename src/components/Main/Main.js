@@ -14,7 +14,7 @@ function Main(props) {
 
   return (
     <div className="msg_container">
-      <div className="message">
+      <div className="messageIcon">
         <IconButton onClick={displayChatRoom} aria-label="" component="span">
           <MessageIcon />
         </IconButton>
