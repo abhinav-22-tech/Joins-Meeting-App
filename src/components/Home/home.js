@@ -54,7 +54,7 @@ function Home() {
   const nameFirstChar =
     currentUser?.displayName !== null
       ? currentUser?.displayName.charAt(0).toUpperCase()
-      : " ";
+      : "S";
 
   function stringToColor() {
     var str = currentUser?.displayName + "";
@@ -73,6 +73,7 @@ function Home() {
       if (user) {
         setCurrentUser(user);
         setAppState("home");
+        // console.log(user.isAnonymous);
       } else {
         setCurrentUser(null);
         setAppState("login");
@@ -163,10 +164,16 @@ function Home() {
 
                 <div className="home__text">
                   <div className="home__displayName">
-                    {currentUser?.displayName}
+                    {currentUser?.displayName !== null
+                      ? currentUser?.displayName
+                      : "Sample"}
                   </div>
 
-                  <div className="home__mail">{currentUser?.email}</div>
+                  <div className="home__mail">
+                    {currentUser?.email !== null
+                      ? currentUser?.email
+                      : "sample@joins.com"}
+                  </div>
                 </div>
 
                 <div className="home__btn">Manage your X-oo Account</div>
