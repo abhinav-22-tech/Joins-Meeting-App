@@ -4,6 +4,8 @@ import MessageIcon from "@mui/icons-material/Message";
 import { IconButton } from "@mui/material";
 import ChatRoom from "../ChatRoom/ChatRoom";
 import MicIcon from "@mui/icons-material/Mic";
+import VideocamIcon from "@mui/icons-material/Videocam";
+import IosShareIcon from "@mui/icons-material/IosShare";
 
 function Main(props) {
   const [displayChat, setDisplayChat] = useState("notDisplayChat");
@@ -19,6 +21,12 @@ function Main(props) {
         <div>
           <IconButton>
             <MicIcon />
+          </IconButton>
+          <IconButton>
+            <VideocamIcon />
+          </IconButton>
+          <IconButton>
+            <IosShareIcon />
           </IconButton>
           <IconButton onClick={displayChatRoom} aria-label="" component="span">
             <MessageIcon />
