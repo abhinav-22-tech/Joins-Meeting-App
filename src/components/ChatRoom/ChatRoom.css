@@ -6,15 +6,14 @@
   background: none;
   padding: 0.25rem;
   position: fixed;
-  bottom: 10px;
-  right: 10px;
-  /* left: 10px; */
+  bottom: 1px;
+  /* right: 10px; */
   display: flex;
   height: 3rem;
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 30%);
   backdrop-filter: blur(10px);
-  /* width: 100%; */
+  width: 59vh;
 }
 
 .textField {
@@ -95,6 +94,12 @@
   border-bottom-left-radius: 0px;
 }
 
+.chatbox{
+  top: 10vh;
+  bottom: 10vh;
+  width: 100%;
+}
+
 .chat-container {
   display: flex;
   justify-content: space-between;
@@ -106,7 +111,7 @@
   flex-direction: row;
   width: 100%;
   background-color: #edf0f5;
-  height: 42rem;
+  height: 100vh;
   overflow-y: scroll;
 }
 

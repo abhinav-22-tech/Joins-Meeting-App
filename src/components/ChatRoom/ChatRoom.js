@@ -83,6 +83,7 @@ const Room = ({ roomId }) => {
   useEffect(() => messageRef.current.scrollIntoView({ behavior: "smooth" }));
 
   return (
+    <div className="chatbox">
     <div className="chatRoomMain">
       <div className="chat-container">
         <div className="msg">
@@ -152,6 +153,7 @@ const Room = ({ roomId }) => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
