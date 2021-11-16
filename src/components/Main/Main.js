@@ -35,7 +35,7 @@ function Main(props) {
       </div>
       <div className="chatRoom">
         <div className={displayChat}>
-          <ChatRoom roomId={props.match.params} />
+          <ChatRoom roomId={props.match.params.roomId} />
         </div>
       </div>
     </div>
