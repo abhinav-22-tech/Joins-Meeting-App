@@ -3,7 +3,7 @@ import "./Main.css";
 import MessageIcon from "@mui/icons-material/Message";
 import { IconButton } from "@mui/material";
 import ChatRoom from "../ChatRoom/ChatRoom";
-
+import MicIcon from "@mui/icons-material/Mic";
 
 function Main(props) {
   const [displayChat, setDisplayChat] = useState("notDisplayChat");
@@ -17,6 +17,9 @@ function Main(props) {
     <div className="main">
       <div className="messageIcon">
         <div>
+          <IconButton>
+            <MicIcon />
+          </IconButton>
           <IconButton onClick={displayChatRoom} aria-label="" component="span">
             <MessageIcon />
           </IconButton>
