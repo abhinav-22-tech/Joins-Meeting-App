@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: #edf0f5;
-}
+} */
 
 #form {
   background: none;
@@ -105,6 +105,9 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
+  background-color: #edf0f5;
+  height: 42rem;
+  overflow-y: scroll;
 }
 
 .displayEmoji {
@@ -141,6 +144,6 @@ body {
   background: none !important;
 }
 
-.camera{
+.camera {
   display: flex;
 }
