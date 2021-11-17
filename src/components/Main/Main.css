@@ -7,8 +7,8 @@
 .messageIcon {
   display: flex;
   flex-direction: column;
-  flex-grow: 2;
-  width: 100%;
+  flex-grow: 1;
+  /* width: 100%; */
   background-color: white;
   /* margin-top: 40%; */
   /* margin-right: 10%; */
@@ -30,18 +30,24 @@
 .chatRoom {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  /* width: 40%; */
+  /* flex-grow: 1; */
   min-height: 1vh;
   background-color: #edf0f5;
+  /* background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top; */
+  /* background-image: url(h); */
 }
 
 @keyframes drop {
-	0% {
-		opacity: 0;
-		transform: translateX(-80px);
-	}
-	100% {
-		opacity: 1;
-		transform: translateX(0px);
-	}
+  0% {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }

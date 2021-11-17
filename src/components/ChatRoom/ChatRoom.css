@@ -1,19 +1,22 @@
-
-/* .msg_container{
-  width: 100%;
-} */
-
-
-.buttons{
+.group_chat_bar {
   display: flex;
-  /* padding: 1rem; */
   justify-content: space-between;
-  height: 25px;
-  margin-top: 10px;
-  /* margin-top: 10vh; */
+  padding: 1rem 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  background: inherit;
+  border-bottom: 1px solid #d0d3e3;
+  height: 3rem;
 }
 
-.head{
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .group_chat_bar {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.head {
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 5px;
@@ -21,15 +24,14 @@
   font-size: 16px;
 }
 
-.head:hover{
-  background-color: #D1E6E7;
+.head:hover {
+  background-color: #d1e6e7;
   color: #00a389;
   font-size: 18px;
   height: 28px;
-
 }
 
-.chatbox{
+.chatbox {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -39,35 +41,23 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: #edf0f5;
-  height: 96.5vh;
-  /* height: 100%; */
-  overflow-y: scroll;
+  /* background-color: #edf0f5; */
+  height: 86vh;
+  overflow-y: auto;
 }
 
 .chatRoomMain {
   width: 100%;
 }
 
-
 #form {
   background: none;
   padding: 0.25rem;
-  position: fixed;
-  bottom: 1px;
   display: flex;
-  height: 3rem;
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 30%);
   backdrop-filter: blur(10px);
-  width: 59vh;
-  right: 10px;
-}
-
-.textField {
-  display: flex;
-  /* width: 100%; */
-  justify-content: flex-end;
+  width: 100%;
 }
 
 #message {
@@ -77,6 +67,7 @@
   flex-grow: 1;
   border-radius: 2rem;
   margin: 0.25rem;
+  width: 100%;
 }
 
 #message:focus {
@@ -84,6 +75,7 @@
 }
 
 #form > button {
+  display: flex;
   background: #00a389;
   border: none;
   cursor: pointer;
@@ -92,6 +84,7 @@
   border-radius: 3px;
   outline: none;
   color: #fff;
+  align-items: center;
 }
 
 .msg {
@@ -184,7 +177,6 @@ a {
   color: #00a389;
 }
 
-a:hover{
+a:hover {
   color: #00705e;
 }
-
