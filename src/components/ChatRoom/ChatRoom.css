@@ -47,7 +47,6 @@
 
 .chatRoomMain {
   width: 100%;
-  background-color: #edf0f5;
 }
 
 
@@ -62,6 +61,7 @@
   box-shadow: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 30%);
   backdrop-filter: blur(10px);
   width: 59vh;
+  right: 10px;
 }
 
 .textField {
@@ -187,3 +187,4 @@ a {
 a:hover{
   color: #00705e;
 }
+
