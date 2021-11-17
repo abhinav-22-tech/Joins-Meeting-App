@@ -101,7 +101,9 @@ function Home() {
   }
 
   const linkToRoom = () => {
-    history.push(roomName);
+    if (roomName !== "") {
+      history.push(`/${roomName}`);
+    }
   };
 
   return (

@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/Trishul-Meeting-App" exact>
+          <Route path="/Joins-Meeting-App" exact>
             <div>
               {appState === "empty" && <p>Loading....</p>}
               {appState === "home" && <Home />}
