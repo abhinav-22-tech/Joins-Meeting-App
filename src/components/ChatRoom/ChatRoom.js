@@ -93,38 +93,44 @@ const Room = ({ roomId }) => {
   useEffect(() => messageRef.current.scrollIntoView({ behavior: "smooth" }));
 
   return (
-    <div className="chatbox">
-      <div className="chatRoomMain">
-        <div className="chat-container">
-          <div className="msg">
-            <ol id="messages">{messages.map(renderMessages)}</ol>
-            <div ref={messageRef}></div>
-          </div>
+    <div className="msg_container">
+      <div className="buttons">
+        <button>Group Chat</button>
+        <button>Messages</button>
+        <button>Participants</button>
+      </div>
+      <div className="chatbox">
+        <div className="chatRoomMain">
+          <div className="chat-container">
+            <div className="msg">
+              <ol id="messages">{messages.map(renderMessages)}</ol>
+              <div ref={messageRef}></div>
+            </div>
 
-          <div className={displayEmoji}>
-            <Picker onEmojiClick={onEmojiClick} />
-          </div>
+            <div className={displayEmoji}>
+              <Picker onEmojiClick={onEmojiClick} />
+            </div>
 
-          <div id="form" className="textField">
-            <label htmlFor="raised-button-file">
-              <input
-                accept="image/*"
-                onChange={selectFile}
-                style={{ display: "none" }}
-                id="raised-button-file"
-                multiple
-                type="file"
-              />
-              <IconButton
-                className="camera"
-                aria-label="upload picture"
-                component="span"
-              >
-                <PhotoCamera />
-              </IconButton>
-            </label>
+            <div id="form" className="textField">
+              <label htmlFor="raised-button-file">
+                <input
+                  accept="image/*"
+                  onChange={selectFile}
+                  style={{ display: "none" }}
+                  id="raised-button-file"
+                  multiple
+                  type="file"
+                />
+                <IconButton
+                  className="camera"
+                  aria-label="upload picture"
+                  component="span"
+                >
+                  <PhotoCamera />
+                </IconButton>
+              </label>
 
-            {/* <label htmlFor="raised-button-file">
+              {/* <label htmlFor="raised-button-file">
             <input
               accept="image/*"
               onChange={selectFile}
@@ -138,25 +144,25 @@ const Room = ({ roomId }) => {
             </IconButton>
           </label> */}
 
-            <label>
-              <IconButton
-                aria-label="emoji"
-                component="span"
-                onClick={disEmoji}
-              >
-                <InsertEmoticonSharpIcon />
-              </IconButton>
-            </label>
+              <label>
+                <IconButton
+                  aria-label="emoji"
+                  component="span"
+                  onClick={disEmoji}
+                >
+                  <InsertEmoticonSharpIcon />
+                </IconButton>
+              </label>
 
-            <input
-              id="message"
-              placeholder="Enter message here"
-              value={newMessage}
-              onChange={handleNewMessageChange}
-              onKeyUp={handleKeyUp}
-            />
+              <input
+                id="message"
+                placeholder="Enter message here"
+                value={newMessage}
+                onChange={handleNewMessageChange}
+                onKeyUp={handleKeyUp}
+              />
 
-            {/* <TextField
+              {/* <TextField
           id="message"
           label="Enter message here"
           variant="outlined"
@@ -166,9 +172,10 @@ const Room = ({ roomId }) => {
           style={{width: "100%"}}
         /> */}
 
-            <button onClick={handleSendMessage}>
-              <SendIcon />
-            </button>
+              <button onClick={handleSendMessage}>
+                <SendIcon />
+              </button>
+            </div>
           </div>
         </div>
       </div>
