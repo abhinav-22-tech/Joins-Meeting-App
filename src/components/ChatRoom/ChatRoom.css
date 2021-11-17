@@ -13,7 +13,7 @@
   /* margin-top: 10vh; */
 }
 
-#head{
+.head{
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 5px;
@@ -21,7 +21,7 @@
   font-size: 16px;
 }
 
-#head:hover{
+.head:hover{
   background-color: #D1E6E7;
   color: #00a389;
   font-size: 18px;

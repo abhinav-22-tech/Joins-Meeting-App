@@ -97,9 +97,9 @@ const Room = ({ roomId }) => {
     <div className="chatbox">
       <div className="chatRoomMain">
         <div className="buttons">
-          <button id="head">Group Chat</button>
-          <button id="head">Messages</button>
-          <button id="head">Participants</button>
+          <span className="head">Group Chat</span>
+          <span className="head">Messages</span>
+          <span className="head">Participants</span>
         </div>
         <div className="chat-container">
           <div className="msg">
