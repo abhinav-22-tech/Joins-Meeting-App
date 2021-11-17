@@ -253,7 +253,7 @@
   text-transform: capitalize !important;
   margin-left: 15px !important;
   font-size: 1em !important;
-  color: #3f51b5 !important;
+  /* color: #3f51b5 !important; */
 }
 
 .home__learn {

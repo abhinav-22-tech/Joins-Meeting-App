@@ -32,7 +32,6 @@
     "react-secure-link": "^3.0.3",
     "socket.io-client": "^4.2.0",
     "use-clipboard-copy": "^0.1.2",
-    "uuid": "^8.3.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

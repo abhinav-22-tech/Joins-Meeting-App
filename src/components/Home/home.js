@@ -20,9 +20,8 @@ import {
 } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import { auth } from "../../lib/firebase";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./home.css";
-import socketIOClient from "socket.io-client";
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -39,6 +38,7 @@ function Home() {
   const [roomName, setRoomName] = useState("");
 
   const classes = useStyles();
+  const history = useHistory();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -83,6 +83,26 @@ function Home() {
     const timer = setInterval(() => setDate(new Date()), 1000);
     return timer;
   }, []);
+
+  function randomRoom() {
+    let uuid = Date.now();
+    console.log(uuid);
+    uuid = Math.floor(
+      Math.random() * Math.floor(Math.random() * uuid.toString().slice(-9))
+    );
+    uuid =
+      uuid.toString().substring(0, 3) +
+      "-" +
+      uuid.toString().substring(3, 6) +
+      "-" +
+      uuid.toString().substring(6, uuid.toString().length);
+    console.log(uuid);
+    setRoomName(uuid);
+  }
+
+  const linkToRoom = () => {
+    history.push(roomName);
+  };
 
   return (
     <div>
@@ -219,6 +239,7 @@ function Home() {
               color="primary"
               variant="contained"
               className="home__createBTN"
+              onClick={randomRoom}
             >
               <VideoCallOutlined />
               <p>New meeting</p>
@@ -238,9 +259,18 @@ function Home() {
                 ),
               }}
             />
-            <Link to={`/${roomName}`}>
-              <Button className="home__joinBTN">Join</Button>
-            </Link>
+
+            {/* <Link to={`/${roomName}`}> */}
+            <Button
+              color="primary"
+              variant="outlined"
+              className="home__joinBTN"
+              disabled={roomName === ""}
+              onClick={linkToRoom}
+            >
+              Join
+            </Button>
+            {/* </Link> */}
           </div>
 
           <Divider />
