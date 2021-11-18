@@ -8,11 +8,17 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import CallEndIcon from "@mui/icons-material/CallEnd";
+import VideocamOffIcon from "@mui/icons-material/VideocamOff";
+import PausePresentationIcon from "@mui/icons-material/PausePresentation";
 
 function Main(props) {
   const [displayChat, setDisplayChat] = useState("notDisplayChat");
   const [mic, setMic] = useState("micOffClassIcon");
   const [micOff, setMicOff] = useState("");
+  const [vid, setVid] = useState("vidOffClassIcon");
+  const [vidOff, setVidOff] = useState("");
+  const [share, setShare] = useState("shareOffClassIcon");
+  const [shareOff, setShareOff] = useState("");
 
   const displayChatRoom = () => {
     if (displayChat === "notDisplayChat") setDisplayChat("displayChat");
@@ -22,6 +28,16 @@ function Main(props) {
   const switchAudio = () => {
     if (mic !== "") setMic("");
     else if (mic === "") setMic("micOffClassIcon");
+  };
+
+  const switchVideo = () => {
+    if (vid !== "") setVid("");
+    else if (vid === "") setVid("vidOffClassIcon");
+  };
+
+  const switchShare = () => {
+    if (share !== "") setShare("");
+    else if (share === "") setShare("shareOffClassIcon");
   };
 
   return (
@@ -38,24 +54,35 @@ function Main(props) {
               <MicOffIcon className={mic === "" ? "micOffClassIcon" : ""} />
             </IconButton>
           </div>
-          <IconButton
-            id="video"
-            style={{ color: "white", backgroundColor: "#5F676A" }}
-          >
-            <VideocamIcon />
-          </IconButton>
+          <div className="vid">
+            <IconButton
+              onClick={switchVideo}
+              type="button"
+              style={{ color: "white", backgroundColor: "#5F676A" }}
+            >
+              <VideocamIcon className={vid} />
+              <VideocamOffIcon
+                className={vid === "" ? "vidOffClassIcon" : ""}
+              />
+            </IconButton>
+          </div>
+
           <IconButton
             id="callend"
             style={{ color: "red", backgroundColor: "#5F676A" }}
           >
             <CallEndIcon />
           </IconButton>
-          <IconButton
-            id="screenshare"
-            style={{ color: "white", backgroundColor: "#5F676A" }}
-          >
-            <IosShareIcon />
-          </IconButton>
+          <div className="share">
+            <IconButton
+              onClick={switchShare}
+              type="button"
+              style={{ color: "white", backgroundColor: "#5F676A" }}
+            >
+              <IosShareIcon className={share === "" ? "shareOffClassIcon" : ""} />
+              <PausePresentationIcon className={share} />
+            </IconButton>
+          </div>
           <IconButton
             onClick={displayChatRoom}
             aria-label=""

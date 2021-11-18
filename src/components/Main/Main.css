@@ -46,13 +46,13 @@
 }
 
 @keyframes drop {
-  0% {
-    opacity: 0;
-    transform: translateX(-80px);
-  }
   100% {
     opacity: 1;
-    transform: translateX(0px);
+    transform: translateX(-0px);
+  }
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
   }
 }
 
@@ -73,3 +73,18 @@
   background-color: red;
 }
 
+.vidOffClassIcon{
+  font-size: 0 !important;
+}
+
+.vidOnClassIcon{
+  background-color: blue;
+}
+
+.shareOffClassIcon{
+  font-size: 0 !important;
+}
+
+.shareOnClassIcon{
+  background-color: blue;
+}
