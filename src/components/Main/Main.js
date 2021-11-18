@@ -11,7 +11,8 @@ import CallEndIcon from "@mui/icons-material/CallEnd";
 
 function Main(props) {
   const [displayChat, setDisplayChat] = useState("notDisplayChat");
-  const [micIcon, setMicIcon] = useState("micoffIcon");
+  const [mic, setMic] = useState("micOffClassIcon");
+  const [micOff, setMicOff] = useState("");
 
   const displayChatRoom = () => {
     if (displayChat === "notDisplayChat") setDisplayChat("displayChat");
@@ -19,8 +20,8 @@ function Main(props) {
   };
 
   const switchAudio = () => {
-    if (MicIcon === "MicOffIcon") setMicIcon("MicIcon");
-    else if (MicIcon === "MicIcon") setMicIcon("MicoffIcon");
+    if (mic !== "") setMic("");
+    else if (mic === "") setMic("micOffClassIcon");
   };
 
   return (
@@ -33,14 +34,8 @@ function Main(props) {
               type="button"
               style={{ color: "white", backgroundColor: "#5F676A" }}
             >
-              <MicIcon />
-            </IconButton>
-            <IconButton
-              onClick={switchAudio}
-              type="button"
-              style={{ color: "white", backgroundColor: "#5F676A" }}
-            >
-              <MicOffIcon />
+              <MicIcon className={mic} />
+              <MicOffIcon className={mic === "" ? "micOffClassIcon" : ""} />
             </IconButton>
           </div>
           <IconButton

@@ -66,5 +66,10 @@
   /* flex: 3; */
 }
 
-
+.micOffClassIcon{
+  font-size: 0 !important;
+}
+.micOnClassIcon{
+  background-color: red;
+}
 
