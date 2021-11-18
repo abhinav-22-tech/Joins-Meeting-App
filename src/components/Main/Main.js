@@ -19,30 +19,30 @@ function Main(props) {
   };
 
   const switchAudio = () => {
-         if(MicIcon === "MicOffIcon") setMicIcon("MicIcon");
-         else if (MicIcon === "MicIcon") setMicIcon("MicoffIcon")
+    if (MicIcon === "MicOffIcon") setMicIcon("MicIcon");
+    else if (MicIcon === "MicIcon") setMicIcon("MicoffIcon");
   };
 
   return (
     <div className="main">
       <div className="messageIcon">
         <div className="icons">
-          <IconButton
-            onClick={switchAudio}
-            type="button"
-            id="mic"
-            style={{ color: "white", backgroundColor: "#5F676A" }}
-          >
-            <MicIcon />
-          </IconButton>
-          <IconButton
-            onClick={switchAudio}
-            type="button"
-            id="mic"
-            style={{ color: "white", backgroundColor: "#5F676A" }}
-          >
-            <MicOffIcon />
-          </IconButton>
+          <div className="mic">
+            <IconButton
+              onClick={switchAudio}
+              type="button"
+              style={{ color: "white", backgroundColor: "#5F676A" }}
+            >
+              <MicIcon />
+            </IconButton>
+            <IconButton
+              onClick={switchAudio}
+              type="button"
+              style={{ color: "white", backgroundColor: "#5F676A" }}
+            >
+              <MicOffIcon />
+            </IconButton>
+          </div>
           <IconButton
             id="video"
             style={{ color: "white", backgroundColor: "#5F676A" }}
