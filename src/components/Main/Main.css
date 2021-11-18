@@ -35,11 +35,14 @@
   /* flex-grow: 1; */
   min-height: 1vh;
   background-color: #edf0f5;
-  /* background-repeat: repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: top; */
-  /* background-image: url(h); */
+  /* background-repeat: repeat; */
+  /* background-attachment: fixed; */
+  /* background-size: cover; */
+  /* background-position: top; */
+  /* background-image: url(https://cdn.pixabay.com/photo/2020/03/14/17/01/flowers-4931217_960_720.png); */
+  /* filter: #00705e; */
+  /* background-color: #00a389; */
+  /* filter: opacity(0.3); */
 }
 
 @keyframes drop {
