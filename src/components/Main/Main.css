@@ -4,6 +4,7 @@
   /* align-items: center; */
 }
 
+
 .messageIcon {
   display: flex;
   flex-direction: column;
@@ -51,3 +52,16 @@
     transform: translateX(0px);
   }
 }
+
+.icons{
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 20vh;
+  width: 60%;
+  z-index: 1;
+  /* flex: 3; */
+}
+
+
+
