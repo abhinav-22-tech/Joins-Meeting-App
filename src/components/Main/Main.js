@@ -3,6 +3,7 @@ import "./Main.css";
 import MessageIcon from "@mui/icons-material/Message";
 import { IconButton } from "@mui/material";
 import ChatRoom from "../ChatRoom/ChatRoom";
+import Home from "../Home/home";
 import MicIcon from "@mui/icons-material/Mic";
 import MicOffIcon from "@mui/icons-material/MicOff";
 import VideocamIcon from "@mui/icons-material/Videocam";
@@ -10,6 +11,7 @@ import IosShareIcon from "@mui/icons-material/IosShare";
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import PausePresentationIcon from "@mui/icons-material/PausePresentation";
+import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 
 function Main(props) {
   const [displayChat, setDisplayChat] = useState("notDisplayChat");
@@ -19,6 +21,8 @@ function Main(props) {
   const [vidOff, setVidOff] = useState("");
   const [share, setShare] = useState("shareOffClassIcon");
   const [shareOff, setShareOff] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [roomName, setRoomName] = useState("");
 
   const displayChatRoom = () => {
     if (displayChat === "notDisplayChat") setDisplayChat("displayChat");
@@ -67,19 +71,23 @@ function Main(props) {
             </IconButton>
           </div>
 
-          <IconButton
-            id="callend"
-            style={{ color: "red", backgroundColor: "#5F676A" }}
-          >
+          <IconButton style={{ color: "red", backgroundColor: "#5F676A" }}>
             <CallEndIcon />
           </IconButton>
+
+          <IconButton style={{ color: "#fff", backgroundColor: "#5F676A" }}>
+            <ClosedCaptionIcon />
+          </IconButton>
+
           <div className="share">
             <IconButton
               onClick={switchShare}
               type="button"
               style={{ color: "white", backgroundColor: "#5F676A" }}
             >
-              <IosShareIcon className={share === "" ? "shareOffClassIcon" : ""} />
+              <IosShareIcon
+                className={share === "" ? "shareOffClassIcon" : ""}
+              />
               <PausePresentationIcon className={share} />
             </IconButton>
           </div>
@@ -92,6 +100,19 @@ function Main(props) {
             <MessageIcon />
           </IconButton>
         </div>
+        <span className="time">
+          {date.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}{" "}
+          •{" "}
+          {date.toLocaleDateString(undefined, {
+            weekday: "short",
+            month: "short",
+            day: "numeric",
+          })}
+        </span>
+        <span>{roomName}</span>
       </div>
       <div className="chatRoom">
         <div className={displayChat}>

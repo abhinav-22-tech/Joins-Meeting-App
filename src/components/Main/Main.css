@@ -4,6 +4,11 @@
   /* align-items: center; */
 }
 
+.time {
+  bottom: 4vh;
+  display: flex;
+  position: fixed;
+}
 
 .messageIcon {
   display: flex;
@@ -23,8 +28,8 @@
   height: 100%;
   /* animation: drop 1s ease; */
   animation-name: stretch;
-  animation-duration: 1.5s; 
-  animation-timing-function: ease; 
+  animation-duration: 1.5s;
+  animation-timing-function: ease;
   animation-delay: 0;
   /* animation-direction: alternate; */
   animation-iteration-count: drop;
@@ -34,7 +39,7 @@
 
 @keyframes stretch {
   0% {
-    transform: scale(.3);
+    transform: scale(0.3);
     /* background-color: red; */
     border-radius: 100%;
   }
@@ -84,37 +89,35 @@ html {
   }
 } */
 
-
-
-.icons{
+.icons {
   display: flex;
   justify-content: space-around;
   position: fixed;
-  bottom: 20vh;
-  width: 60%;
+  bottom: 10vh;
+  width: 70%;
   z-index: 1;
   /* flex: 3; */
 }
 
-.micOffClassIcon{
+.micOffClassIcon {
   font-size: 0 !important;
 }
-.micOnClassIcon{
+.micOnClassIcon {
   background-color: red;
 }
 
-.vidOffClassIcon{
+.vidOffClassIcon {
   font-size: 0 !important;
 }
 
-.vidOnClassIcon{
+.vidOnClassIcon {
   background-color: blue;
 }
 
-.shareOffClassIcon{
+.shareOffClassIcon {
   font-size: 0 !important;
 }
 
-.shareOnClassIcon{
+.shareOnClassIcon {
   background-color: blue;
 }
