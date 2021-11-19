@@ -22,7 +22,6 @@ function Main(props) {
   const [share, setShare] = useState("shareOffClassIcon");
   const [shareOff, setShareOff] = useState("");
   const [date, setDate] = useState(new Date());
-  const [roomName, setRoomName] = useState("");
 
   const displayChatRoom = () => {
     if (displayChat === "notDisplayChat") setDisplayChat("displayChat");
@@ -112,7 +111,7 @@ function Main(props) {
             day: "numeric",
           })}
         </span>
-        <span>{roomName}</span>
+        <span>{props.match.params.roomId}</span>
       </div>
       <div className="chatRoom">
         <div className={displayChat}>
