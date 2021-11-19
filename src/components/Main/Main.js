@@ -3,7 +3,8 @@ import "./Main.css";
 import MessageIcon from "@mui/icons-material/Message";
 import { IconButton } from "@mui/material";
 import ChatRoom from "../ChatRoom/ChatRoom";
-import Home from "../Home/home";
+import Video from "../Video/Video";
+
 import MicIcon from "@mui/icons-material/Mic";
 import MicOffIcon from "@mui/icons-material/MicOff";
 import VideocamIcon from "@mui/icons-material/Videocam";
@@ -45,6 +46,8 @@ function Main(props) {
 
   return (
     <div className="main">
+      {/* <div id="video-grid"></div> */}
+      <Video />
       <div className="messageIcon">
         <div className="icons">
           <div className="mic">
