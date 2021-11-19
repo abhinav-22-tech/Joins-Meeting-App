@@ -47,7 +47,7 @@ function Main(props) {
   return (
     <div className="main">
       {/* <div id="video-grid"></div> */}
-      <Video />
+      {/* <Video /> */}
       <div className="messageIcon">
         <div className="icons">
           <div className="mic">
