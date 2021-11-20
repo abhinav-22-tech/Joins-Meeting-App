@@ -3,7 +3,7 @@ import "./Main.css";
 import MessageIcon from "@mui/icons-material/Message";
 import { IconButton } from "@mui/material";
 import ChatRoom from "../ChatRoom/ChatRoom";
-import Video from "../Video/Video";
+// import Video from "../Video/Video";
 
 import MicIcon from "@mui/icons-material/Mic";
 import MicOffIcon from "@mui/icons-material/MicOff";
@@ -13,6 +13,7 @@ import CallEndIcon from "@mui/icons-material/CallEnd";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import PausePresentationIcon from "@mui/icons-material/PausePresentation";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
+// import { Fullscreen } from "@mui/icons-material";
 
 function Main(props) {
   const [displayChat, setDisplayChat] = useState("notDisplayChat");
@@ -23,6 +24,8 @@ function Main(props) {
   const [share, setShare] = useState("shareOffClassIcon");
   const [shareOff, setShareOff] = useState("");
   const [date, setDate] = useState(new Date());
+
+  // function
 
   const displayChatRoom = () => {
     if (displayChat === "notDisplayChat") setDisplayChat("displayChat");
@@ -43,6 +46,10 @@ function Main(props) {
     if (share !== "") setShare("");
     else if (share === "") setShare("shareOffClassIcon");
   };
+
+  const fullScr = () => {
+          //  if()
+  }
 
   return (
     <div className="main">
@@ -73,7 +80,9 @@ function Main(props) {
             </IconButton>
           </div>
 
-          <IconButton style={{ color: "red", backgroundColor: "#5F676A" }}>
+          <IconButton 
+          onClick={fullScr}
+          style={{ color: "red", backgroundColor: "#5F676A" }}>
             <CallEndIcon />
           </IconButton>
 
@@ -114,7 +123,7 @@ function Main(props) {
             day: "numeric",
           })}
         </span>
-        <span>{props.match.params.roomId}</span>
+        <span className="roomid">{props.match.params.roomId}</span>
       </div>
       <div className="chatRoom">
         <div className={displayChat}>

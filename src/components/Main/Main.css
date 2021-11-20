@@ -92,6 +92,13 @@ html {
   position: fixed;
 }
 
+.roomid {
+  bottom: 2vh;
+  display: flex;
+  position: fixed;
+  /* margin-left: 20vh; */
+}
+
 .displayChat {
   display: flex;
   width: 100%;
