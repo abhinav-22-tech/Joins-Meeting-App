@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+// import ReactFullscreen from "react-easyfullscreen";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
+
 import "./Main.css";
 import MessageIcon from "@mui/icons-material/Message";
 import { IconButton } from "@mui/material";
@@ -24,8 +27,7 @@ function Main(props) {
   const [share, setShare] = useState("shareOffClassIcon");
   const [shareOff, setShareOff] = useState("");
   const [date, setDate] = useState(new Date());
-
-  // function
+  const [fullScreenMode, setfullScreenMode] = useState(false);
 
   const displayChatRoom = () => {
     if (displayChat === "notDisplayChat") setDisplayChat("displayChat");
@@ -47,90 +49,101 @@ function Main(props) {
     else if (share === "") setShare("shareOffClassIcon");
   };
 
-  const fullScr = () => {
-          //  if()
-  }
+  const handle = useFullScreenHandle();
+
+  const fullScreenToggler = () => {
+    if (fullScreenMode) {
+      setfullScreenMode(false);
+      handle.exit();
+    } else {
+      setfullScreenMode(true);
+      handle.enter();
+    }
+  };
 
   return (
-    <div className="main">
-      {/* <div id="video-grid"></div> */}
-      {/* <Video /> */}
-      <div className="messageIcon">
-        <div className="icons">
-          <div className="mic">
+    <FullScreen handle={handle}>
+      <div className="main">
+        {/* <div id="video-grid"></div> */}
+        {/* <Video /> */}
+        <div className="messageIcon">
+          <div className="icons">
+            <div className="mic">
+              <IconButton
+                onClick={switchAudio}
+                type="button"
+                style={{ color: "white", backgroundColor: "#5F676A" }}
+              >
+                <MicIcon className={mic} />
+                <MicOffIcon className={mic === "" ? "micOffClassIcon" : ""} />
+              </IconButton>
+            </div>
+            <div className="vid">
+              <IconButton
+                onClick={switchVideo}
+                type="button"
+                style={{ color: "white", backgroundColor: "#5F676A" }}
+              >
+                <VideocamIcon className={vid} />
+                <VideocamOffIcon
+                  className={vid === "" ? "vidOffClassIcon" : ""}
+                />
+              </IconButton>
+            </div>
+
             <IconButton
-              onClick={switchAudio}
-              type="button"
+              onClick={fullScreenToggler}
+              style={{ color: "red", backgroundColor: "#5F676A" }}
+            >
+              <CallEndIcon />
+            </IconButton>
+
+            <IconButton style={{ color: "#fff", backgroundColor: "#5F676A" }}>
+              <ClosedCaptionIcon />
+            </IconButton>
+
+            <div className="share">
+              <IconButton
+                onClick={switchShare}
+                type="button"
+                style={{ color: "white", backgroundColor: "#5F676A" }}
+              >
+                <IosShareIcon
+                  className={share === "" ? "shareOffClassIcon" : ""}
+                />
+                <PausePresentationIcon className={share} />
+              </IconButton>
+            </div>
+            <IconButton
+              onClick={displayChatRoom}
+              aria-label=""
+              component="span"
               style={{ color: "white", backgroundColor: "#5F676A" }}
             >
-              <MicIcon className={mic} />
-              <MicOffIcon className={mic === "" ? "micOffClassIcon" : ""} />
+              <MessageIcon />
             </IconButton>
           </div>
-          <div className="vid">
-            <IconButton
-              onClick={switchVideo}
-              type="button"
-              style={{ color: "white", backgroundColor: "#5F676A" }}
-            >
-              <VideocamIcon className={vid} />
-              <VideocamOffIcon
-                className={vid === "" ? "vidOffClassIcon" : ""}
-              />
-            </IconButton>
-          </div>
-
-          <IconButton 
-          onClick={fullScr}
-          style={{ color: "red", backgroundColor: "#5F676A" }}>
-            <CallEndIcon />
-          </IconButton>
-
-          <IconButton style={{ color: "#fff", backgroundColor: "#5F676A" }}>
-            <ClosedCaptionIcon />
-          </IconButton>
-
-          <div className="share">
-            <IconButton
-              onClick={switchShare}
-              type="button"
-              style={{ color: "white", backgroundColor: "#5F676A" }}
-            >
-              <IosShareIcon
-                className={share === "" ? "shareOffClassIcon" : ""}
-              />
-              <PausePresentationIcon className={share} />
-            </IconButton>
-          </div>
-          <IconButton
-            onClick={displayChatRoom}
-            aria-label=""
-            component="span"
-            style={{ color: "white", backgroundColor: "#5F676A" }}
-          >
-            <MessageIcon />
-          </IconButton>
+          <span className="time">
+            {date.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}{" "}
+            •{" "}
+            {date.toLocaleDateString(undefined, {
+              weekday: "short",
+              month: "short",
+              day: "numeric",
+            })}
+          </span>
+          <span className="roomid">{props.match.params.roomId}</span>
         </div>
-        <span className="time">
-          {date.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}{" "}
-          •{" "}
-          {date.toLocaleDateString(undefined, {
-            weekday: "short",
-            month: "short",
-            day: "numeric",
-          })}
-        </span>
-        <span className="roomid">{props.match.params.roomId}</span>
-      </div>
-      <div className="chatRoom">
-        <div className={displayChat}>
-          <ChatRoom roomId={props.match.params.roomId} />
+        <div className="chatRoom">
+          <div className={displayChat}>
+            <ChatRoom roomId={props.match.params.roomId} />
+          </div>
         </div>
       </div>
-    </div>
+    </FullScreen>
   );
 }
 
