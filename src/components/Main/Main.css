@@ -63,6 +63,14 @@ html {
   /* flex: 3; */
 }
 
+#cont{
+  background-color: red;
+}
+
+#cont1{
+  background-color: #5F676A;
+}
+
 .micOffClassIcon {
   font-size: 0 !important;
 }
@@ -105,7 +113,7 @@ html {
   height: 100%;
   /* animation: drop 1s ease; */
   animation-name: stretch;
-  animation-duration: 1.5s;
+  animation-duration: 0.8s;
   animation-timing-function: ease;
   animation-delay: 0;
   /* animation-direction: alternate; */

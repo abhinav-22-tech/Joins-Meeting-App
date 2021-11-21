@@ -16,6 +16,8 @@ import CallEndIcon from "@mui/icons-material/CallEnd";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import PausePresentationIcon from "@mui/icons-material/PausePresentation";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
+import { bgcolor, style } from "@mui/system";
+// import { style } from "@mui/system";
 // import { Fullscreen } from "@mui/icons-material";
 
 function Main(props) {
@@ -28,6 +30,7 @@ function Main(props) {
   const [shareOff, setShareOff] = useState("");
   const [date, setDate] = useState(new Date());
   const [fullScreenMode, setfullScreenMode] = useState(false);
+  const [style, setStyle] = useState("cont");
 
   const displayChatRoom = () => {
     if (displayChat === "notDisplayChat") setDisplayChat("displayChat");
@@ -37,6 +40,10 @@ function Main(props) {
   const switchAudio = () => {
     if (mic !== "") setMic("");
     else if (mic === "") setMic("micOffClassIcon");
+  };
+
+  const changeStyle = () => {
+    setStyle("cont2")
   };
 
   const switchVideo = () => {
@@ -68,14 +75,22 @@ function Main(props) {
         {/* <Video /> */}
         <div className="messageIcon">
           <div className="icons">
-            <div className="mic">
+            <div className="mic" onClick={changeStyle}>
               <IconButton
                 onClick={switchAudio}
                 type="button"
-                style={{ color: "white", backgroundColor: "#5F676A" }}
+                // style={{ color: "white", backgroundColor: "#5F676A" }}
               >
-                <MicIcon className={mic} />
-                <MicOffIcon className={mic === "" ? "micOffClassIcon" : ""} />
+                <MicIcon
+                  id="cont"
+                  className={mic}
+                  // style={{ color: "white", backgroundColor: "#5F676A" }}
+                />
+                <MicOffIcon
+                  id="cont1"
+                  className={mic === "" ? "micOffClassIcon" : ""}
+                  // style={{ color: "white", backgroundColor: "red" }}
+                />
               </IconButton>
             </div>
             <div className="vid">
