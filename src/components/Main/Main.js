@@ -16,9 +16,17 @@ import CallEndIcon from "@mui/icons-material/CallEnd";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import PausePresentationIcon from "@mui/icons-material/PausePresentation";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
-import { bgcolor, style } from "@mui/system";
+import { bgcolor, color, style } from "@mui/system";
+
+import { makeStyles } from "@mui/styles";
 // import { style } from "@mui/system";
 // import { Fullscreen } from "@mui/icons-material";
+
+const useStyles = makeStyles({
+  root: {
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+  },
+});
 
 function Main(props) {
   const [displayChat, setDisplayChat] = useState("notDisplayChat");
@@ -68,6 +76,8 @@ function Main(props) {
     }
   };
 
+  const classes = useStyles();
+
   return (
     <FullScreen handle={handle}>
       <div className="main">
@@ -80,14 +90,15 @@ function Main(props) {
                 onClick={switchAudio}
                 type="button"
                 // style={{ color: "white", backgroundColor: "#5F676A" }}
+                className={classes.root}
               >
                 <MicIcon
-                  id="cont"
+                  // id="cont"
                   className={mic}
                   // style={{ color: "white", backgroundColor: "#5F676A" }}
                 />
                 <MicOffIcon
-                  id="cont1"
+                  // id="cont1"
                   className={mic === "" ? "micOffClassIcon" : ""}
                   // style={{ color: "white", backgroundColor: "red" }}
                 />
@@ -150,7 +161,7 @@ function Main(props) {
         </div>
         <div className="messageicon">
           <div className="msg">
-          <IconButton
+            <IconButton
               onClick={displayChatRoom}
               aria-label=""
               component="span"
@@ -158,8 +169,8 @@ function Main(props) {
             >
               <MessageIcon />
             </IconButton>
-            </div>
           </div>
+        </div>
       </div>
     </FullScreen>
   );

@@ -2,12 +2,11 @@ import {
   Avatar,
   Badge,
   Button,
-  makeStyles,
   Popover,
   TextField,
   Divider,
   InputAdornment,
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   CameraAltOutlined,
   FeedbackOutlined,
@@ -17,13 +16,17 @@ import {
   Apps,
   VideoCallOutlined,
   Keyboard,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
+import { makeStyles} from "@mui/styles";
+import { createTheme } from "@mui/material/styles";
 import React, { useEffect, useState } from "react";
 import { auth } from "../../lib/firebase";
 import { useHistory } from "react-router-dom";
 import "./home.css";
 
-const useStyles = makeStyles((theme) => ({
+const theme = createTheme();
+
+const useStyles = makeStyles(() => ({
   large: {
     width: theme.spacing(7),
     height: theme.spacing(7),
