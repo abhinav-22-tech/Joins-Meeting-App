@@ -43,7 +43,7 @@ function Main(props) {
   };
 
   const changeStyle = () => {
-    setStyle("cont2")
+    setStyle("cont2");
   };
 
   const switchVideo = () => {
@@ -73,7 +73,7 @@ function Main(props) {
       <div className="main">
         {/* <div id="video-grid"></div> */}
         {/* <Video /> */}
-        <div className="messageIcon">
+        <div className="meetIcon">
           <div className="icons">
             <div className="mic" onClick={changeStyle}>
               <IconButton
@@ -112,7 +112,6 @@ function Main(props) {
             >
               <CallEndIcon />
             </IconButton>
-
             <IconButton style={{ color: "#fff", backgroundColor: "#5F676A" }}>
               <ClosedCaptionIcon />
             </IconButton>
@@ -129,14 +128,6 @@ function Main(props) {
                 <PausePresentationIcon className={share} />
               </IconButton>
             </div>
-            <IconButton
-              onClick={displayChatRoom}
-              aria-label=""
-              component="span"
-              style={{ color: "white", backgroundColor: "#5F676A" }}
-            >
-              <MessageIcon />
-            </IconButton>
           </div>
           <span className="time">
             {date.toLocaleTimeString([], {
@@ -157,6 +148,18 @@ function Main(props) {
             <ChatRoom roomId={props.match.params.roomId} />
           </div>
         </div>
+        <div className="messageicon">
+          <div className="msg">
+          <IconButton
+              onClick={displayChatRoom}
+              aria-label=""
+              component="span"
+              style={{ color: "white", backgroundColor: "#5F676A" }}
+            >
+              <MessageIcon />
+            </IconButton>
+            </div>
+          </div>
       </div>
     </FullScreen>
   );
