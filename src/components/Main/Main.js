@@ -6,7 +6,8 @@ import "./Main.css";
 import MessageIcon from "@mui/icons-material/Message";
 import { IconButton } from "@mui/material";
 import ChatRoom from "../ChatRoom/ChatRoom";
-// import Video from "../Video/Video";
+import Room from "../Room/Room";
+import Home from "../Home/home";
 
 import MicIcon from "@mui/icons-material/Mic";
 import MicOffIcon from "@mui/icons-material/MicOff";
@@ -16,7 +17,6 @@ import CallEndIcon from "@mui/icons-material/CallEnd";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import PausePresentationIcon from "@mui/icons-material/PausePresentation";
 import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
-import { bgcolor, color, style } from "@mui/system";
 
 import { makeStyles } from "@mui/styles";
 // import { style } from "@mui/system";
@@ -77,12 +77,13 @@ function Main(props) {
   };
 
   const classes = useStyles();
-
+  console.log(props.match);
   return (
     <FullScreen handle={handle}>
       <div className="main">
         {/* <div id="video-grid"></div> */}
         {/* <Video /> */}
+        {/* <Room roomName={props.match.params.roomId} room={room} handleLogout={handleLogout} /> */}
         <div className="meetIcon">
           <div className="icons">
             <div className="mic" onClick={changeStyle}>

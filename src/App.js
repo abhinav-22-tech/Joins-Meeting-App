@@ -34,7 +34,7 @@ function App() {
               {appState === "login" && <Continuewith />}
             </div>
           </Route>
-          <Route exact path="/:roomId" component={Main}></Route>
+          {/* <Route exact path="/:roomId" component={Main}></Route> */}
         </Switch>
       </Router>
     </div>

@@ -17,12 +17,14 @@ import {
   VideoCallOutlined,
   Keyboard,
 } from "@mui/icons-material";
-import { makeStyles} from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 import { createTheme } from "@mui/material/styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { auth } from "../../lib/firebase";
 import { useHistory } from "react-router-dom";
 import "./home.css";
+import Video from "twilio-video";
+import Room from "../Room/Room";
 
 const theme = createTheme();
 
@@ -35,10 +37,14 @@ const useStyles = makeStyles(() => ({
 
 function Home() {
   const [currentUser, setCurrentUser] = useState(null);
+
   const [appState, setAppState] = useState("empty");
   const [anchorEl, setAnchorEl] = useState(null);
   const [date, setDate] = useState(new Date());
+
   const [roomName, setRoomName] = useState("");
+  const [room, setRoom] = useState(null);
+  const [username, setUsername] = useState("");
 
   const classes = useStyles();
   const history = useHistory();
@@ -87,6 +93,12 @@ function Home() {
     return timer;
   }, []);
 
+  useEffect(() => {
+    if (currentUser) {
+      setUsername(currentUser.email);
+    }
+  }, [currentUser]);
+
   function randomRoom() {
     let uuid = Date.now();
     console.log(uuid);
@@ -105,197 +117,131 @@ function Home() {
 
   const linkToRoom = () => {
     if (roomName !== "") {
-      history.push(`/${roomName}`);
+      handleSubmit();
+      // history.push(`/${roomName}`);
     }
   };
 
-  return (
-    <div>
-      <div className="header">
-        <div className="header__logoContainer">
-          <img
-            src="https://www.gstatic.com/meet/google_meet_horizontal_wordmark_2020q4_1x_icon_124_40_2373e79660dabbf194273d27aa7ee1f5.png"
-            alt="google"
-            className="header__logo"
-          />
-          <p>Meet</p>
-        </div>
+  const handleSubmit = useCallback(async () => {
+    const data = await fetch(
+      "https://twilio-meeting-server.herokuapp.com/video/token",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          identity: username,
+          room: roomName,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((res) => res.json());
+    Video.connect(data.token, {
+      name: roomName,
+    })
+      .then((room) => {
+        setRoom(room);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    console.log(data);
+  }, [roomName, username]);
 
-        <div className="header__icons">
-          <div className="header__TimeDate">
-            <span>
-              {date.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}{" "}
-              •{" "}
-              {date.toLocaleDateString(undefined, {
-                weekday: "short",
-                month: "short",
-                day: "numeric",
-              })}
-            </span>
-          </div>
+  const handleLogout = useCallback(() => {
+    setRoom((prevRoom) => {
+      if (prevRoom) {
+        prevRoom.localParticipant.tracks.forEach((trackPub) => {
+          trackPub.track.stop();
+        });
+        prevRoom.disconnect();
+      }
+      return null;
+    });
+  }, []);
 
-          <HelpOutline />
-          <FeedbackOutlined />
-          <Settings />
-          <div className="header__iconDivider" />
+  // console.log("room name is", roomName);
+  // console.log("username is", username);
 
-          <Apps />
+  useEffect(() => {
+    if (room) {
+      const tidyUp = (event) => {
+        if (event.persisted) {
+          return;
+        }
+        if (room) {
+          handleLogout();
+        }
+      };
+      window.addEventListener("pagehide", tidyUp);
+      window.addEventListener("beforeunload", tidyUp);
+      return () => {
+        window.removeEventListener("pagehide", tidyUp);
+        window.removeEventListener("beforeunload", tidyUp);
+      };
+    }
+  }, [room, handleLogout]);
 
-          <Avatar
-            className="header__avatar"
-            onClick={handleClick}
-            style={{
-              backgroundColor: stringToColor(),
-            }}
-          >
-            {nameFirstChar}
-          </Avatar>
-          <Popover
-            open={open}
-            id={id}
-            onClose={handleClose}
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
-            }}
-            transformOrigin={{
-              vertical: "top",
-            }}
-          >
-            <div className="home__popoverContainer">
-              <div className="home__popover__top">
-                <Badge
-                  overlap="circle"
-                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                  badgeContent={
-                    <div className="home__badge">
-                      <CameraAltOutlined className="home__Camera" />
-                    </div>
-                  }
-                >
-                  <Avatar
-                    className={classes.large}
-                    style={{
-                      backgroundColor: stringToColor(),
-                    }}
-                  >
-                    {nameFirstChar}
-                  </Avatar>
-                </Badge>
+  let render;
+  if (room) {
+    render = (
+      <Room
+        roomName={roomName}
+        room={room}
+        handleLogout={handleLogout}
+        currentUser={currentUser}
+      />
+    );
+  } else {
+    render = (
+      <div>
+        <div className="home">
+          <div className="home__left">
+            <div className="home__buttons">
+              <Button
+                color="primary"
+                variant="contained"
+                className="home__createBTN"
+                onClick={randomRoom}
+              >
+                <VideoCallOutlined />
+                <p>New meeting</p>
+              </Button>
 
-                <div className="home__text">
-                  <div className="home__displayName">
-                    {currentUser?.displayName !== null
-                      ? currentUser?.displayName
-                      : "Sample"}
-                  </div>
+              <TextField
+                className="home__input"
+                variant="outlined"
+                value={roomName}
+                onChange={(e) => setRoomName(e.target.value)}
+                placeholder="Enter a code or link"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Keyboard className="icon" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
 
-                  <div className="home__mail">
-                    {currentUser?.email !== null
-                      ? currentUser?.email
-                      : "sample@joins.com"}
-                  </div>
-                </div>
-
-                <div className="home__btn">Manage your X-oo Account</div>
-              </div>
-
-              <div className="home__popover__btm">
-                <div className="home__addBtn">
-                  <PersonOutlined className="home__addIcon" />
-                  <p>Add another account</p>
-                </div>
-
-                <Button
-                  onClick={() => auth.signOut()}
-                  variant="outlined"
-                  className="home__signOut"
-                >
-                  Sign Out
-                </Button>
-
-                <div className="home__popover__footer">
-                  <p>Privacy policy</p>
-                  <span>•</span>
-                  <p>Terms of service</p>
-                </div>
-              </div>
+              {/* <Link to={`/${roomName}`}> */}
+              <Button
+                color="primary"
+                variant="outlined"
+                className="home__joinBTN"
+                disabled={roomName === ""}
+                onClick={linkToRoom}
+              >
+                Join
+              </Button>
+              {/* </Link> */}
             </div>
-          </Popover>
+          </div>
         </div>
       </div>
-      <div className="home">
-        <div className="home__left">
-          <div className="home__featureText">
-            <h1 className="home__title">Premium video meetings.</h1>
-            <h1 className="home__title">Now free for everyone.</h1>
-            <p className="home__subtitle">
-              We re-engineered the service we built for secure business
-              meetings, Google Meet, to make it free and available for all.
-            </p>
-          </div>
+    );
+  }
 
-          <div className="home__buttons">
-            <Button
-              color="primary"
-              variant="contained"
-              className="home__createBTN"
-              onClick={randomRoom}
-            >
-              <VideoCallOutlined />
-              <p>New meeting</p>
-            </Button>
-
-            <TextField
-              className="home__input"
-              variant="outlined"
-              value={roomName}
-              onChange={(e) => setRoomName(e.target.value)}
-              placeholder="Enter a code or link"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Keyboard className="icon" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-
-            {/* <Link to={`/${roomName}`}> */}
-            <Button
-              color="primary"
-              variant="outlined"
-              className="home__joinBTN"
-              disabled={roomName === ""}
-              onClick={linkToRoom}
-            >
-              Join
-            </Button>
-            {/* </Link> */}
-          </div>
-
-          <Divider />
-          <div className="home__learn">
-            <a href="/" className="home__learnMore">
-              Learn more
-            </a>
-            <span> about Google Meet</span>
-          </div>
-        </div>
-        <div className="home__right">
-          <img
-            className="home__image"
-            src="https://www.gstatic.com/meet/google_meet_marketing_ongoing_meeting_grid_427cbb32d746b1d0133b898b50115e96.jpg"
-            alt="Feature IMG"
-          />
-        </div>
-      </div>
-    </div>
-  );
+  return render;
 }
 
 export default Home;

@@ -1,0 +1,13 @@
+.participant-name {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  color: white;
+}
+
+.participant {
+  padding: 10px;
+  border-radius: 6px;
+  position: relative;
+  margin-right: 10px;
+}
