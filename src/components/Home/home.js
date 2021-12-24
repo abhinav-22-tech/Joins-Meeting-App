@@ -234,6 +234,16 @@ function Home() {
                 Join
               </Button>
               {/* </Link> */}
+
+              {/* This signout button for development purpose */}
+
+              <Button
+                onClick={() => auth.signOut()}
+                variant="outlined"
+                className="home__signOut"
+              >
+                Sign Out
+              </Button>
             </div>
           </div>
         </div>
