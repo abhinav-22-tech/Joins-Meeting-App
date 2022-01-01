@@ -1,3 +1,12 @@
+.home__left {
+  display: flex;
+  border: 1px solid #dadce0;
+  border-radius: 7px;
+  padding: 5px 10px;
+  position: absolute;
+  background: white;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -270,4 +279,3 @@
   color: #2962ff;
   text-decoration: none;
 }
-

@@ -58,11 +58,11 @@ const Room = ({ roomName, room, handleLogout, currentUser }) => {
         {remoteParticipants}
       </div>
 
-      {/* <div className="chatRoom">
+      <div className="chatRoom">
         <div className={displayChat}>
           <ChatRoom roomId={roomName} />
         </div>
-      </div> */}
+      </div>
 
     </main>
   );
