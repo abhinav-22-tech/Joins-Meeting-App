@@ -70,7 +70,7 @@ class Continuewith extends Component {
                 />
               </span>
               <span class="firebaseui-idp-text firebaseui-idp-text-long">
-                Sign in Guest
+                Sign in As Guest
               </span>
               <span class="firebaseui-idp-text firebaseui-idp-text-short">
                 GitHub
