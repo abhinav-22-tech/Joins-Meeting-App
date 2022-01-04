@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Participant from "../Participant/Participant";
-import ChatRoom from "../ChatRoom/ChatRoom";
+// import ChatRoom from "../ChatRoom/ChatRoom";
 
 import "./Room.css";
+import MenuBar from "../MenuBar/MenuBar";
 
 const Room = ({ roomName, room, handleLogout, currentUser }) => {
   const [participants, setParticipants] = useState([]);
   const [displayChat, setDisplayChat] = useState("displayChat");
-  
+
   // const { videoON, audioON } = useRoomContext();
 
   console.log(participants);
@@ -57,13 +58,13 @@ const Room = ({ roomName, room, handleLogout, currentUser }) => {
         )}
         {remoteParticipants}
       </div>
-
+      {/* 
       <div className="chatRoom">
         <div className={displayChat}>
           <ChatRoom roomId={roomName} />
         </div>
-      </div>
-
+      </div> */}
+      <MenuBar />
     </main>
   );
 };
