@@ -1,4 +1,4 @@
-.room {
+/* .room {
   position: relative;
   background-color: #111111;
   min-height: 100vh;
@@ -22,7 +22,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
+} */
 
 .chatRoom {
   display: flex;
