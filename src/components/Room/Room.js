@@ -57,7 +57,7 @@ const Room = ({ roomName, room, handleLogout, currentUser }) => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={6} key="1">
-            <Box sx={{ boxShadow: 12 }}>
+            <Box sx={{ boxShadow: 24 }}>
               {room ? (
                 <Participant
                   totalParticipant={participants}
@@ -70,12 +70,14 @@ const Room = ({ roomName, room, handleLogout, currentUser }) => {
             </Box>
           </Grid>
           <Grid item xs={6} key="2">
-            <Box sx={{ boxShadow: 12 }}>{remoteParticipants}</Box>
+            <Box sx={{ boxShadow: 24 }}>{remoteParticipants}</Box>
           </Grid>
         </Grid>
+        <Box sx={{ mt: 4 }}>
+          <MenuBar />
+        </Box>
       </Box>
 
-      <MenuBar />
       {/* <TopHeader
         participants={participants}
         participant={room.localParticipant}

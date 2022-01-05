@@ -22,7 +22,7 @@ export default function MenuBar() {
           m: "auto",
           p: 2,
           borderRadius: 3,
-          boxShadow: 20,
+          boxShadow: 24,
         }}
         display="flex" 
         width={500}

@@ -2,8 +2,8 @@
   position: relative;
   background-color: rgb(71, 71, 71);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   padding: 20px;
 }
 /*.room button {
