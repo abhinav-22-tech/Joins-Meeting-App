@@ -26,8 +26,6 @@ import "./home.css";
 import Video from "twilio-video";
 import Room from "../Room/Room";
 
-import MenuBar from "../MenuBar/MenuBar";
-
 const theme = createTheme();
 
 const useStyles = makeStyles(() => ({
@@ -97,7 +95,7 @@ function Home() {
 
   useEffect(() => {
     if (currentUser) {
-      setUsername(currentUser.email);
+      setUsername(currentUser.displayName);
     }
   }, [currentUser]);
 
@@ -249,8 +247,6 @@ function Home() {
             </div>
           </div>
         </div>
-
-        <MenuBar/>
       </div>
     );
   }

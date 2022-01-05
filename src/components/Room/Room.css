@@ -1,12 +1,12 @@
-/* .room {
+.room {
   position: relative;
-  background-color: #111111;
+  background-color: rgb(71, 71, 71);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 20px;
 }
-.room button {
+/*.room button {
   position: absolute;
   top: 20px;
   right: 20px;

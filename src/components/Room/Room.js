@@ -55,9 +55,9 @@ const Room = ({ roomName, room, handleLogout, currentUser }) => {
   return (
     <main className="room">
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, sm: 8 }}>
-          {Array.from(Array(1)).map((_, index) => (
-            <Grid item xs={2} sm={4} md={4} key={index}>
+        <Grid container spacing={2}>
+          <Grid item xs={6} key="1">
+            <Box sx={{ boxShadow: 12 }}>
               {room ? (
                 <Participant
                   totalParticipant={participants}
@@ -67,11 +67,15 @@ const Room = ({ roomName, room, handleLogout, currentUser }) => {
               ) : (
                 ""
               )}
-              {remoteParticipants}
-            </Grid>
-          ))}
+            </Box>
+          </Grid>
+          <Grid item xs={6} key="2">
+            <Box sx={{ boxShadow: 12 }}>{remoteParticipants}</Box>
+          </Grid>
         </Grid>
       </Box>
+
+      <MenuBar />
       {/* <TopHeader
         participants={participants}
         participant={room.localParticipant}
@@ -94,7 +98,6 @@ const Room = ({ roomName, room, handleLogout, currentUser }) => {
           <ChatRoom roomId={roomName} />
         </div>
       </div> */}
-      <MenuBar />
     </main>
   );
 };

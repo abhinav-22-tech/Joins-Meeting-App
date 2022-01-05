@@ -1,4 +1,4 @@
-/* .participant-name {
+.participant-name {
   position: absolute;
   bottom: 14px;
   left: 14px;
@@ -6,8 +6,8 @@
 }
 
 .participant {
-  padding: 10px;
-  border-radius: 6px;
+  /* padding: 10px; */
+  /* border-radius: 6px; */
   position: relative;
-  margin-right: 10px;
-} */
+  /* margin-right: 10px; */
+}
