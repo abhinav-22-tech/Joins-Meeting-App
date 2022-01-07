@@ -95,7 +95,7 @@ function Home() {
 
   useEffect(() => {
     if (currentUser) {
-      setUsername(currentUser.email);
+      setUsername(currentUser.displayName);
     }
   }, [currentUser]);
 
