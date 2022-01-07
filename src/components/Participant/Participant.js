@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Participant.css";
+import Box from "@mui/material/Box";
 // import { useAppContext } from "../../context/appContext";
 // import { useRoomContext } from "../../context/videoContext";
 
@@ -75,7 +76,9 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       }`}
     >
       <p className="participant-name">
-        {participant.identity === currentUser ? "You" : participant.identity}
+        <Box sx={{ backgroundColor: "rgba(0,0,0,.4)", p: 0.4 }}>
+          {participant.identity === currentUser ? "You" : participant.identity}
+        </Box>
       </p>
       <video ref={videoRef} autoPlay={true} />
       <audio ref={audioRef} autoPlay={true} />
