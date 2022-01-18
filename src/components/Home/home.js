@@ -240,9 +240,9 @@ function Home() {
     // createLocalVideoTrack().then((localVideoTrack) => {
     //   room.localParticipant.publishTrack(localVideoTrack);
     // });
-    // room.localParticipant.videoTracks.forEach((publication) =>
-    //   publication.track.enable()
-    // );
+    room.localParticipant.videoTracks.forEach((publication) =>
+      publication.track.enable()
+    );
   };
 
   useEffect(() => {
