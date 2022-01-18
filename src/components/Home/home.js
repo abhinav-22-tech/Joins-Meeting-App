@@ -130,11 +130,10 @@ function Home() {
   const linkToRoom = () => {
     if (roomName !== "") {
       console.log(currentUser.displayName);
-      // if (currentUser.isAnonymous && currentUser.displayName === "") {
-
-      // } else handleSubmit();
-      GuestLogin();
-      handleSubmit();
+      if (currentUser.isAnonymous && currentUser.displayName === "") {
+        GuestLogin();
+        handleSubmit();
+      } else handleSubmit();
     }
   };
 
