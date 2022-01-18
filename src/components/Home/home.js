@@ -130,27 +130,28 @@ function Home() {
   const linkToRoom = () => {
     if (roomName !== "") {
       console.log(currentUser.displayName);
-      if (currentUser.isAnonymous && currentUser.displayName === "") {
-        GuestLogin();
-        handleSubmit();
-      } else handleSubmit();
+      // if (currentUser.isAnonymous && currentUser.displayName === "") {
+
+      // } else handleSubmit();
+      GuestLogin();
+      handleSubmit();
     }
   };
 
   function GuestLogin() {
-    const [open, setOpen] = React.useState(false);
+    // const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
+    // const handleClickOpen = () => {
+    //   setOpen(true);
+    // };
 
-    const handleClose = () => {
-      setOpen(false);
-    };
+    // const handleClose = () => {
+    //   setOpen(false);
+    // };
 
     currentUser
       .updateProfile({
-        displayName: "Jon",
+        displayName: "Abhinav",
       })
       .then(
         function () {
@@ -163,39 +164,8 @@ function Home() {
           console.log(`Guest Login Error: ${error}`);
         }
       );
-    return (
-      <div>
-        <Button variant="outlined" onClick={handleClickOpen}>
-          Slide in alert dialog
-        </Button>
-        <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={handleClose}
-          aria-describedby="alert-dialog-slide-description"
-        >
-          <DialogTitle>{"Enter Your Name"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              To move forward to video call, please enter your name here.
-            </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Name"
-              type="name"
-              fullWidth
-              variant="standard"
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Save</Button>
-          </DialogActions>
-        </Dialog>
-      </div>
-    );
+    // setUsername("Abhinav");
+    // console.log(currentUser.displayName);
   }
 
   const siginOut = () => {
