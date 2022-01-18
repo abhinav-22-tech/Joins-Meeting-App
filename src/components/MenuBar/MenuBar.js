@@ -13,30 +13,34 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CallEndIcon from "@mui/icons-material/CallEnd";
 
-import Video from "twilio-video";
-
-export default function MenuBar() {
+export default function MenuBar({
+  handleLogout,
+  handleAudioMute,
+  handleAudioUnmute,
+  handleVideoMute,
+  handleVideoUnmute,
+}) {
   const [audio, setAudio] = useState(true);
   const [camera, setCamera] = useState(true);
 
   const audioToggle = () => {
-    if (audio === false) setAudio(true);
-    else if (audio === true) setAudio(false);
-    // Video.LocalVideoTrack.on("stopped");
-    // console.log(`Audio ${audio}`);
+    if (audio === false) {
+      setAudio(true);
+      handleAudioUnmute();
+    } else if (audio === true) {
+      setAudio(false);
+      handleAudioMute();
+    }
   };
 
   const cameraToggle = () => {
-    if (camera === false) setCamera(true);
-    else if (camera === true) setCamera(false);
-  };
-
-  const endCall = () => {
-    // Video.LocalParticipant.tracks.forEach((trackPub) => {
-    //   trackPub.track.stop();
-    // });
-    // Video.disconnect();
-    Video.LocalParticipant
+    if (camera === false) {
+      setCamera(true);
+      handleVideoUnmute();
+    } else if (camera === true) {
+      setCamera(false);
+      handleVideoMute();
+    }
   };
 
   return (
@@ -85,7 +89,7 @@ export default function MenuBar() {
           <MoreHorizIcon />
         </Button>
         <Button
-          onClick={endCall}
+          onClick={handleLogout}
           sx={{
             backgroundColor: "#fc0303",
             ":hover": { backgroundColor: "#fa3939" },

@@ -10,7 +10,16 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 
-const Room = ({ roomName, room, handleLogout, currentUser }) => {
+const Room = ({
+  roomName,
+  room,
+  handleLogout,
+  currentUser,
+  handleAudioMute,
+  handleAudioUnmute,
+  handleVideoMute,
+  handleVideoUnmute,
+}) => {
   const [participants, setParticipants] = useState([]);
   const [displayChat, setDisplayChat] = useState("displayChat");
 
@@ -74,7 +83,13 @@ const Room = ({ roomName, room, handleLogout, currentUser }) => {
           </Grid>
         </Grid>
         <Box sx={{ mt: 4 }}>
-          <MenuBar />
+          <MenuBar
+            handleLogout={handleLogout}
+            handleAudioMute={handleAudioMute}
+            handleAudioUnmute={handleAudioUnmute}
+            handleVideoMute={handleVideoMute}
+            handleVideoUnmute={handleVideoUnmute}
+          />
         </Box>
       </Box>
 
