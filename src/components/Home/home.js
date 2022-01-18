@@ -33,6 +33,8 @@ import "./home.css";
 import Video from "twilio-video";
 import Room from "../Room/Room";
 
+const { createLocalVideoTrack } = require("twilio-video");
+
 const theme = createTheme();
 
 const useStyles = makeStyles(() => ({
@@ -210,8 +212,38 @@ function Home() {
     });
   }, []);
 
-  // console.log("room name is", roomName);
-  // console.log("username is", username);
+  const handleAudioMute = () => {
+    room.localParticipant.audioTracks.forEach((publication) =>
+      publication.track.disable()
+    );
+  };
+
+  const handleAudioUnmute = () => {
+    room.localParticipant.audioTracks.forEach((publication) =>
+      publication.track.enable()
+    );
+  };
+
+  const handleVideoMute = () => {
+    room.localParticipant.videoTracks.forEach((publication) =>
+      publication.track.disable()
+    );
+    // room.localParticipant.videoTracks.forEach((publication) =>
+    //   publication.track.stop()
+    // );
+    // room.localParticipant.videoTracks.forEach((publication) =>
+    //   publication.unpublish()
+    // );
+  };
+
+  const handleVideoUnmute = () => {
+    // createLocalVideoTrack().then((localVideoTrack) => {
+    //   room.localParticipant.publishTrack(localVideoTrack);
+    // });
+    // room.localParticipant.videoTracks.forEach((publication) =>
+    //   publication.track.enable()
+    // );
+  };
 
   useEffect(() => {
     if (room) {
@@ -240,6 +272,10 @@ function Home() {
         room={room}
         handleLogout={handleLogout}
         currentUser={currentUser}
+        handleAudioMute={handleAudioMute}
+        handleAudioUnmute={handleAudioUnmute}
+        handleVideoMute={handleVideoMute}
+        handleVideoUnmute={handleVideoUnmute}
       />
     );
   } else {
