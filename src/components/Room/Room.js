@@ -16,7 +16,7 @@ const Room = ({ roomName, room, handleLogout, currentUser }) => {
 
   // const { videoON, audioON } = useRoomContext();
 
-  console.log(participants);
+  // console.log(participants);
   useEffect(() => {
     const participantConnected = (participant) => {
       setParticipants((prevParticipants) => [...prevParticipants, participant]);
