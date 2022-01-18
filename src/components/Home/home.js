@@ -6,6 +6,13 @@ import {
   TextField,
   Divider,
   InputAdornment,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentTest,
+  DialogTitle,
+  Slide,
+  DialogContentText,
 } from "@mui/material";
 import {
   CameraAltOutlined,
@@ -35,6 +42,10 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 function Home() {
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -63,7 +74,7 @@ function Home() {
   const nameFirstChar =
     currentUser?.displayName !== null
       ? currentUser?.displayName.charAt(0).toUpperCase()
-      : "S";
+      : "";
 
   function stringToColor() {
     var str = currentUser?.displayName + "";
@@ -82,7 +93,8 @@ function Home() {
       if (user) {
         setCurrentUser(user);
         setAppState("home");
-        // console.log(user.isAnonymous);
+        // console.log("currentUser: " + user);
+        console.log(user.isAnonymous);
       } else {
         setCurrentUser(null);
         setAppState("login");
@@ -117,9 +129,47 @@ function Home() {
 
   const linkToRoom = () => {
     if (roomName !== "") {
-      handleSubmit();
-      // history.push(`/${roomName}`);
+      console.log(currentUser.displayName);
+      if (currentUser.isAnonymous && currentUser.displayName === "") {
+        GuestLogin();
+        handleSubmit();
+      } else handleSubmit();
     }
+  };
+
+  function GuestLogin() {
+    // const [open, setOpen] = React.useState(false);
+
+    // const handleClickOpen = () => {
+    //   setOpen(true);
+    // };
+
+    // const handleClose = () => {
+    //   setOpen(false);
+    // };
+
+    currentUser
+      .updateProfile({
+        displayName: "Abhinav",
+      })
+      .then(
+        function () {
+          // Profile updated successfully!
+          var displayName = currentUser.displayName;
+          console.log(`Display Name: ${displayName}`);
+        },
+        function (error) {
+          // An error happened.
+          console.log(`Guest Login Error: ${error}`);
+        }
+      );
+    // setUsername("Abhinav");
+    // console.log(currentUser.displayName);
+  }
+
+  const siginOut = () => {
+    if (currentUser.isAnonymous) currentUser.delete();
+    auth.signOut();
   };
 
   const handleSubmit = useCallback(async () => {
@@ -238,7 +288,7 @@ function Home() {
               {/* This signout button for development purpose */}
 
               <Button
-                onClick={() => auth.signOut()}
+                onClick={siginOut}
                 variant="outlined"
                 className="home__signOut"
               >
