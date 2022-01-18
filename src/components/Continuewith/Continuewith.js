@@ -57,7 +57,7 @@ class Continuewith extends Component {
               firebaseAuth={firebase.auth()}
             />
 
-            <div className="continueWith__try_text">Try demo</div>
+            {/* <div className="continueWith__try_text">Try demo</div>
             <button
               className="firebaseui-idp-button mdl-button mdl-js-button mdl-button--raised firebaseui-id-idp-button"
               style={{ backgroundColor: "red" }}
@@ -73,9 +73,9 @@ class Continuewith extends Component {
                 Sign in As Guest
               </span>
               <span class="firebaseui-idp-text firebaseui-idp-text-short">
-                GitHub
+                Guest
               </span>
-            </button>
+            </button> */}
           </div>
         )}
       </div>
