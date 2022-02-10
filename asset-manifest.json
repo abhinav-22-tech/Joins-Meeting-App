@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Joins-Meeting-App/static/css/main.bbbc12ec.chunk.css",
-    "main.js": "/Joins-Meeting-App/static/js/main.49e7bda3.chunk.js",
-    "main.js.map": "/Joins-Meeting-App/static/js/main.49e7bda3.chunk.js.map",
+    "main.css": "/Joins-Meeting-App/static/css/main.b129fadb.chunk.css",
+    "main.js": "/Joins-Meeting-App/static/js/main.d503ee2e.chunk.js",
+    "main.js.map": "/Joins-Meeting-App/static/js/main.d503ee2e.chunk.js.map",
     "runtime-main.js": "/Joins-Meeting-App/static/js/runtime-main.98dad854.js",
     "runtime-main.js.map": "/Joins-Meeting-App/static/js/runtime-main.98dad854.js.map",
     "static/css/2.28499ece.chunk.css": "/Joins-Meeting-App/static/css/2.28499ece.chunk.css",
-    "static/js/2.c9755e5e.chunk.js": "/Joins-Meeting-App/static/js/2.c9755e5e.chunk.js",
-    "static/js/2.c9755e5e.chunk.js.map": "/Joins-Meeting-App/static/js/2.c9755e5e.chunk.js.map",
+    "static/js/2.7775fef8.chunk.js": "/Joins-Meeting-App/static/js/2.7775fef8.chunk.js",
+    "static/js/2.7775fef8.chunk.js.map": "/Joins-Meeting-App/static/js/2.7775fef8.chunk.js.map",
     "index.html": "/Joins-Meeting-App/index.html",
     "static/css/2.28499ece.chunk.css.map": "/Joins-Meeting-App/static/css/2.28499ece.chunk.css.map",
-    "static/css/main.bbbc12ec.chunk.css.map": "/Joins-Meeting-App/static/css/main.bbbc12ec.chunk.css.map",
-    "static/js/2.c9755e5e.chunk.js.LICENSE.txt": "/Joins-Meeting-App/static/js/2.c9755e5e.chunk.js.LICENSE.txt"
+    "static/css/main.b129fadb.chunk.css.map": "/Joins-Meeting-App/static/css/main.b129fadb.chunk.css.map",
+    "static/js/2.7775fef8.chunk.js.LICENSE.txt": "/Joins-Meeting-App/static/js/2.7775fef8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.98dad854.js",
     "static/css/2.28499ece.chunk.css",
-    "static/js/2.c9755e5e.chunk.js",
-    "static/css/main.bbbc12ec.chunk.css",
-    "static/js/main.49e7bda3.chunk.js"
+    "static/js/2.7775fef8.chunk.js",
+    "static/css/main.b129fadb.chunk.css",
+    "static/js/main.d503ee2e.chunk.js"
   ]
 }
