@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Participant from "../Participant/Participant";
-// import ChatRoom from "../ChatRoom/ChatRoom";
+import ChatRoom from "../ChatRoom/ChatRoom";
 
 import "./Room.css";
 import MenuBar from "../MenuBar/MenuBar";
@@ -65,32 +65,42 @@ const Room = ({
     <main className="room">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid item xs={6} key="1">
-            <Box sx={{ boxShadow: 24 }}>
-              {room ? (
-                <Participant
-                  totalParticipant={participants}
-                  key={room.localParticipant.sid}
-                  participant={room.localParticipant}
-                />
-              ) : (
-                ""
-              )}
+          <Grid item xs={8}>
+            <Grid container spacing={2}>
+              <Grid item xs={4} key="1">
+                <Box sx={{ boxShadow: 24 }}>
+                  {room ? (
+                    <Participant
+                      totalParticipant={participants}
+                      key={room.localParticipant.sid}
+                      participant={room.localParticipant}
+                    />
+                  ) : (
+                    ""
+                  )}
+                </Box>
+              </Grid>
+              <Grid item xs={4} key="2">
+                <Box sx={{ boxShadow: 24 }}>{remoteParticipants}</Box>
+              </Grid>
+            </Grid>
+            <Box sx={{ mt: 4 }}>
+              <MenuBar
+                handleLogout={handleLogout}
+                handleAudioMute={handleAudioMute}
+                handleAudioUnmute={handleAudioUnmute}
+                handleVideoMute={handleVideoMute}
+                handleVideoUnmute={handleVideoUnmute}
+                roomName={roomName}
+              />
             </Box>
           </Grid>
-          <Grid item xs={6} key="2">
-            <Box sx={{ boxShadow: 24 }}>{remoteParticipants}</Box>
+          <Grid item xs={4}>
+            <Box sx={{ backgroundColor: "white" }}>
+              <ChatRoom roomId={roomName} />
+            </Box>
           </Grid>
         </Grid>
-        <Box sx={{ mt: 4 }}>
-          <MenuBar
-            handleLogout={handleLogout}
-            handleAudioMute={handleAudioMute}
-            handleAudioUnmute={handleAudioUnmute}
-            handleVideoMute={handleVideoMute}
-            handleVideoUnmute={handleVideoUnmute}
-          />
-        </Box>
       </Box>
 
       {/* <TopHeader

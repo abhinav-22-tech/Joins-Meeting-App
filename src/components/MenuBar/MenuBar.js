@@ -7,6 +7,7 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import MessageIcon from "@mui/icons-material/Message";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import PanToolIcon from "@mui/icons-material/PanTool";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
@@ -19,9 +20,11 @@ export default function MenuBar({
   handleAudioUnmute,
   handleVideoMute,
   handleVideoUnmute,
+  roomName,
 }) {
   const [audio, setAudio] = useState(true);
   const [camera, setCamera] = useState(true);
+  const [message, setMessage] = useState(true);
 
   const audioToggle = () => {
     if (audio === false) {
@@ -43,8 +46,17 @@ export default function MenuBar({
     }
   };
 
+  const messageToggle = () => {
+    if (message === false) {
+      setMessage(true);
+      // handleVideoUnmute();
+    } else if (message === true) {
+      setMessage(false);
+      // handleVideoMute();
+    }
+  };
   return (
-    <>
+    <Box>
       <Box
         component="span"
         sx={{
@@ -73,8 +85,12 @@ export default function MenuBar({
             <VideocamOffIcon sx={{ color: "white" }} />
           )}
         </Button>
-        <Button sx={{ color: "white" }}>
-          <MessageIcon />
+        <Button onClick={messageToggle} sx={{ color: "white" }}>
+          {message === true ? (
+            <MessageIcon sx={{ color: "#00a389" }} />
+          ) : (
+            <ChatBubbleOutlineIcon sx={{ color: "white" }} />
+          )}
         </Button>
         <Button sx={{ color: "white" }}>
           <PanToolIcon />
@@ -99,6 +115,7 @@ export default function MenuBar({
           <CallEndIcon />
         </Button>
       </Box>
-    </>
+      
+    </Box>
   );
 }

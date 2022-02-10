@@ -4,9 +4,9 @@ import { SecureLink } from "react-secure-link";
 import useChat from "./useChatRoom";
 import "./ChatRoom.css";
 import SendIcon from "@mui/icons-material/Send";
-import { EmojiEmotionsSharp, PhotoCamera } from "@mui/icons-material";
+import { PhotoCamera } from "@mui/icons-material";
 // import AttachFileIcon from "@mui/icons-material/AttachFile";
-import { Button, IconButton, TextField } from "@mui/material";
+import { IconButton } from "@mui/material";
 import InsertEmoticonSharpIcon from "@mui/icons-material/InsertEmoticonSharp";
 import Image from "./Image";
 

@@ -26,6 +26,8 @@ import {
 } from "@mui/icons-material";
 import { makeStyles } from "@mui/styles";
 import { createTheme } from "@mui/material/styles";
+import CircularProgress from "@mui/material/CircularProgress";
+import Backdrop from "@mui/material/Backdrop";
 import React, { useEffect, useState, useCallback } from "react";
 import { auth } from "../../lib/firebase";
 import { useHistory } from "react-router-dom";
@@ -129,7 +131,16 @@ function Home() {
     setRoomName(uuid);
   }
 
+  const [backDropOpen, setBackDropOpen] = React.useState(false);
+  const backDrophandleClose = () => {
+    setBackDropOpen(false);
+  };
+  const backDropHandleToggle = () => {
+    setBackDropOpen(!backDropOpen);
+  };
+
   const linkToRoom = () => {
+    backDropHandleToggle();
     if (roomName !== "") {
       console.log(currentUser.displayName);
       if (currentUser.isAnonymous && currentUser.displayName === "") {
@@ -201,6 +212,7 @@ function Home() {
   }, [roomName, username]);
 
   const handleLogout = useCallback(() => {
+    backDrophandleClose();
     setRoom((prevRoom) => {
       if (prevRoom) {
         prevRoom.localParticipant.tracks.forEach((trackPub) => {
@@ -285,7 +297,10 @@ function Home() {
           <div className="home__left">
             <div className="home__buttons">
               <Button
-                color="primary"
+                sx={{
+                  backgroundColor: "#00a389",
+                  "&:hover": { backgroundColor: "#18c2a7" },
+                }}
                 variant="contained"
                 className="home__createBTN"
                 onClick={randomRoom}
@@ -330,6 +345,18 @@ function Home() {
               >
                 Sign Out
               </Button>
+            </div>
+            <div>
+              <Backdrop
+                sx={{
+                  color: "#fff",
+                  zIndex: (theme) => theme.zIndex.drawer + 1,
+                }}
+                open={backDropOpen}
+                onClick={backDrophandleClose}
+              >
+                <CircularProgress color="inherit" />
+              </Backdrop>
             </div>
           </div>
         </div>
