@@ -67,7 +67,7 @@ export default function MenuBar({
           boxShadow: 24,
         }}
         display="flex"
-        width={500}
+        width={300}
         alignItems="center"
         justifyContent="center"
       >
@@ -85,7 +85,7 @@ export default function MenuBar({
             <VideocamOffIcon sx={{ color: "white" }} />
           )}
         </Button>
-        <Button onClick={messageToggle} sx={{ color: "white" }}>
+        {/* <Button onClick={messageToggle} sx={{ color: "white" }}>
           {message === true ? (
             <MessageIcon sx={{ color: "#00a389" }} />
           ) : (
@@ -97,7 +97,7 @@ export default function MenuBar({
         </Button>
         <Button sx={{ color: "white" }}>
           <PeopleAltIcon />
-        </Button>
+        </Button> */}
         <Button sx={{ color: "white" }}>
           <PersonAddAlt1Icon />
         </Button>

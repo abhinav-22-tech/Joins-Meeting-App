@@ -64,10 +64,10 @@ const Room = ({
   return (
     <main className="room">
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={8}>
-            <Grid container spacing={2}>
-              <Grid item xs={4} key="1">
+        {/* <Grid container spacing={2}> */}
+          {/* <Grid item xs={8}> */}
+            <Grid container spacing={2} columns={16}>
+              <Grid item xs={7.3} key="1">
                 <Box sx={{ boxShadow: 24 }}>
                   {room ? (
                     <Participant
@@ -80,27 +80,27 @@ const Room = ({
                   )}
                 </Box>
               </Grid>
-              <Grid item xs={4} key="2">
+              <Grid item xs={7.3} key="2">
                 <Box sx={{ boxShadow: 24 }}>{remoteParticipants}</Box>
               </Grid>
             </Grid>
-            <Box sx={{ mt: 4 }}>
-              <MenuBar
-                handleLogout={handleLogout}
-                handleAudioMute={handleAudioMute}
-                handleAudioUnmute={handleAudioUnmute}
-                handleVideoMute={handleVideoMute}
-                handleVideoUnmute={handleVideoUnmute}
-                roomName={roomName}
-              />
-            </Box>
-          </Grid>
-          <Grid item xs={4}>
+          {/* </Grid> */}
+          <Box sx={{ mt: 4 }}>
+            <MenuBar
+              handleLogout={handleLogout}
+              handleAudioMute={handleAudioMute}
+              handleAudioUnmute={handleAudioUnmute}
+              handleVideoMute={handleVideoMute}
+              handleVideoUnmute={handleVideoUnmute}
+              roomName={roomName}
+            />
+          </Box>
+          {/* <Grid item xs={4}>
             <Box sx={{ backgroundColor: "white" }}>
               <ChatRoom roomId={roomName} />
             </Box>
-          </Grid>
-        </Grid>
+          </Grid> */}
+        {/* </Grid> */}
       </Box>
 
       {/* <TopHeader
