@@ -24,7 +24,7 @@
   flex-direction: row;
   width: 100%;
   /* background-color: #edf0f5; */
-  height: 78vh;
+  height: 82vh;
   overflow-y: auto;
 }
 
@@ -38,7 +38,7 @@
   display: flex;
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 30%);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   width: 100%;
 }
 
@@ -122,7 +122,7 @@
   padding: 0.25rem;
   position: fixed;
   bottom: 4rem;
-  right: 8rem;
+  right: 4rem;
   /* left: 10px; */
   /* box-sizing: border-box; */
   /* box-shadow: 0 2px 4px rgb(0 0 0 / 30%), 0 8px 16px rgb(0 0 0 / 30%); */
@@ -165,13 +165,14 @@ a:hover {
 
 .group_chat_bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem 1rem;
   box-sizing: border-box;
   width: 100%;
   background: none;
   border-bottom: 1px solid #d0d3e3;
   height: 3rem;
+  /* background-color: #4fb9a8; */
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {

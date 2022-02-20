@@ -4,12 +4,13 @@ import { SecureLink } from "react-secure-link";
 import useChat from "./useChatRoom";
 import "./ChatRoom.css";
 import SendIcon from "@mui/icons-material/Send";
+import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
 import { PhotoCamera } from "@mui/icons-material";
 // import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { IconButton } from "@mui/material";
 import InsertEmoticonSharpIcon from "@mui/icons-material/InsertEmoticonSharp";
 import Image from "./Image";
-
 import Picker from "emoji-picker-react";
 import Linkify from "react-linkify";
 
@@ -27,6 +28,7 @@ const Room = ({ roomId }) => {
   };
 
   const handleSendMessage = () => {
+    console.log(newMessage);
     if (newMessage !== "") {
       sendMessage(newMessage, file);
       setNewMessage("");
@@ -96,11 +98,17 @@ const Room = ({ roomId }) => {
     // <div className="msg_container">
     <div className="chatbox">
       <div className="chatRoomMain">
-        <div className="group_chat_bar">
-          <span className="group_chat_title">Group Chat</span>
-          <span className="group_chat_msg_btn">Messages</span>
-          <span className="group_chat_partici">Participants</span>
-        </div>
+        {/* <div className="group_chat_bar">
+          <span className="group_chat_title">Chats</span>
+        </div> */}
+        <AppBar
+          position="static"
+          sx={{ height: 40, color: "black", background: "transparent", alignItems: "center"}}
+        >
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
+            Chats
+          </Typography>
+        </AppBar>
         <div className="chat-container">
           <div className="msg">
             <ol id="messages">{messages.map(renderMessages)}</ol>

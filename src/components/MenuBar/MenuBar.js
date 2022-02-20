@@ -13,6 +13,9 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CallEndIcon from "@mui/icons-material/CallEnd";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+
+import Snackbar from "@mui/material/Snackbar";
 
 export default function MenuBar({
   handleLogout,
@@ -27,6 +30,7 @@ export default function MenuBar({
   const [camera, setCamera] = useState(true);
   const [message, setMessage] = useState(true);
   const [raiseHand, setRaiseHand] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const audioToggle = () => {
     if (audio === false) {
@@ -68,6 +72,26 @@ export default function MenuBar({
     }
   };
 
+  const invitemorepeople = () => {
+    navigator.clipboard.writeText(
+      `Joins Meeting info \nVideo call link: https://abhinav-22-tech.github.io/Joins-Meeting-App/ \nRoom Code: ${roomName}`
+    );
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseSnackBar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
+  const iconOfSnackBar = (
+    <React.Fragment>
+      <ContentCopyIcon sx={{ color: "white" }} />
+    </React.Fragment>
+  );
+
   return (
     <Box>
       <Box
@@ -80,7 +104,7 @@ export default function MenuBar({
           boxShadow: 24,
         }}
         display="flex"
-        width={500}
+        width={430}
         alignItems="center"
         justifyContent="center"
       >
@@ -105,17 +129,17 @@ export default function MenuBar({
             <ChatBubbleOutlineIcon sx={{ color: "white" }} />
           )}
         </Button>
-        <Button onClick={raiseHandToggle} sx={{ color: "white" }}>
+        {/* <Button onClick={raiseHandToggle} sx={{ color: "white" }}>
           {raiseHand === true ? (
-            <PanToolIcon sx={{ color: "green" }} />
+            <PanToolIcon sx={{ color: "#00a389" }} />
           ) : (
             <PanToolIcon sx={{ color: "white" }} />
           )}
-        </Button>
+        </Button> */}
         {/* <Button sx={{ color: "white" }}>
           <PeopleAltIcon />
         </Button> */}
-        <Button sx={{ color: "white" }}>
+        <Button sx={{ color: "white" }} onClick={invitemorepeople}>
           <PersonAddAlt1Icon />
         </Button>
         <Button sx={{ color: "white" }}>
@@ -132,6 +156,14 @@ export default function MenuBar({
           <CallEndIcon />
         </Button>
       </Box>
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={2000}
+        onClose={handleCloseSnackBar}
+        action={iconOfSnackBar}
+        message="Successfully copied!"
+      />
     </Box>
   );
 }

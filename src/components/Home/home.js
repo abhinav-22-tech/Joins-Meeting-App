@@ -13,6 +13,7 @@ import {
   DialogTitle,
   Slide,
   DialogContentText,
+  IconButton,
 } from "@mui/material";
 import {
   CameraAltOutlined,
@@ -28,6 +29,9 @@ import { makeStyles } from "@mui/styles";
 import { createTheme } from "@mui/material/styles";
 import CircularProgress from "@mui/material/CircularProgress";
 import Backdrop from "@mui/material/Backdrop";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import Snackbar from "@mui/material/Snackbar";
+
 import React, { useEffect, useState, useCallback } from "react";
 import { auth } from "../../lib/firebase";
 import { useHistory } from "react-router-dom";
@@ -60,6 +64,7 @@ function Home() {
   const [roomName, setRoomName] = useState("");
   const [room, setRoom] = useState(null);
   const [username, setUsername] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const classes = useStyles();
   const history = useHistory();
@@ -257,6 +262,26 @@ function Home() {
     );
   };
 
+  const invitemorepeople = () => {
+    navigator.clipboard.writeText(
+      `Joins Meeting info \nVideo call link: https://abhinav-22-tech.github.io/Joins-Meeting-App/ \nRoom Code: ${roomName}`
+    );
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseSnackBar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
+  const iconOfSnackBar = (
+    <React.Fragment>
+      <ContentCopyIcon sx={{ color: "white" }} />
+    </React.Fragment>
+  );
+
   useEffect(() => {
     if (room) {
       const tidyUp = (event) => {
@@ -321,6 +346,16 @@ function Home() {
                       <Keyboard className="icon" />
                     </InputAdornment>
                   ),
+                  endAdornment: (
+                    <InputAdornment position="start">
+                      <IconButton
+                        onClick={invitemorepeople}
+                        disabled={roomName === ""}
+                      >
+                        <ContentCopyIcon sx={{ color: "black" }} />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
                 }}
               />
 
@@ -360,6 +395,13 @@ function Home() {
             </div>
           </div>
         </div>
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={2000}
+          onClose={handleCloseSnackBar}
+          action={iconOfSnackBar}
+          message="Successfully copied!"
+        />
       </div>
     );
   }

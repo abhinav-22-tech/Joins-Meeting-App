@@ -81,14 +81,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
           {participant.identity === currentUser ? "You" : participant.identity}
         </Box>
       </p>
-      {/* <Grid spacing={2}>
-        <Grid item xs={7}> */}
-          <Box sx={{ boxShadow: 24 }}>
-            <video ref={videoRef} autoPlay={true} />
-            <audio ref={audioRef} autoPlay={true} />
-          </Box>
-        {/* </Grid>
-      </Grid> */}
+      <Box sx={{ boxShadow: 24 }}>
+        <video ref={videoRef} autoPlay={true} />
+        <audio ref={audioRef} autoPlay={true} />
+      </Box>
     </div>
   );
 };
