@@ -21,8 +21,10 @@ const Room = ({
   handleVideoUnmute,
 }) => {
   const [participants, setParticipants] = useState([]);
-  const [displayChat, setDisplayChat] = useState("displayChat");
-
+  const [displayChat, setDisplayChat] = useState(true);
+  const [sizeofgrid1, setsizeofgrid1] = useState(9);
+  const [sizeofgrid2, setsizeofgrid2] = useState(3);
+  const [marginMenuBar, setMarginMenuBar] = useState(24);
   // const { videoON, audioON } = useRoomContext();
 
   // console.log(participants);
@@ -61,46 +63,67 @@ const Room = ({
     color: theme.palette.text.secondary,
   }));
 
+  const showChat = () => {
+    if (displayChat === false) {
+      setDisplayChat(true);
+      setsizeofgrid1(9);
+      setsizeofgrid2(3);
+      setMarginMenuBar(24);
+    } else if (displayChat === true) {
+      setDisplayChat(false);
+      setsizeofgrid1(11);
+      setsizeofgrid2(0);
+      setMarginMenuBar(14);
+    }
+  };
+
   return (
     <main className="room">
       <Box sx={{ flexGrow: 1 }}>
-        {/* <Grid container spacing={2}> */}
-          {/* <Grid item xs={8}> */}
-            <Grid container spacing={2} columns={16}>
-              <Grid item xs={7.3} key="1">
-                <Box sx={{ boxShadow: 24 }}>
-                  {room ? (
-                    <Participant
-                      totalParticipant={participants}
-                      key={room.localParticipant.sid}
-                      participant={room.localParticipant}
-                    />
-                  ) : (
-                    ""
-                  )}
-                </Box>
+        <Grid container spacing={2}>
+          <Grid item xs={sizeofgrid1}>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={2} columns={16}>
+                <Grid item xs={7.5} key="1">
+                  <Box sx={{ boxShadow: 24 }}>
+                    {room ? (
+                      <Participant
+                        totalParticipant={participants}
+                        key={room.localParticipant.sid}
+                        participant={room.localParticipant}
+                      />
+                    ) : (
+                      ""
+                    )}
+                  </Box>
+                </Grid>
+                <Grid item xs={7.5} key="2">
+                  <Box sx={{ boxShadow: 24 }}>{remoteParticipants}</Box>
+                </Grid>
               </Grid>
-              <Grid item xs={7.3} key="2">
-                <Box sx={{ boxShadow: 24 }}>{remoteParticipants}</Box>
-              </Grid>
-            </Grid>
-          {/* </Grid> */}
-          <Box sx={{ mt: 4 }}>
-            <MenuBar
-              handleLogout={handleLogout}
-              handleAudioMute={handleAudioMute}
-              handleAudioUnmute={handleAudioUnmute}
-              handleVideoMute={handleVideoMute}
-              handleVideoUnmute={handleVideoUnmute}
-              roomName={roomName}
-            />
-          </Box>
-          {/* <Grid item xs={4}>
-            <Box sx={{ backgroundColor: "white" }}>
-              <ChatRoom roomId={roomName} />
+              <Box sx={{ mt: marginMenuBar }}>
+                <MenuBar
+                  handleLogout={handleLogout}
+                  handleAudioMute={handleAudioMute}
+                  handleAudioUnmute={handleAudioUnmute}
+                  handleVideoMute={handleVideoMute}
+                  handleVideoUnmute={handleVideoUnmute}
+                  roomName={roomName}
+                  showChat={showChat}
+                />
+              </Box>
             </Box>
-          </Grid> */}
-        {/* </Grid> */}
+          </Grid>
+          {displayChat === true ? (
+            <Grid item xs={sizeofgrid2}>
+              <Box sx={{ backgroundColor: "white" }}>
+                <ChatRoom roomId={roomName} />
+              </Box>
+            </Grid>
+          ) : (
+            ""
+          )}
+        </Grid>
       </Box>
 
       {/* <TopHeader

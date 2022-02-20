@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Participant.css";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 // import { useAppContext } from "../../context/appContext";
 // import { useRoomContext } from "../../context/videoContext";
 
@@ -80,8 +81,14 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
           {participant.identity === currentUser ? "You" : participant.identity}
         </Box>
       </p>
-      <video ref={videoRef} autoPlay={true} />
-      <audio ref={audioRef} autoPlay={true} />
+      {/* <Grid spacing={2}>
+        <Grid item xs={7}> */}
+          <Box sx={{ boxShadow: 24 }}>
+            <video ref={videoRef} autoPlay={true} />
+            <audio ref={audioRef} autoPlay={true} />
+          </Box>
+        {/* </Grid>
+      </Grid> */}
     </div>
   );
 };

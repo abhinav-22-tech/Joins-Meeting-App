@@ -1,7 +1,7 @@
 .room {
   position: relative;
   background-color: rgb(71, 71, 71);
-  min-height: 100vh;
+  min-height: 95vh;
   /* display: flex; */
   /* flex-direction: column; */
   padding: 20px;

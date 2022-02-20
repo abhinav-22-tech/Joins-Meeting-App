@@ -20,11 +20,13 @@ export default function MenuBar({
   handleAudioUnmute,
   handleVideoMute,
   handleVideoUnmute,
+  showChat,
   roomName,
 }) {
   const [audio, setAudio] = useState(true);
   const [camera, setCamera] = useState(true);
   const [message, setMessage] = useState(true);
+  const [raiseHand, setRaiseHand] = useState(false);
 
   const audioToggle = () => {
     if (audio === false) {
@@ -49,12 +51,23 @@ export default function MenuBar({
   const messageToggle = () => {
     if (message === false) {
       setMessage(true);
-      // handleVideoUnmute();
+      showChat();
     } else if (message === true) {
       setMessage(false);
+      showChat();
+    }
+  };
+
+  const raiseHandToggle = () => {
+    if (raiseHand === false) {
+      setRaiseHand(true);
+      // handleVideoUnmute();
+    } else if (raiseHand === true) {
+      setRaiseHand(false);
       // handleVideoMute();
     }
   };
+
   return (
     <Box>
       <Box
@@ -67,7 +80,7 @@ export default function MenuBar({
           boxShadow: 24,
         }}
         display="flex"
-        width={300}
+        width={500}
         alignItems="center"
         justifyContent="center"
       >
@@ -85,17 +98,21 @@ export default function MenuBar({
             <VideocamOffIcon sx={{ color: "white" }} />
           )}
         </Button>
-        {/* <Button onClick={messageToggle} sx={{ color: "white" }}>
+        <Button onClick={messageToggle} sx={{ color: "white" }}>
           {message === true ? (
             <MessageIcon sx={{ color: "#00a389" }} />
           ) : (
             <ChatBubbleOutlineIcon sx={{ color: "white" }} />
           )}
         </Button>
-        <Button sx={{ color: "white" }}>
-          <PanToolIcon />
+        <Button onClick={raiseHandToggle} sx={{ color: "white" }}>
+          {raiseHand === true ? (
+            <PanToolIcon sx={{ color: "green" }} />
+          ) : (
+            <PanToolIcon sx={{ color: "white" }} />
+          )}
         </Button>
-        <Button sx={{ color: "white" }}>
+        {/* <Button sx={{ color: "white" }}>
           <PeopleAltIcon />
         </Button> */}
         <Button sx={{ color: "white" }}>
@@ -115,7 +132,6 @@ export default function MenuBar({
           <CallEndIcon />
         </Button>
       </Box>
-      
     </Box>
   );
 }
