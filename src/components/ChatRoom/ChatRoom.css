@@ -110,7 +110,7 @@
 .received-message .msgBody {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #4adcc5;
   width: fit-content;
   border-radius: 20px;
   padding: 0.5rem 1rem;
