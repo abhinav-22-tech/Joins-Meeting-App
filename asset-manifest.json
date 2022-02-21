@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Joins-Meeting-App/static/css/main.a03ea3ce.chunk.css",
+    "main.css": "/Joins-Meeting-App/static/css/main.05ed3eff.chunk.css",
     "main.js": "/Joins-Meeting-App/static/js/main.7be78c46.chunk.js",
     "main.js.map": "/Joins-Meeting-App/static/js/main.7be78c46.chunk.js.map",
     "runtime-main.js": "/Joins-Meeting-App/static/js/runtime-main.98dad854.js",
@@ -10,14 +10,14 @@
     "static/js/2.7c21db4d.chunk.js.map": "/Joins-Meeting-App/static/js/2.7c21db4d.chunk.js.map",
     "index.html": "/Joins-Meeting-App/index.html",
     "static/css/2.28499ece.chunk.css.map": "/Joins-Meeting-App/static/css/2.28499ece.chunk.css.map",
-    "static/css/main.a03ea3ce.chunk.css.map": "/Joins-Meeting-App/static/css/main.a03ea3ce.chunk.css.map",
+    "static/css/main.05ed3eff.chunk.css.map": "/Joins-Meeting-App/static/css/main.05ed3eff.chunk.css.map",
     "static/js/2.7c21db4d.chunk.js.LICENSE.txt": "/Joins-Meeting-App/static/js/2.7c21db4d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.98dad854.js",
     "static/css/2.28499ece.chunk.css",
     "static/js/2.7c21db4d.chunk.js",
-    "static/css/main.a03ea3ce.chunk.css",
+    "static/css/main.05ed3eff.chunk.css",
     "static/js/main.7be78c46.chunk.js"
   ]
 }
