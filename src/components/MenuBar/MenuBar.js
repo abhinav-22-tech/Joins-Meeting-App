@@ -14,6 +14,8 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CallEndIcon from "@mui/icons-material/CallEnd";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import ScreenShareIcon from '@mui/icons-material/ScreenShare';
+import StopScreenShareIcon from '@mui/icons-material/StopScreenShare';
 
 import Snackbar from "@mui/material/Snackbar";
 
@@ -30,6 +32,7 @@ export default function MenuBar({
   const [camera, setCamera] = useState(true);
   const [message, setMessage] = useState(true);
   const [raiseHand, setRaiseHand] = useState(false);
+  const [screenSharing, setScreenSharing] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const audioToggle = () => {
@@ -59,6 +62,16 @@ export default function MenuBar({
     } else if (message === true) {
       setMessage(false);
       showChat();
+    }
+  };
+
+  const screenSharingToggle = () => {
+    if (screenSharing === false) {
+      setScreenSharing(true);
+      // showChat();
+    } else if (screenSharing === true) {
+      setScreenSharing(false);
+      // showChat();
     }
   };
 
@@ -124,9 +137,16 @@ export default function MenuBar({
         </Button>
         <Button onClick={messageToggle} sx={{ color: "white" }}>
           {message === true ? (
-            <MessageIcon sx={{ color: "#00a389" }} />
+            <MessageIcon sx={{ color: "#972ab5" }} />
           ) : (
             <ChatBubbleOutlineIcon sx={{ color: "white" }} />
+          )}
+        </Button>
+        <Button onClick={screenSharingToggle} sx={{ color: "white" }}>
+          {screenSharing === true ? (
+            <ScreenShareIcon sx={{ color: "#3277a8" }} />
+          ) : (
+            <StopScreenShareIcon sx={{ color: "white" }} />
           )}
         </Button>
         {/* <Button onClick={raiseHandToggle} sx={{ color: "white" }}>
