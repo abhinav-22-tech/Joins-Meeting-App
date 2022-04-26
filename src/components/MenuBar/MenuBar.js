@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useCallback } from "react";
+import { useState} from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import MicIcon from "@mui/icons-material/Mic";
@@ -8,8 +8,8 @@ import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import MessageIcon from "@mui/icons-material/Message";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import PanToolIcon from "@mui/icons-material/PanTool";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+// import PanToolIcon from "@mui/icons-material/PanTool";
+// import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CallEndIcon from "@mui/icons-material/CallEnd";
@@ -27,11 +27,12 @@ export default function MenuBar({
   handleVideoUnmute,
   showChat,
   roomName,
+  handleScreenShare
 }) {
   const [audio, setAudio] = useState(true);
   const [camera, setCamera] = useState(true);
   const [message, setMessage] = useState(true);
-  const [raiseHand, setRaiseHand] = useState(false);
+  // const [raiseHand, setRaiseHand] = useState(false);
   const [screenSharing, setScreenSharing] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -68,22 +69,22 @@ export default function MenuBar({
   const screenSharingToggle = () => {
     if (screenSharing === false) {
       setScreenSharing(true);
-      // showChat();
+      handleScreenShare(true);
     } else if (screenSharing === true) {
       setScreenSharing(false);
-      // showChat();
+      handleScreenShare(false);
     }
   };
 
-  const raiseHandToggle = () => {
-    if (raiseHand === false) {
-      setRaiseHand(true);
-      // handleVideoUnmute();
-    } else if (raiseHand === true) {
-      setRaiseHand(false);
-      // handleVideoMute();
-    }
-  };
+  // const raiseHandToggle = () => {
+  //   if (raiseHand === false) {
+  //     setRaiseHand(true);
+  //     // handleVideoUnmute();
+  //   } else if (raiseHand === true) {
+  //     setRaiseHand(false);
+  //     // handleVideoMute();
+  //   }
+  // };
 
   const invitemorepeople = () => {
     navigator.clipboard.writeText(
