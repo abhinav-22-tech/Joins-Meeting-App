@@ -262,6 +262,29 @@ function Home() {
     );
   };
 
+  let screenTrack;
+
+  const handleScreenShareStart = () => {
+    navigator.mediaDevices
+      .getDisplayMedia()
+      .then((stream) => {
+        screenTrack = new Video.LocalVideoTrack(stream.getTracks()[0]);
+        room.localParticipant.publishTrack(screenTrack);
+        // screenTrack.mediaStreamTrack.onended = () => {
+        // };
+        console.log("senctrack: " + screenTrack);
+      })
+      .catch(() => {
+        alert("Could not share the screen.");
+      });
+  };
+
+  const handleScreenShareStop = () => {
+    // room.localParticipant.unpublishTrack(screenTrack);
+    // screenTrack.stop();
+    console.log("Screen Shairing Stop");
+  };
+
   const invitemorepeople = () => {
     navigator.clipboard.writeText(
       `Joins Meeting info \nVideo call link: https://abhinav-22-tech.github.io/Joins-Meeting-App/ \nRoom Code: ${roomName}`
@@ -313,6 +336,9 @@ function Home() {
         handleAudioUnmute={handleAudioUnmute}
         handleVideoMute={handleVideoMute}
         handleVideoUnmute={handleVideoUnmute}
+        handleScreenShareStart={handleScreenShareStart}
+        handleScreenShareStop={handleScreenShareStop}
+        screenTrack={screenTrack}
       />
     );
   } else {

@@ -27,6 +27,7 @@ export default function MenuBar({
   handleVideoUnmute,
   showChat,
   roomName,
+  handleScreenShare
 }) {
   const [audio, setAudio] = useState(true);
   const [camera, setCamera] = useState(true);
@@ -68,10 +69,10 @@ export default function MenuBar({
   const screenSharingToggle = () => {
     if (screenSharing === false) {
       setScreenSharing(true);
-      // showChat();
+      handleScreenShare(true);
     } else if (screenSharing === true) {
       setScreenSharing(false);
-      // showChat();
+      handleScreenShare(false);
     }
   };
 

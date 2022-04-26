@@ -19,15 +19,18 @@ const Room = ({
   handleAudioUnmute,
   handleVideoMute,
   handleVideoUnmute,
+  handleScreenShareStart,
+  handleScreenShareStop,
+  screenTrack
 }) => {
   const [participants, setParticipants] = useState([]);
   const [displayChat, setDisplayChat] = useState(true);
+  const [displayShareScreen, setDisplayShareScreen] = useState(false);
   const [sizeofgrid1, setsizeofgrid1] = useState(9);
   const [sizeofgrid2, setsizeofgrid2] = useState(3);
   const [marginMenuBar, setMarginMenuBar] = useState(24);
   // const { videoON, audioON } = useRoomContext();
 
-  // console.log(participants);
   useEffect(() => {
     const participantConnected = (participant) => {
       setParticipants((prevParticipants) => [...prevParticipants, participant]);
@@ -56,6 +59,11 @@ const Room = ({
     />
   ));
 
+  // const screenShare  = () =>{
+  //   <Participant k/>
+  // }
+
+
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     padding: theme.spacing(2),
@@ -74,6 +82,16 @@ const Room = ({
       setsizeofgrid1(11);
       setsizeofgrid2(0);
       setMarginMenuBar(14);
+    }
+  };
+
+  const handleScreenShare = (displayScreen) => {
+    console.log("displayScreen : " + displayScreen);
+    setDisplayShareScreen(displayScreen);
+    if (displayScreen === true) {
+      handleScreenShareStart();
+    } else {
+      handleScreenShareStop();
     }
   };
 
@@ -101,6 +119,21 @@ const Room = ({
                   <Box sx={{ boxShadow: 24 }}>{remoteParticipants}</Box>
                 </Grid>
               </Grid>
+              <Box>
+                {displayShareScreen === true ? (
+                  <Grid>
+                    <Box sx={{ backgroundColor: "white" }}>
+                      <Participant
+                        totalParticipant={participants}
+                        key={room.localParticipant.sid}
+                        participant={room.localParticipant}
+                      />
+                    </Box>
+                  </Grid>
+                ) : (
+                  ""
+                )}
+              </Box>
               <Box sx={{ mt: marginMenuBar }}>
                 <MenuBar
                   handleLogout={handleLogout}
@@ -110,6 +143,7 @@ const Room = ({
                   handleVideoUnmute={handleVideoUnmute}
                   roomName={roomName}
                   showChat={showChat}
+                  handleScreenShare={handleScreenShare}
                 />
               </Box>
             </Box>
