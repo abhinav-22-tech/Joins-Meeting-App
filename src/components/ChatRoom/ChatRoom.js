@@ -1,25 +1,23 @@
-import React, { useRef, useState, useEffect } from "react";
-import { SecureLink } from "react-secure-link";
-
-import useChat from "./useChatRoom";
-import "./ChatRoom.css";
-import SendIcon from "@mui/icons-material/Send";
-import AppBar from "@mui/material/AppBar";
-import Typography from "@mui/material/Typography";
 import { PhotoCamera } from "@mui/icons-material";
+import InsertEmoticonSharpIcon from "@mui/icons-material/InsertEmoticonSharp";
+import SendIcon from "@mui/icons-material/Send";
 // import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { IconButton } from "@mui/material";
-import InsertEmoticonSharpIcon from "@mui/icons-material/InsertEmoticonSharp";
-import Image from "./Image";
+import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
 import Picker from "emoji-picker-react";
+import React, { useEffect, useRef, useState } from "react";
 import Linkify from "react-linkify";
+import { SecureLink } from "react-secure-link";
+import "./ChatRoom.css";
+import Image from "./Image";
+import useChat from "./useChatRoom";
 
 const Room = ({ roomId }) => {
   // const { roomId } = props.match.params;
   const { messages, sendMessage } = useChat(roomId);
   const [newMessage, setNewMessage] = useState("");
   const [file, setFile] = useState();
-  const [chosenEmoji, setChosenEmoji] = useState(null);
   const [displayEmoji, setDisplayEmoji] = useState("notDisplayEmoji");
   const messageRef = useRef();
 
@@ -83,7 +81,6 @@ const Room = ({ roomId }) => {
 
   const onEmojiClick = (event, emojiObject) => {
     setNewMessage(newMessage + emojiObject.emoji);
-    setChosenEmoji(emojiObject);
   };
 
   const disEmoji = () => {
@@ -95,17 +92,18 @@ const Room = ({ roomId }) => {
   useEffect(() => messageRef.current.scrollIntoView({ behavior: "smooth" }));
 
   return (
-    // <div className="msg_container">
     <div className="chatbox">
       <div className="chatRoomMain">
-        {/* <div className="group_chat_bar">
-          <span className="group_chat_title">Chats</span>
-        </div> */}
         <AppBar
           position="static"
-          sx={{ height: 40, color: "black", background: "transparent", alignItems: "center"}}
+          sx={{
+            height: 40,
+            color: "black",
+            background: "transparent",
+            alignItems: "center",
+          }}
         >
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Chats
           </Typography>
         </AppBar>
@@ -137,21 +135,6 @@ const Room = ({ roomId }) => {
               <PhotoCamera />
             </IconButton>
           </label>
-
-          {/* <label htmlFor="raised-button-file">
-            <input
-              accept="image/*"
-              onChange={selectFile}
-              style={{ display: "none" }}
-              id="raised-button-files"
-              multiple
-              type="file"
-            />
-            <IconButton aria-label="upload picture" component="span">
-              <AttachFileIcon />
-            </IconButton>
-          </label> */}
-
           <label>
             <IconButton aria-label="emoji" component="span" onClick={disEmoji}>
               <InsertEmoticonSharpIcon />
@@ -165,16 +148,6 @@ const Room = ({ roomId }) => {
             onChange={handleNewMessageChange}
             onKeyUp={handleKeyUp}
           />
-
-          {/* <TextField
-          id="message"
-          label="Enter message here"
-          variant="outlined"
-          value={newMessage}
-          onChange={handleNewMessageChange}
-          onKeyUp={handleKeyUp}
-          style={{width: "100%"}}
-        /> */}
 
           <button onClick={handleSendMessage}>
             <SendIcon />

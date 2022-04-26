@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
-import Participant from "../Participant/Participant";
-import ChatRoom from "../ChatRoom/ChatRoom";
-
-import "./Room.css";
-import MenuBar from "../MenuBar/MenuBar";
-
-import { experimentalStyled as styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import React, { useEffect, useState } from "react";
+import ChatRoom from "../ChatRoom/ChatRoom";
+import MenuBar from "../MenuBar/MenuBar";
+import Participant from "../Participant/Participant";
+import "./Room.css";
 
 const Room = ({
   roomName,
@@ -21,7 +17,6 @@ const Room = ({
   handleVideoUnmute,
   handleScreenShareStart,
   handleScreenShareStop,
-  screenTrack
 }) => {
   const [participants, setParticipants] = useState([]);
   const [displayChat, setDisplayChat] = useState(true);
@@ -29,7 +24,6 @@ const Room = ({
   const [sizeofgrid1, setsizeofgrid1] = useState(9);
   const [sizeofgrid2, setsizeofgrid2] = useState(3);
   const [marginMenuBar, setMarginMenuBar] = useState(24);
-  // const { videoON, audioON } = useRoomContext();
 
   useEffect(() => {
     const participantConnected = (participant) => {
@@ -59,17 +53,7 @@ const Room = ({
     />
   ));
 
-  // const screenShare  = () =>{
-  //   <Participant k/>
-  // }
-
-
-  const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
+  console.log("room: ");
 
   const showChat = () => {
     if (displayChat === false) {

@@ -8,7 +8,7 @@ const firebaseConfig = {
   storageBucket: "meeting-3ecfa.appspot.com",
   messagingSenderId: "940410080677",
   appId: "1:940410080677:web:dad8c866e2b666c92c6c4c",
-  measurementId: "G-7QHJGCKWLK"
+  measurementId: "G-7QHJGCKWLK",
 };
 
 firebase.initializeApp(firebaseConfig);

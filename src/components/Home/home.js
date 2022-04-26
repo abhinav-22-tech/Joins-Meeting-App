@@ -1,116 +1,35 @@
-import {
-  Avatar,
-  Badge,
-  Button,
-  Popover,
-  TextField,
-  Divider,
-  InputAdornment,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentTest,
-  DialogTitle,
-  Slide,
-  DialogContentText,
-  IconButton,
-} from "@mui/material";
-import {
-  CameraAltOutlined,
-  FeedbackOutlined,
-  HelpOutline,
-  PersonOutlined,
-  Settings,
-  Apps,
-  VideoCallOutlined,
-  Keyboard,
-} from "@mui/icons-material";
-import { makeStyles } from "@mui/styles";
-import { createTheme } from "@mui/material/styles";
-import CircularProgress from "@mui/material/CircularProgress";
-import Backdrop from "@mui/material/Backdrop";
+import { Keyboard, VideoCallOutlined } from "@mui/icons-material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import Snackbar from "@mui/material/Snackbar";
-
-import React, { useEffect, useState, useCallback } from "react";
-import { auth } from "../../lib/firebase";
-import { useHistory } from "react-router-dom";
-import "./home.css";
+import React, { useCallback, useEffect, useState } from "react";
 import Video from "twilio-video";
+import { auth } from "../../lib/firebase";
 import Room from "../Room/Room";
+import "./home.css";
 
 const { createLocalVideoTrack } = require("twilio-video");
 
-const theme = createTheme();
-
-const useStyles = makeStyles(() => ({
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
-}));
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
 function Home() {
   const [currentUser, setCurrentUser] = useState(null);
-
-  const [appState, setAppState] = useState("empty");
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [date, setDate] = useState(new Date());
-
   const [roomName, setRoomName] = useState("");
   const [room, setRoom] = useState(null);
   const [username, setUsername] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
-  const classes = useStyles();
-  const history = useHistory();
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
-  const nameFirstChar =
-    currentUser?.displayName !== null
-      ? currentUser?.displayName.charAt(0).toUpperCase()
-      : "";
-
-  function stringToColor() {
-    var str = currentUser?.displayName + "";
-    var s = 50;
-    var l = 50;
-    var hash = 0;
-    for (var i = 0; i < str.length; i++)
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-
-    var h = hash % 360;
-    return "hsl(" + h + ", " + s + "%, " + l + "%)";
-  }
-
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         setCurrentUser(user);
-        setAppState("home");
-        // console.log("currentUser: " + user);
         console.log(user.isAnonymous);
       } else {
         setCurrentUser(null);
-        setAppState("login");
       }
     });
 
-    const timer = setInterval(() => setDate(new Date()), 1000);
+    const timer = setInterval(() => new Date(), 1000);
     return timer;
   }, []);
 
@@ -156,16 +75,6 @@ function Home() {
   };
 
   function GuestLogin() {
-    // const [open, setOpen] = React.useState(false);
-
-    // const handleClickOpen = () => {
-    //   setOpen(true);
-    // };
-
-    // const handleClose = () => {
-    //   setOpen(false);
-    // };
-
     currentUser
       .updateProfile({
         displayName: "Abhinav",
@@ -181,8 +90,6 @@ function Home() {
           console.log(`Guest Login Error: ${error}`);
         }
       );
-    // setUsername("Abhinav");
-    // console.log(currentUser.displayName);
   }
 
   const siginOut = () => {
@@ -245,18 +152,9 @@ function Home() {
     room.localParticipant.videoTracks.forEach((publication) =>
       publication.track.disable()
     );
-    // room.localParticipant.videoTracks.forEach((publication) =>
-    //   publication.track.stop()
-    // );
-    // room.localParticipant.videoTracks.forEach((publication) =>
-    //   publication.unpublish()
-    // );
   };
 
   const handleVideoUnmute = () => {
-    // createLocalVideoTrack().then((localVideoTrack) => {
-    //   room.localParticipant.publishTrack(localVideoTrack);
-    // });
     room.localParticipant.videoTracks.forEach((publication) =>
       publication.track.enable()
     );
@@ -384,8 +282,6 @@ function Home() {
                   ),
                 }}
               />
-
-              {/* <Link to={`/${roomName}`}> */}
               <Button
                 color="primary"
                 variant="outlined"
@@ -395,7 +291,6 @@ function Home() {
               >
                 Join
               </Button>
-              {/* </Link> */}
 
               {/* This signout button for development purpose */}
 
@@ -414,7 +309,6 @@ function Home() {
                   zIndex: (theme) => theme.zIndex.drawer + 1,
                 }}
                 open={backDropOpen}
-                // onClick={backDrophandleClose}
               >
                 <CircularProgress color="inherit" />
               </Backdrop>

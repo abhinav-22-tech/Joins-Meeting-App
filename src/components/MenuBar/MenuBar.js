@@ -1,23 +1,22 @@
-import React from "react";
-import { useState} from "react";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+import CallEndIcon from "@mui/icons-material/CallEnd";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import MessageIcon from "@mui/icons-material/Message";
 import MicIcon from "@mui/icons-material/Mic";
 import MicOffIcon from "@mui/icons-material/MicOff";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import VideocamOffIcon from "@mui/icons-material/VideocamOff";
-import MessageIcon from "@mui/icons-material/Message";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 // import PanToolIcon from "@mui/icons-material/PanTool";
 // import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import CallEndIcon from "@mui/icons-material/CallEnd";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare';
-
+import VideocamIcon from "@mui/icons-material/Videocam";
+import VideocamOffIcon from "@mui/icons-material/VideocamOff";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
+import React, { useState } from "react";
+
 
 export default function MenuBar({
   handleLogout,
@@ -93,7 +92,7 @@ export default function MenuBar({
     setOpenSnackbar(true);
   };
 
-  const handleCloseSnackBar = (event, reason) => {
+  const handleCloseSnackBar = (_event, reason) => {
     if (reason === "clickaway") {
       return;
     }
