@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import "./Image.css"
 
 function Image(props) {
   const [imageSrc, setImageSrc] = useState("");

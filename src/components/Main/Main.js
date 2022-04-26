@@ -1,22 +1,24 @@
-import CallEndIcon from "@mui/icons-material/CallEnd";
-import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
-import IosShareIcon from "@mui/icons-material/IosShare";
-import MessageIcon from "@mui/icons-material/Message";
-import MicIcon from "@mui/icons-material/Mic";
-import MicOffIcon from "@mui/icons-material/MicOff";
-import PausePresentationIcon from "@mui/icons-material/PausePresentation";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import VideocamOffIcon from "@mui/icons-material/VideocamOff";
-import { IconButton } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // import ReactFullscreen from "react-easyfullscreen";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import ChatRoom from "../ChatRoom/ChatRoom";
+
 import "./Main.css";
+import MessageIcon from "@mui/icons-material/Message";
+import { IconButton } from "@mui/material";
+import ChatRoom from "../ChatRoom/ChatRoom";
+import Room from "../Room/Room";
+import Home from "../Home/home";
 
+import MicIcon from "@mui/icons-material/Mic";
+import MicOffIcon from "@mui/icons-material/MicOff";
+import VideocamIcon from "@mui/icons-material/Videocam";
+import IosShareIcon from "@mui/icons-material/IosShare";
+import CallEndIcon from "@mui/icons-material/CallEnd";
+import VideocamOffIcon from "@mui/icons-material/VideocamOff";
+import PausePresentationIcon from "@mui/icons-material/PausePresentation";
+import ClosedCaptionIcon from "@mui/icons-material/ClosedCaption";
 
-
+import { makeStyles } from "@mui/styles";
 // import { style } from "@mui/system";
 // import { Fullscreen } from "@mui/icons-material";
 

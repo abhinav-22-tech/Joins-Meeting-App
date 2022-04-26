@@ -1,7 +1,8 @@
-import firebase from "firebase";
 import React, { Component } from "react";
+import firebase from "firebase";
 import { StyledFirebaseAuth } from "react-firebaseui";
 import "./Continuewith.css";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 // import logo from "../../images/X-oo.svg";
 
 class Continuewith extends Component {
@@ -26,6 +27,21 @@ class Continuewith extends Component {
   };
 
   render() {
+    const anonSignIn = () => {
+      // [START auth_anon_sign_in]
+      firebase
+        .auth()
+        .signInAnonymously()
+        .then(() => {
+          // Signed in..
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
+      // [END auth_anon_sign_in]
+    };
 
     return (
       <div className="continueWith">

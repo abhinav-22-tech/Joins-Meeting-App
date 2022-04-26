@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useRef, useEffect, useState } from "react";
 import Continuewith from "./components/Continuewith/Continuewith";
 import Home from "./components/Home/home";
+// import ChatRoom from "./components/ChatRoom/ChatRoom";
+// import Main from "./components/Main/Main";
+
 import { auth } from "./lib/firebase";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  const [, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const [appState, setAppState] = useState("empty");
 
   useEffect(() => {

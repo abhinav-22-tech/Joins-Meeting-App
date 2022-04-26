@@ -1,10 +1,17 @@
-import Box from "@mui/material/Box";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Participant.css";
+import Box from "@mui/material/Box";
+// import Grid from "@mui/material/Grid";
+// import { useAppContext } from "../../context/appContext";
+// import { useRoomContext } from "../../context/videoContext";
 
 const Participant = ({ participant, totalParticipant, currentUser }) => {
   const [videoTracks, setVideoTracks] = useState([]);
   const [audioTracks, setAudioTracks] = useState([]);
+
+  // const { videoON } = useRoomContext();
+  // const { currentUser } = useAppContext();
+
   const videoRef = useRef();
   const audioRef = useRef();
 
