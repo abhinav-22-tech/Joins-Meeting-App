@@ -143,13 +143,13 @@ export default function MenuBar({
             <ChatBubbleOutlineIcon sx={{ color: "white" }} />
           )}
         </Button>
-        <Button onClick={screenSharingToggle} sx={{ color: "white" }}>
+        {/* <Button onClick={screenSharingToggle} sx={{ color: "white" }}>
           {screenSharing === true ? (
             <ScreenShareIcon sx={{ color: "#3277a8" }} />
           ) : (
             <StopScreenShareIcon sx={{ color: "white" }} />
           )}
-        </Button>
+        </Button> */}
         {/* <Button onClick={raiseHandToggle} sx={{ color: "white" }}>
           {raiseHand === true ? (
             <PanToolIcon sx={{ color: "#00a389" }} />

@@ -1,43 +1,23 @@
-import {
-  Avatar,
-  Badge,
-  Button,
-  Popover,
-  TextField,
-  Divider,
-  InputAdornment,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentTest,
-  DialogTitle,
-  Slide,
-  DialogContentText,
-  IconButton,
-} from "@mui/material";
-import {
-  CameraAltOutlined,
-  FeedbackOutlined,
-  HelpOutline,
-  PersonOutlined,
-  Settings,
-  Apps,
-  VideoCallOutlined,
-  Keyboard,
-} from "@mui/icons-material";
-import { makeStyles } from "@mui/styles";
-import { createTheme } from "@mui/material/styles";
-import CircularProgress from "@mui/material/CircularProgress";
-import Backdrop from "@mui/material/Backdrop";
+import { Keyboard, VideoCallOutlined } from "@mui/icons-material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import {
+  Button,
+  IconButton,
+  InputAdornment,
+  Slide,
+  TextField,
+} from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import Snackbar from "@mui/material/Snackbar";
-
-import React, { useEffect, useState, useCallback } from "react";
-import { auth } from "../../lib/firebase";
+import { createTheme } from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
+import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import "./home.css";
 import Video from "twilio-video";
+import { auth } from "../../lib/firebase";
 import Room from "../Room/Room";
+import "./home.css";
 
 const { createLocalVideoTrack } = require("twilio-video");
 
@@ -65,6 +45,7 @@ function Home() {
   const [room, setRoom] = useState(null);
   const [username, setUsername] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [screenTrack, setScreenTrack] = useState(null);
 
   const classes = useStyles();
   const history = useHistory();
@@ -262,26 +243,38 @@ function Home() {
     );
   };
 
-  let screenTrack;
-
   const handleScreenShareStart = () => {
-    navigator.mediaDevices
-      .getDisplayMedia()
-      .then((stream) => {
-        screenTrack = new Video.LocalVideoTrack(stream.getTracks()[0]);
-        room.localParticipant.publishTrack(screenTrack);
-        // screenTrack.mediaStreamTrack.onended = () => {
-        // };
-        console.log("senctrack: " + screenTrack);
-      })
-      .catch(() => {
-        alert("Could not share the screen.");
-      });
+    if (!screenTrack) {
+      navigator.mediaDevices
+        .getDisplayMedia({
+          video: {
+            cursor: "always",
+          },
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            sampleRate: 44100,
+          },
+        })
+        .then((stream) => {
+          setScreenTrack(new Video.LocalVideoTrack(stream.getTracks()[0]));
+          room.localParticipant.publishTrack(screenTrack);
+          console.log("senctrack: " + screenTrack);
+        })
+        .catch(() => {
+          alert("Could not share the screen.");
+        });
+    } else {
+      room.localParticipant.unpublishTrack(screenTrack);
+      screenTrack.stop();
+      setScreenTrack(null);
+    }
   };
 
   const handleScreenShareStop = () => {
-    // room.localParticipant.unpublishTrack(screenTrack);
-    // screenTrack.stop();
+    room.localParticipant.unpublishTrack(screenTrack);
+    screenTrack.stop();
+    setScreenTrack(null);
     console.log("Screen Shairing Stop");
   };
 
