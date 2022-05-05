@@ -1,10 +1,8 @@
-import * as cam from "@mediapipe/camera_utils";
-import {FaceMesh} from "@mediapipe/face_mesh";
-import Box from "@mui/material/Box";
-import React, { useEffect, useRef, useState } from "react";
-import { ReactP5Wrapper } from "react-p5-wrapper";
+import React, { useState, useEffect, useRef } from "react";
 import "./Participant.css";
-
+import Box from "@mui/material/Box";
+import { FaceMesh } from "@mediapipe/face_mesh";
+import { ReactP5Wrapper } from "react-p5-wrapper";
 // import Grid from "@mui/material/Grid";
 // import { useAppContext } from "../../context/appContext";
 // import { useRoomContext } from "../../context/videoContext";
@@ -12,12 +10,38 @@ import "./Participant.css";
 const Participant = ({ participant, totalParticipant, currentUser }) => {
   const [videoTracks, setVideoTracks] = useState([]);
   const [audioTracks, setAudioTracks] = useState([]);
-
+  const [facemeshAR, setFacemeshAR] = useState(false);
   // const { videoON } = useRoomContext();
   // const { currentUser } = useAppContext();
 
   const videoRef = useRef();
   const audioRef = useRef();
+
+  let detections = {};
+  const leftEye = [
+    263, 249, 390, 373, 374, 380, 381, 382, 362, 263, 466, 388, 387, 386, 385,
+    384, 398, 362,
+  ];
+  const rightEye = [
+    33, 7, 163, 144, 145, 153, 154, 155, 133, 33, 246, 161, 160, 159, 158, 157,
+    173, 133,
+  ];
+  const leftIris = [474, 475, 476, 477, 474];
+  const rightIris = [469, 470, 471, 472, 469];
+  const leftEyeBrow = [276, 283, 282, 295, 285, 300, 293, 334, 296, 336];
+  const rightEyeBrow = [46, 53, 52, 65, 55, 70, 63, 105, 66, 107];
+  const lips = [
+    61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291, 61, 185, 40, 39, 37, 0,
+    267, 269, 270, 409, 291, 78, 95, 88, 178, 87, 14, 317, 402, 318, 324, 308,
+    78, 191, 80, 81, 82, 13, 312, 311, 310, 415, 308,
+  ];
+  const nose = [5, 275, 94];
+  const foreHeadSpot = [151, 9, 8];
+  const faceBorder = [
+    10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288, 397, 365, 379,
+    378, 400, 377, 152, 148, 176, 149, 150, 136, 172, 58, 132, 93, 234, 127,
+    162, 21, 54, 103, 67, 109, 10,
+  ];
 
   const trackpubsToTracks = (trackMap) =>
     Array.from(trackMap.values())
@@ -54,59 +78,43 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
     };
   }, [participant]);
 
-  useEffect(() => {
-    const videoTrack = videoTracks[0];
-    if (videoTrack) {
-      videoTrack.attach(videoRef.current);
-      return () => {
-        videoTrack.detach();
-      };
-    }
-    console.log("videoTrack: " + videoTrack);
-  }, [videoTracks]);
-
-  useEffect(() => {
-    const audioTrack = audioTracks[0];
-    if (audioTrack) {
-      audioTrack.attach(audioRef.current);
-      return () => {
-        audioTrack.detach();
-      };
-    }
-  }, [audioTracks]);
-
-  var camera = null;
-  let detections = {};
-  let leftEye = [
-    263, 249, 390, 373, 374, 380, 381, 382, 362, 263, 466, 388, 387, 386, 385,
-    384, 398, 362,
-  ];
-  let rightEye = [
-    33, 7, 163, 144, 145, 153, 154, 155, 133, 33, 246, 161, 160, 159, 158, 157,
-    173, 133,
-  ];
-  let leftIris = [474, 475, 476, 477, 474];
-  let rightIris = [469, 470, 471, 472, 469];
-  let leftEyeBrow = [276, 283, 282, 295, 285, 300, 293, 334, 296, 336];
-  let rightEyeBrow = [46, 53, 52, 65, 55, 70, 63, 105, 66, 107];
-  let lips = [
-    61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291, 61, 185, 40, 39, 37, 0,
-    267, 269, 270, 409, 291, 78, 95, 88, 178, 87, 14, 317, 402, 318, 324, 308,
-    78, 191, 80, 81, 82, 13, 312, 311, 310, 415, 308,
-  ];
-  let nose = [5, 275, 94];
-  let foreHeadSpot = [151, 9, 8];
-  let faceBorder = [
-    10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288, 397, 365, 379,
-    378, 400, 377, 152, 148, 176, 149, 150, 136, 172, 58, 132, 93, 234, 127,
-    162, 21, 54, 103, 67, 109, 10,
-  ];
-
   function onResults(results) {
     detections = results;
+    if (
+      detections !== undefined &&
+      detections.multiFaceLandmarks !== undefined &&
+      detections.multiFaceLandmarks.length >= 1
+    ) {
+      setFacemeshAR(true);
+    } else {
+      setFacemeshAR(false);
+    }
+    // console.log(detections);
   }
 
   useEffect(() => {
+    let video;
+
+    function runAnimationVideo() {
+      window.requestAnimationFrame(function () {
+        videoCheckSend();
+      });
+    }
+
+    const videoTrack = videoTracks[0];
+    async function setupVideo() {
+      if (videoTrack) {
+        videoTrack.attach(videoRef.current);
+        video = videoRef.current;
+        video.onloadedmetadata = function () {
+          video.play().then(runAnimationVideo());
+        };
+        return () => {
+          videoTrack.detach();
+        };
+      }
+    }
+
     const faceMesh = new FaceMesh({
       locateFile: (file) => {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
@@ -119,23 +127,24 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       minTrackingConfidence: 0.5,
       refineLandmarks: true,
     });
-
     faceMesh.onResults(onResults);
-    if (
-      typeof videoRef.current !== "undefined" &&
-      videoRef.current !== null
-    ) {
 
-      camera = new cam.Camera(videoRef.current, {
-        onFrame: async () => {
-          await faceMesh.send({ image: videoRef.current });
-        },
-        width: 640,
-        height: 480,
-      });
-      camera.start();
+    const videoCheckSend = async () => {
+      await faceMesh.send({ image: videoRef.current }).then(runAnimationVideo);
+    };
+
+    setupVideo();
+  }, [videoTracks]);
+
+  useEffect(() => {
+    const audioTrack = audioTracks[0];
+    if (audioTrack) {
+      audioTrack.attach(audioRef.current);
+      return () => {
+        audioTrack.detach();
+      };
     }
-  }, []);
+  }, [audioTracks]);
 
   function sketch(p) {
     p.setup = () => {
@@ -147,11 +156,12 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.clear();
       p.strokeWeight(3);
       if (detections !== undefined) {
+        console.log("dections" + detections);
         if (
           detections.multiFaceLandmarks !== undefined &&
           detections.multiFaceLandmarks.length >= 1
         ) {
-          console.log("skch: " + detections.multiFaceLandmarks);
+          console.log("Hello 2");
           p.faceMesh();
         }
       }
@@ -288,13 +298,12 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
         </Box>
       </p>
       <Box sx={{ boxShadow: 24 }}>
-        <video ref={videoRef} autoPlay={true}/>
-        <ReactP5Wrapper sketch={sketch} />
+        <video ref={videoRef} />
         <audio ref={audioRef} autoPlay={true} />
       </Box>
-      {/* <Box sx={{ boxShadow: 24 }}>
-        <ReactP5Wrapper sketch={sketch} />
-      </Box> */}
+      <Box sx={{ boxShadow: 24 }}>
+        {facemeshAR ? <ReactP5Wrapper sketch={sketch} /> : ""}
+      </Box>
     </div>
   );
 };
