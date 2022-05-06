@@ -21,7 +21,7 @@ const Room = ({
   handleVideoUnmute,
   handleScreenShareStart,
   handleScreenShareStop,
-  screenTrack
+  screenTrack,
 }) => {
   const [participants, setParticipants] = useState([]);
   const [displayChat, setDisplayChat] = useState(true);
@@ -62,7 +62,6 @@ const Room = ({
   // const screenShare  = () =>{
   //   <Participant k/>
   // }
-
 
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,

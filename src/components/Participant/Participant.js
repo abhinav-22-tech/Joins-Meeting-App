@@ -148,7 +148,7 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
 
   function sketch(p) {
     p.setup = () => {
-      p.createCanvas(500, 500);
+      p.createCanvas(320, 240);
       // p.colorMode(p.HSB);
     };
 
@@ -310,7 +310,7 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
         </Box>
       </p>
       <Box sx={{ boxShadow: 24 }}>
-        <video ref={videoRef}/>
+        <video ref={videoRef} hidden />
         <audio ref={audioRef} autoPlay={true} />
       </Box>
       <Box sx={{ boxShadow: 24 }}>
