@@ -10,14 +10,14 @@ import { ReactP5Wrapper } from "react-p5-wrapper";
 const Participant = ({ participant, totalParticipant, currentUser }) => {
   const [videoTracks, setVideoTracks] = useState([]);
   const [audioTracks, setAudioTracks] = useState([]);
-  const [facemeshAR, setFacemeshAR] = useState(false);
+  const [facemeshAR, setFacemeshAR] = useState(true);
   // const { videoON } = useRoomContext();
   // const { currentUser } = useAppContext();
 
   const videoRef = useRef();
   const audioRef = useRef();
+  const detections = useRef();
 
-  let detections = {};
   const leftEye = [
     263, 249, 390, 373, 374, 380, 381, 382, 362, 263, 466, 388, 387, 386, 385,
     384, 398, 362,
@@ -79,17 +79,17 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
   }, [participant]);
 
   function onResults(results) {
-    detections = results;
-    if (
-      detections !== undefined &&
-      detections.multiFaceLandmarks !== undefined &&
-      detections.multiFaceLandmarks.length >= 1
-    ) {
-      setFacemeshAR(true);
-    } else {
-      setFacemeshAR(false);
-    }
-    // console.log(detections);
+    detections.current = results;
+    // if (
+    //   detections.current !== undefined &&
+    //   detections.current.multiFaceLandmarks !== undefined &&
+    //   detections.current.multiFaceLandmarks.length >= 1
+    // ) {
+    //   setFacemeshAR(true);
+    // } else {
+    //   setFacemeshAR(false);
+    // }
+    // console.log(detections.current);
   }
 
   useEffect(() => {
@@ -155,13 +155,11 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
     p.draw = () => {
       p.clear();
       p.strokeWeight(3);
-      if (detections !== undefined) {
-        console.log("dections" + detections);
+      if (detections.current !== undefined) {
         if (
-          detections.multiFaceLandmarks !== undefined &&
-          detections.multiFaceLandmarks.length >= 1
+          detections.current.multiFaceLandmarks !== undefined &&
+          detections.current.multiFaceLandmarks.length >= 1
         ) {
-          console.log("Hello 2");
           p.faceMesh();
         }
       }
@@ -172,9 +170,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.fill("#f1c27d");
       p.beginShape();
       for (let i = 0; i < faceBorder.length; i++) {
-        let faceX = detections.multiFaceLandmarks[0][faceBorder[i]].x * p.width;
+        let faceX =
+          detections.current.multiFaceLandmarks[0][faceBorder[i]].x * p.width;
         let faceY =
-          detections.multiFaceLandmarks[0][faceBorder[i]].y * p.height;
+          detections.current.multiFaceLandmarks[0][faceBorder[i]].y * p.height;
         p.vertex(faceX, faceY);
       }
       p.endShape();
@@ -184,8 +183,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.noStroke();
       p.beginShape();
       for (let i = 0; i < leftEye.length; i++) {
-        let leyex = detections.multiFaceLandmarks[0][leftEye[i]].x * p.width;
-        let leyey = detections.multiFaceLandmarks[0][leftEye[i]].y * p.height;
+        let leyex =
+          detections.current.multiFaceLandmarks[0][leftEye[i]].x * p.width;
+        let leyey =
+          detections.current.multiFaceLandmarks[0][leftEye[i]].y * p.height;
         p.vertex(leyex, leyey);
       }
       p.endShape();
@@ -195,8 +196,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.noStroke();
       p.beginShape();
       for (let i = 0; i < rightEye.length; i++) {
-        let reyex = detections.multiFaceLandmarks[0][rightEye[i]].x * p.width;
-        let reyey = detections.multiFaceLandmarks[0][rightEye[i]].y * p.height;
+        let reyex =
+          detections.current.multiFaceLandmarks[0][rightEye[i]].x * p.width;
+        let reyey =
+          detections.current.multiFaceLandmarks[0][rightEye[i]].y * p.height;
         p.vertex(reyex, reyey);
       }
       p.endShape();
@@ -205,8 +208,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.fill("black");
       p.beginShape();
       for (let i = 0; i < leftIris.length; i++) {
-        let lIrisX = detections.multiFaceLandmarks[0][leftIris[i]].x * p.width;
-        let lIrisY = detections.multiFaceLandmarks[0][leftIris[i]].y * p.height;
+        let lIrisX =
+          detections.current.multiFaceLandmarks[0][leftIris[i]].x * p.width;
+        let lIrisY =
+          detections.current.multiFaceLandmarks[0][leftIris[i]].y * p.height;
         p.vertex(lIrisX, lIrisY);
       }
       p.endShape();
@@ -215,9 +220,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.fill("black");
       p.beginShape();
       for (let i = 0; i < rightIris.length; i++) {
-        let rIrisX = detections.multiFaceLandmarks[0][rightIris[i]].x * p.width;
+        let rIrisX =
+          detections.current.multiFaceLandmarks[0][rightIris[i]].x * p.width;
         let rIrisY =
-          detections.multiFaceLandmarks[0][rightIris[i]].y * p.height;
+          detections.current.multiFaceLandmarks[0][rightIris[i]].y * p.height;
         p.vertex(rIrisX, rIrisY);
       }
       p.endShape();
@@ -227,9 +233,9 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.beginShape();
       for (let i = 0; i < leftEyeBrow.length; i++) {
         let lEyeBrowX =
-          detections.multiFaceLandmarks[0][leftEyeBrow[i]].x * p.width;
+          detections.current.multiFaceLandmarks[0][leftEyeBrow[i]].x * p.width;
         let lEyeBrowY =
-          detections.multiFaceLandmarks[0][leftEyeBrow[i]].y * p.height;
+          detections.current.multiFaceLandmarks[0][leftEyeBrow[i]].y * p.height;
         p.vertex(lEyeBrowX, lEyeBrowY);
       }
       p.endShape();
@@ -239,9 +245,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.beginShape();
       for (let i = 0; i < rightEyeBrow.length; i++) {
         let rEyeBrowX =
-          detections.multiFaceLandmarks[0][rightEyeBrow[i]].x * p.width;
+          detections.current.multiFaceLandmarks[0][rightEyeBrow[i]].x * p.width;
         let rEyeBrowY =
-          detections.multiFaceLandmarks[0][rightEyeBrow[i]].y * p.height;
+          detections.current.multiFaceLandmarks[0][rightEyeBrow[i]].y *
+          p.height;
         p.vertex(rEyeBrowX, rEyeBrowY);
       }
       p.endShape();
@@ -252,8 +259,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.strokeWeight(1);
       p.beginShape();
       for (let i = 0; i < lips.length; i++) {
-        let lipsX = detections.multiFaceLandmarks[0][lips[i]].x * p.width;
-        let lipsY = detections.multiFaceLandmarks[0][lips[i]].y * p.height;
+        let lipsX =
+          detections.current.multiFaceLandmarks[0][lips[i]].x * p.width;
+        let lipsY =
+          detections.current.multiFaceLandmarks[0][lips[i]].y * p.height;
         p.vertex(lipsX, lipsY);
       }
       p.endShape();
@@ -264,8 +273,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.strokeWeight(1);
       p.beginShape();
       for (let i = 0; i < nose.length; i++) {
-        let noseX = detections.multiFaceLandmarks[0][nose[i]].x * p.width;
-        let noseY = detections.multiFaceLandmarks[0][nose[i]].y * p.height;
+        let noseX =
+          detections.current.multiFaceLandmarks[0][nose[i]].x * p.width;
+        let noseY =
+          detections.current.multiFaceLandmarks[0][nose[i]].y * p.height;
         p.vertex(noseX, noseY);
       }
       p.endShape();
@@ -277,9 +288,10 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
       p.beginShape(p.TESS);
       for (let i = 0; i < foreHeadSpot.length; i++) {
         let foreHeadSpotX =
-          detections.multiFaceLandmarks[0][foreHeadSpot[i]].x * p.width;
+          detections.current.multiFaceLandmarks[0][foreHeadSpot[i]].x * p.width;
         let foreHeadSpotY =
-          detections.multiFaceLandmarks[0][foreHeadSpot[i]].y * p.height;
+          detections.current.multiFaceLandmarks[0][foreHeadSpot[i]].y *
+          p.height;
         p.vertex(foreHeadSpotX, foreHeadSpotY);
       }
       p.endShape();
@@ -298,7 +310,7 @@ const Participant = ({ participant, totalParticipant, currentUser }) => {
         </Box>
       </p>
       <Box sx={{ boxShadow: 24 }}>
-        <video ref={videoRef} />
+        <video ref={videoRef}/>
         <audio ref={audioRef} autoPlay={true} />
       </Box>
       <Box sx={{ boxShadow: 24 }}>
