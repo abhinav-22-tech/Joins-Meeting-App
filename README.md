@@ -3,3 +3,6 @@
 </p>
 
 <h1 align="center">JMA(Joins Meeting App)</h1>
+
+
+![](https://github.com/abhinav-22-tech/Joins-Meeting-App/blob/main/ezgif.com-gif-maker.gif)
