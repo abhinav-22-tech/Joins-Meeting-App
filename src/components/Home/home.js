@@ -181,6 +181,7 @@ function Home() {
           room: roomName,
         }),
         headers: {
+          "access-control-allow-origin": "*",
           "Content-Type": "application/json",
         },
       }
@@ -407,7 +408,7 @@ function Home() {
                   zIndex: (theme) => theme.zIndex.drawer + 1,
                 }}
                 open={backDropOpen}
-                // onClick={backDrophandleClose}
+              // onClick={backDrophandleClose}
               >
                 <CircularProgress color="inherit" />
               </Backdrop>
